@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+.terraform/
+coverage/
+node_modules/
+lib/
+
+pids
+*.pid
+*.swp
+*.seed
+*.pid.lock
+.env
+.envrc
+schema

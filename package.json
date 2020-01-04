@@ -13,12 +13,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prettier": "prettier-config-ackama",
-  "dependencies": {},
+  "dependencies": {
+    "eslint-config-prettier": "^6.9.0"
+  },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "prettier-config-ackama": "^0.1.2"
   },
   "peerDependencies": {
-    "eslint": ">= 6"
+    "eslint": ">= 6",
+    "eslint-plugin-prettier": ">= 3.1",
+    "prettier": ">= 1.19"
   }
 }

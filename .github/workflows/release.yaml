@@ -17,9 +17,7 @@ jobs:
         run: npm ci
       - name: lint
         run: npm run lint
-      - run: |
-          npm run semantic-release \
-            -r git+ssh://git@github.com/squareweave/eslint-config-ackama.git
+      - run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

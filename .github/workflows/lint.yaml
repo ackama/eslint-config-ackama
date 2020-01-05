@@ -1,0 +1,16 @@
+name: Lint
+on: [pull_request]
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Commit Linter
+        uses: wagoid/commitlint-github-action@v1.3.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run lint

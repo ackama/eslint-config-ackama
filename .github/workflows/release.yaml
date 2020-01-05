@@ -1,0 +1,25 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - run: |
+          npm run semantic-release \
+            -r git+ssh://git@github.com/squareweave/eslint-config-ackama.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/squareweave/eslint-config-ackama/compare/v1.0.0...v1.0.1) (2020-01-05)
+
+
+### Bug Fixes
+
+* **package:** add `files` field to `package.json` ([1932b59](https://github.com/squareweave/eslint-config-ackama/commit/1932b5947a6b2fa8cf3aeeaafcfc3422f8811d8b))
+
 # 1.0.0 (2020-01-05)
 
 

@@ -23,6 +23,23 @@
     ]
   },
   "prettier": "prettier-config-ackama",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ],
+    "resetMocks": true,
+    "restoreMocks": true,
+    "testEnvironment": "node",
+    "testRunner": "jest-circus/runner",
+    "transform": {
+      "\\.tsx?": "ts-jest"
+    }
+  },
   "dependencies": {
     "eslint-config-prettier": "^6.9.0"
   },
@@ -31,14 +48,23 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
+    "@types/eslint": "^6.1.3",
+    "@types/jest": "^24.9.0",
+    "@types/node": "^12.12.25",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "eslint": "^6.8.0",
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "jest-circus": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "prettier-config-ackama": "^0.1.2",
-    "semantic-release": "^15.14.0"
+    "semantic-release": "^15.14.0",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
     "eslint": ">= 6",

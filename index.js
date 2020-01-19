@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   env: { es2017: true },
   plugins: [

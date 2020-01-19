@@ -15,7 +15,7 @@ module.exports = {
     'prettier/@typescript-eslint'
   ],
   overrides: [
-    { files: ['*.spec.*'], env: { jest: true } },
+    { files: ['*.spec.*'], extends: ['./jest.js'] },
     {
       files: ['*.js'],
       rules: {

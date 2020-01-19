@@ -1,7 +1,7 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import ESLint from 'eslint';
+import * as fs from 'fs';
 import * as path from 'path';
-import packageJson from '../package.json';
 
 // todo: fill-in until https://github.com/DefinitelyTyped/DefinitelyTyped/pull/41706 is merged
 declare module 'eslint' {
@@ -17,10 +17,14 @@ declare module 'eslint' {
   }
 }
 
+const configFiles = fs
+  .readdirSync('.', { withFileTypes: true })
+  .filter(value => value.isFile() && value.name.endsWith('.js'))
+  .map(value => value.name);
+
 const isNameOfESLintConfigFile = (fname: string): boolean =>
   path.relative(fname, '.') === '..' &&
-  (packageJson.files.some(name => fname.endsWith(name)) ||
-    fname.endsWith('.eslintrc.js'));
+  configFiles.some(name => fname.endsWith(name));
 
 const requireConfig = (config: string): Required<ESLint.Linter.Config> => ({
   plugins: [],

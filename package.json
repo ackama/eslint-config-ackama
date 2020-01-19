@@ -15,7 +15,7 @@
   "scripts": {
     "lint": "eslint . --ignore-pattern '!.eslintrc.js' --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/squareweave/eslint-config-ackama.git",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "commitlint": {
     "extends": [

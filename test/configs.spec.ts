@@ -19,7 +19,7 @@ const configFiles = fs
 const requireConfig = (config: string): Required<ESLint.Linter.Config> => ({
   plugins: [],
   extends: [],
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
   ...require(config)
 });
 

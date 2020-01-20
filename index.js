@@ -1,6 +1,7 @@
 module.exports = {
   env: { es2017: true },
   plugins: [
+    'import',
     'prettier', //
     'eslint-comments'
   ],
@@ -11,6 +12,23 @@ module.exports = {
   ],
   rules: {
     'eslint-comments/no-unused-disable': 'error',
+    'import/export': 'error',
+    'import/no-absolute-path': 'error',
+    'import/no-anonymous-default-export': 'error',
+    'import/no-mutable-exports': 'error',
+    'import/no-self-import': 'error',
+    'import/no-webpack-loader-syntax': 'error',
+    'import/order': [
+      'error',
+      {
+        'alphabetize': { order: 'asc' },
+        'groups': [
+          ['builtin', 'external', 'internal', 'unknown', 'index'],
+          ['parent', 'sibling']
+        ],
+        'newlines-between': 'never'
+      }
+    ],
     'accessor-pairs': ['error', { enforceForClassMembers: true }],
     'array-callback-return': 'error',
     'block-scoped-var': 'warn',

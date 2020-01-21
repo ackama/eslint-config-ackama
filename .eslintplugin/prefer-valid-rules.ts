@@ -29,7 +29,7 @@ const isNameOfESLintConfigFile = (fname: string): boolean =>
 const requireConfig = (config: string): Required<ESLint.Linter.Config> => ({
   plugins: [],
   extends: [],
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
   ...require(config)
 });
 
@@ -93,7 +93,7 @@ const collectConfigFileInfo = (configFile: string): ConfigFileInfo => {
 
       delete rules[ruleId];
     }
-    // eslint-disable-next-line no-constant-condition
+    // eslint-disable-next-line no-constant-condition,@typescript-eslint/no-unnecessary-condition
   } while (true);
 };
 

@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   plugins: ['eslint-plugin-jest'],
   extends: [
     'plugin:eslint-plugin-jest/recommended',
@@ -33,3 +34,5 @@ module.exports = {
     'jest/valid-title': 'error'
   }
 };
+
+module.exports = config;

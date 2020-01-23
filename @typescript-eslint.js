@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: { sourceType: 'module' },
   plugins: ['@typescript-eslint'],
@@ -93,3 +94,5 @@ module.exports = {
     'strict': 'off' // via --alwaysStrict
   }
 };
+
+module.exports = config;

@@ -1,5 +1,5 @@
 /** @type {import('eslint').Linter.Config} */
-module.exports = {
+const config = {
   env: { es2017: true },
   parserOptions: {
     ecmaFeatures: {
@@ -74,3 +74,5 @@ module.exports = {
     'react/void-dom-elements-no-children': 'warn'
   }
 };
+
+module.exports = config;

@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   env: { es2017: true },
   plugins: [
     'import',
@@ -186,3 +187,5 @@ module.exports = {
     'yoda': 'error'
   }
 };
+
+module.exports = config;

@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   env: { node: true },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -25,3 +26,5 @@ module.exports = {
     'no-sync': 'off'
   }
 };
+
+module.exports = config;

@@ -2,3 +2,5 @@
 /dist/
 /lib/
 /out/
+!.eslintrc.js
+!.eslintplugin/

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [ "es2020" ],
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "esModuleInterop": true
+  },
+  "exclude": [ "node_modules" ]
+}

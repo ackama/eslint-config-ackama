@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/squareweave/eslint-config-ackama/compare/v1.1.0...v1.2.0) (2020-01-24)
+
+
+### Features
+
+* create `react` config ([d825552](https://github.com/squareweave/eslint-config-ackama/commit/d825552b95ecae4dd457f63a74d32cc06e1bfca9))
+* **javascript:** add `eslint-plugin-import` ([aace8f0](https://github.com/squareweave/eslint-config-ackama/commit/aace8f05fe89420f715a657a13c08af7e72d00f4))
+* create `[@typescript-eslint](https://github.com/typescript-eslint)` config ([d8c0e31](https://github.com/squareweave/eslint-config-ackama/commit/d8c0e313be398fe22fa5156809ba1748634e4663))
+* create `flowtype` config ([313935c](https://github.com/squareweave/eslint-config-ackama/commit/313935c89ebdd31981fa7e1fcd50f54487cfcc9c))
+* create `jest` config ([1f039f4](https://github.com/squareweave/eslint-config-ackama/commit/1f039f40094c1270228c6221d36fbcda864f3d1d))
+* **javascript:** enable primary rules ([b23c244](https://github.com/squareweave/eslint-config-ackama/commit/b23c244ee3a7a3cdab7d33f21ddc1a765b13e94e))
+
 # [1.1.0](https://github.com/squareweave/eslint-config-ackama/compare/v1.0.1...v1.1.0) (2020-01-05)
 
 

@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/squareweave/eslint-config-ackama/compare/v1.2.0...v1.2.1) (2020-01-24)
+
+
+### Bug Fixes
+
+* **javascript:** exclude `ESLintUtils.RuleCreator` from `new-cap` ([5356bf9](https://github.com/squareweave/eslint-config-ackama/commit/5356bf95ddcc31b82589e0c7cc9ba0346ec625aa))
+
 # [1.2.0](https://github.com/squareweave/eslint-config-ackama/compare/v1.1.0...v1.2.0) (2020-01-24)
 
 

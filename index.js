@@ -54,7 +54,7 @@ const config = {
     ],
     'max-classes-per-file': ['error', 1],
     'max-statements-per-line': ['error', { max: 1 }],
-    'new-cap': 'error',
+    'new-cap': ['error', { capIsNewExceptions: ['ESLintUtils.RuleCreator'] }],
     'no-alert': 'warn',
     'no-array-constructor': 'error',
     'no-await-in-loop': 'error',

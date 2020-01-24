@@ -83,7 +83,6 @@ const collectConfigFileInfo = (configFile: string): ConfigFileInfo => {
   } while (true);
 };
 
-// eslint-disable-next-line new-cap
 export = ESLintUtils.RuleCreator(name => name)({
   name: __filename,
   meta: {

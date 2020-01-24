@@ -1,4 +1,0 @@
-# we only release on feat & fix
-types:
-  - feat
-  - fix

@@ -3,20 +3,6 @@ import ESLint from 'eslint';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// todo: fill-in until https://github.com/DefinitelyTyped/DefinitelyTyped/pull/41706 is merged
-declare module 'eslint' {
-  namespace CLIEngine {
-    interface LintReport {
-      usedDeprecatedRules: DeprecatedRuleUse[];
-    }
-
-    interface DeprecatedRuleUse {
-      ruleId: string;
-      replacedBy: string[];
-    }
-  }
-}
-
 const configFiles = fs
   .readdirSync('.', { withFileTypes: true })
   .filter(value => value.isFile() && value.name.endsWith('.js'))

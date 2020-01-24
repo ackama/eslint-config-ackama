@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   parser: 'babel-eslint',
   plugins: ['flowtype'],
   extends: ['plugin:flowtype/recommended', 'prettier/flowtype'],
@@ -36,3 +37,5 @@ module.exports = {
     'flowtype/type-import-style': ['error', 'declaration']
   }
 };
+
+module.exports = config;

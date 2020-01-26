@@ -2,6 +2,7 @@ import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import ESLint from 'eslint';
 import * as fs from 'fs';
 import * as path from 'path';
+import { runInNewContext } from 'vm';
 
 const configFiles = fs
   .readdirSync('.', { withFileTypes: true })
@@ -12,12 +13,8 @@ const isNameOfESLintConfigFile = (fname: string): boolean =>
   path.relative(fname, '.') === '..' &&
   configFiles.some(name => fname.endsWith(name));
 
-const requireConfig = (config: string): Required<ESLint.Linter.Config> => ({
-  plugins: [],
-  extends: [],
-  // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
-  ...require(config)
-});
+const compileConfigCode = (fileCode: string): ESLint.Linter.Config =>
+  runInNewContext(fileCode, { module: { exports: {} } }) ?? {};
 
 const createCLIEngine = (config: ESLint.Linter.Config): ESLint.CLIEngine =>
   new ESLint.CLIEngine({
@@ -41,9 +38,10 @@ interface ConfigFileInfo {
   unknownRules: string[];
 }
 
-const collectConfigFileInfo = (configFile: string): ConfigFileInfo => {
-  const config = requireConfig(configFile);
-  const rules = { ...config.rules };
+const collectConfigFileInfo = (
+  config: ESLint.Linter.Config
+): ConfigFileInfo => {
+  const rules = { ...(config.rules ?? {}) };
   const invalidRules: Record<string, string> = {};
 
   do {
@@ -101,13 +99,13 @@ export = ESLintUtils.RuleCreator(name => name)({
   },
   defaultOptions: [],
   create(context) {
-    const fileName = context.getFilename();
-
-    if (!isNameOfESLintConfigFile(fileName)) {
+    if (!isNameOfESLintConfigFile(context.getFilename())) {
       return {};
     }
 
-    const results = collectConfigFileInfo(fileName);
+    const config = compileConfigCode(context.getSourceCode().getText());
+
+    const results = collectConfigFileInfo(config);
 
     return {
       Literal(node: TSESTree.Literal): void {

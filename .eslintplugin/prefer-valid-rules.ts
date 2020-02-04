@@ -129,7 +129,7 @@ export = ESLintUtils.RuleCreator(name => name)({
 
         if (ruleId in results.invalidRules) {
           context.report({
-            data: { ruleId, reason: results.invalidRules[ruleId] },
+            data: { ruleId, reason: results.invalidRules[ruleId].trimRight() },
             messageId: 'invalidRule',
             node
           });

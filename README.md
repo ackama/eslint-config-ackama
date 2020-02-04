@@ -56,24 +56,6 @@ the future; the details of these rules are documented below.
 In general, we are more acceptance of rules that don't catch everything than
 rules that report too many false positives.
 
-#### `@typescript-eslint/unbound-method` reports methods as unbound (`console` in particular)
-
-This rule is promising, but needs to be battle tested in real-world code to
-determine how accurate it actually is.
-
-One common pattern that is already known to be flagged is with `Console`:
-
-```
-Promise.reject().catch(console.error);
-```
-
-This will be incorrectly flagged as being unbound. This is because currently the
-`Console` methods are not typed as being bound.
-
-There is an open issue tracking implementing an exclusion for `Console` to the
-rule on
-[`@typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/issues/1085).
-
 #### React: Lint custom hooks that accept a dependency array
 
 If you create a custom hook for a project that takes a dependency array, you can

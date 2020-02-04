@@ -25,9 +25,29 @@ module.exports = {
     {
       filename,
       code: `
+module.exports = {
+  rules: {
+    [null]: 'error',
+  }
+};
+`
+    },
+    {
+      filename,
+      code: `
 const o = {
   rules: {
     'no-shadow': 'error'
+  }
+}
+`
+    },
+    {
+      filename,
+      code: `
+const o = {
+  rules: {
+    1: 'error'
   }
 }
 `
@@ -249,6 +269,24 @@ module.exports = {
     },
     //#endregion
     //#region unknownRule
+    {
+      filename,
+      code: `
+module.exports = {
+  rules: {
+    1: 'error'
+  }
+};
+`,
+      errors: [
+        {
+          line: 4,
+          column: 5,
+          messageId: 'unknownRule',
+          data: { ruleId: 1 }
+        }
+      ]
+    },
     {
       filename,
       code: `

@@ -111,13 +111,13 @@ export = ESLintUtils.RuleCreator(name => name)({
 
     return {
       Literal(node: TSESTree.Literal): void {
-        const ruleId = node.value;
-
-        if (typeof ruleId !== 'string') {
+        if (node.value === null) {
           return;
         }
 
-        if (results.unknownRules.includes(ruleId)) {
+        const ruleId = node.value.toString();
+
+        if (results.unknownRules.includes(ruleId.toString())) {
           context.report({
             data: { ruleId },
             messageId: 'unknownRule',

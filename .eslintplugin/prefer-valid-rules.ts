@@ -91,9 +91,11 @@ export = ESLintUtils.RuleCreator(name => name)({
       recommended: 'error'
     },
     messages: {
-      deprecatedRule: 'Deprecated in favor of {{ replacedBy }}',
-      unknownRule: 'Unknown rule - Have you forgotten a plugin?',
-      invalidRule: 'The configuration for this rule is invalid: {{ reason }}'
+      deprecatedRule:
+        "'{{ ruleId }}' is deprecated in favor of '{{ replacedBy }}'",
+      unknownRule: "Unknown rule '{{ ruleId }}' - Have you forgotten a plugin?",
+      invalidRule:
+        "The configuration for '{{ ruleId }}' is invalid: {{ reason }}"
     },
     schema: []
   },
@@ -117,6 +119,7 @@ export = ESLintUtils.RuleCreator(name => name)({
 
         if (results.unknownRules.includes(ruleId)) {
           context.report({
+            data: { ruleId },
             messageId: 'unknownRule',
             node
           });
@@ -126,7 +129,7 @@ export = ESLintUtils.RuleCreator(name => name)({
 
         if (ruleId in results.invalidRules) {
           context.report({
-            data: { reason: results.invalidRules[ruleId] },
+            data: { ruleId, reason: results.invalidRules[ruleId] },
             messageId: 'invalidRule',
             node
           });
@@ -140,7 +143,7 @@ export = ESLintUtils.RuleCreator(name => name)({
 
         if (deprecation) {
           context.report({
-            data: { replacedBy: deprecation.replacedBy.join(', ') },
+            data: { ruleId, replacedBy: deprecation.replacedBy.join(', ') },
             messageId: 'deprecatedRule',
             node
           });

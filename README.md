@@ -74,6 +74,22 @@ There is an open issue tracking implementing an exclusion for `Console` to the
 rule on
 [`@typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint/issues/1085).
 
+#### React: Lint custom hooks that accept a dependency array
+
+If you create a custom hook for a project that takes a dependency array, you can
+have `react-hooks/exhaustive-deps` lint it in the same manner as core hooks by
+passing it the name of your custom hook via its `additionalHooks` option:
+
+```json
+{
+  "rules": {
+    "react-hooks/exhaustive-deps": ["warn", { "additionalHooks": "useHook" }]
+  }
+}
+```
+
+Note that this option expects a _RegExp string_
+
 ### Releasing
 
 Releases are handled using

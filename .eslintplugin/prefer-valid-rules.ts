@@ -40,7 +40,7 @@ interface ConfigFileInfo {
 
 const collectConfigFileInfo = (
   config: ESLint.Linter.Config
-): ConfigFileInfo | null => {
+): ConfigFileInfo => {
   const rules = { ...(config.rules ?? {}) };
   const invalidRules: Record<string, string> = {};
 
@@ -70,7 +70,7 @@ const collectConfigFileInfo = (
         ) ?? [];
 
       if (!ruleId) {
-        return null;
+        throw error;
       }
 
       invalidRules[ruleId] = reason;
@@ -79,6 +79,18 @@ const collectConfigFileInfo = (
     }
     // eslint-disable-next-line no-constant-condition,@typescript-eslint/no-unnecessary-condition
   } while (true);
+};
+
+const tryCollectConfigFileInfo = (
+  configText: string
+): ConfigFileInfo | null => {
+  try {
+    const config = compileConfigCode(configText);
+
+    return collectConfigFileInfo(config);
+  } catch {
+    return null;
+  }
 };
 
 export = ESLintUtils.RuleCreator(name => name)({
@@ -105,9 +117,7 @@ export = ESLintUtils.RuleCreator(name => name)({
       return {};
     }
 
-    const config = compileConfigCode(context.getSourceCode().getText());
-
-    const results = collectConfigFileInfo(config);
+    const results = tryCollectConfigFileInfo(context.getSourceCode().getText());
 
     if (!results) {
       return {};

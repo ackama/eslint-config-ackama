@@ -34,6 +34,14 @@ module.exports = {
       filename,
       code: `
 module.exports = {
+  ...iDoNotExist
+};
+`
+    },
+    {
+      filename,
+      code: `
+module.exports = {
   rules: {
     [null]: 'error',
   }

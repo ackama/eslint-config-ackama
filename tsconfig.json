@@ -17,5 +17,5 @@
     "removeComments": false,
     "esModuleInterop": true
   },
-  "exclude": [ "node_modules" ]
+  "exclude": [ "coverage", "node_modules" ]
 }

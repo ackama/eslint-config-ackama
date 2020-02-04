@@ -24,10 +24,11 @@ const config = {
     }
   ],
   rules: {
-    '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-dynamic-delete': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     'local/prefer-ast-types-enum': 'error',
     'local/prefer-valid-rules': 'error',
+    'local/sort-rules': 'error',
     'no-sync': 'off'
   }
 };

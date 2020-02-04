@@ -48,6 +48,7 @@ const config = {
     ],
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+    '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-use-before-define': [
@@ -77,6 +78,7 @@ const config = {
     '@typescript-eslint/unbound-method': 'warn', // can be a bit wrong
     '@typescript-eslint/unified-signatures': 'warn', // can be a bit wrong
 
+    'no-unused-expressions': 'off',
     'array-callback-return': 'off',
     'block-scoped-var': 'off',
     'consistent-return': 'off', // via --noImplicitReturns

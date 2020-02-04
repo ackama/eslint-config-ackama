@@ -22,6 +22,7 @@ const config = {
   rules: {
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-dynamic-delete': 'off',
+    'local/prefer-ast-types-enum': 'error',
     'local/prefer-valid-rules': 'error',
     'no-sync': 'off'
   }

@@ -25,6 +25,12 @@ module.exports = {
     {
       filename,
       code: `
+module.exports = [...[]];
+`
+    },
+    {
+      filename,
+      code: `
 const o = {
   rules: {
     'no-shadow': 'error'

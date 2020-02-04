@@ -40,7 +40,7 @@ interface ConfigFileInfo {
 
 const collectConfigFileInfo = (
   config: ESLint.Linter.Config
-): ConfigFileInfo => {
+): ConfigFileInfo | null => {
   const rules = { ...(config.rules ?? {}) };
   const invalidRules: Record<string, string> = {};
 
@@ -70,7 +70,7 @@ const collectConfigFileInfo = (
         ) ?? [];
 
       if (!ruleId) {
-        throw error;
+        return null;
       }
 
       invalidRules[ruleId] = reason;
@@ -108,6 +108,10 @@ export = ESLintUtils.RuleCreator(name => name)({
     const config = compileConfigCode(context.getSourceCode().getText());
 
     const results = collectConfigFileInfo(config);
+
+    if (!results) {
+      return {};
+    }
 
     return {
       Literal(node: TSESTree.Literal): void {

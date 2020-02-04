@@ -26,6 +26,14 @@ module.exports = {
       filename,
       code: `
 module.exports = {
+  invalidProperty: 'oh noes!'
+};
+`
+    },
+    {
+      filename,
+      code: `
+module.exports = {
   rules: {
     [null]: 'error',
   }

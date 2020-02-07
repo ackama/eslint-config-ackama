@@ -19,7 +19,8 @@
   "scripts": {
     "lint": "eslint . --ignore-pattern '!.eslintrc.js' --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/squareweave/eslint-config-ackama.git",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "commitlint": {
     "extends": [
@@ -45,38 +46,39 @@
     }
   },
   "dependencies": {
-    "eslint-config-prettier": "^6.9.0"
+    "eslint-config-prettier": "^6.10.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@semantic-release/changelog": "^3.0.6",
-    "@semantic-release/git": "^8.0.0",
-    "@types/eslint": "^6.1.7",
-    "@types/jest": "^24.9.1",
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@types/eslint": "^6.1.8",
+    "@types/jest": "^25.1.1",
     "@types/node": "^12.12.25",
-    "@typescript-eslint/eslint-plugin": "^2.17.0",
-    "@typescript-eslint/experimental-utils": "^2.17.0",
-    "@typescript-eslint/parser": "^2.17.0",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/experimental-utils": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-eslint-comments": "^3.1.2",
+    "eslint-plugin-eslint-plugin": "^2.2.1",
     "eslint-plugin-flowtype": "^4.6.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.6.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-local": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
     "jest-circus": "^25.1.0",
-    "lint-staged": "^10.0.2",
+    "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "prettier-config-ackama": "^0.1.2",
-    "semantic-release": "^16.0.3",
-    "ts-jest": "^25.0.0",
+    "semantic-release": "^17.0.2",
+    "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },

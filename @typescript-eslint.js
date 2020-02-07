@@ -16,6 +16,7 @@ const config = {
     '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'error',
     // eslint-disable-next-line local/prefer-valid-rules
     '@typescript-eslint/generic-type-naming': [
       'error',
@@ -48,7 +49,7 @@ const config = {
     ],
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
-    '@typescript-eslint/explicit-module-boundary-types': 'error',
+    '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-use-before-define': [
       'error', // Purely stylistic b/c of TS
@@ -90,6 +91,7 @@ const config = {
     'no-setter-return': 'off', // TS2408
     'no-throw-literal': 'off', // @typescript-eslint
     'no-underscore-dangle': 'off',
+    'no-unused-expressions': 'off',
     'no-useless-constructor': 'off', // @typescript-eslint
     'strict': 'off' // via --alwaysStrict
   }

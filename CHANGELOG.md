@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/squareweave/eslint-config-ackama/compare/v1.2.1...v1.2.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** use `@typescript-eslint/no-unused-expressions` ([0ddddad](https://github.com/squareweave/eslint-config-ackama/commit/0ddddad6d8ccf1ca04c16391aef3c84e42198ab0))
+
 ## [1.2.1](https://github.com/squareweave/eslint-config-ackama/compare/v1.2.0...v1.2.1) (2020-01-24)
 
 

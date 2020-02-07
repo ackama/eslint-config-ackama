@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ackama",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Standard ESLint configurations for Ackama projects.",
   "homepage": "https://github.com/ackama/eslint-config-ackama#readme",
   "repository": {

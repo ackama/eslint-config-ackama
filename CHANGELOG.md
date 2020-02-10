@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/squareweave/eslint-config-ackama/compare/v1.2.2...v1.2.3) (2020-02-10)
+
+
+### Bug Fixes
+
+* **javascript:** enable `allowWholeFile` for `disable-enable-pair` ([9f21c19](https://github.com/squareweave/eslint-config-ackama/commit/9f21c1923623272e04ef6682d20a902e305f76ec))
+
 ## [1.2.2](https://github.com/squareweave/eslint-config-ackama/compare/v1.2.1...v1.2.2) (2020-02-07)
 
 

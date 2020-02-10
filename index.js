@@ -12,6 +12,7 @@ const config = {
     'plugin:eslint-comments/recommended'
   ],
   rules: {
+    'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     'eslint-comments/no-unused-disable': 'error',
     'import/export': 'error',
     'import/no-absolute-path': 'error',

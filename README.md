@@ -10,6 +10,10 @@ Install this package:
 
 ### Additional Setup
 
+#### `.eslintignore`
+
+You can use the `.eslintignore` file used by this repo. It includes relevant files for TypeScript, Ruby, and PHP projects.
+
 #### @typescript-eslint
 
 The `@typescript-eslint` configuration requires type checking to be setup.

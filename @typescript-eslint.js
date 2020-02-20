@@ -29,7 +29,8 @@ const config = {
     ],
     '@typescript-eslint/naming-convention': [
       'error',
-      { selector: 'typeLike', format: ['PascalCase'] }
+      { selector: 'typeLike', format: ['PascalCase'] },
+      { selector: 'variable', format: ['camelCase', 'UPPER_CASE'] }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extra-non-null-assertion': 'error',

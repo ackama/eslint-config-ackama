@@ -28,8 +28,8 @@ const config = {
       { private: '^_', protected: '^_' }
     ],
     '@typescript-eslint/naming-convention': [
-      'error'
-      //
+      'error',
+      { selector: 'typeLike', format: ['PascalCase'] }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extra-non-null-assertion': 'error',

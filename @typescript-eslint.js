@@ -27,6 +27,10 @@ const config = {
       'warn',
       { private: '^_', protected: '^_' }
     ],
+    '@typescript-eslint/naming-convention': [
+      'error'
+      //
+    ],
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',

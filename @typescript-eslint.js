@@ -18,11 +18,6 @@ const config = {
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     // eslint-disable-next-line local/prefer-valid-rules
-    '@typescript-eslint/generic-type-naming': [
-      'error',
-      /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.toString().slice(1, -2)
-    ],
-    // eslint-disable-next-line local/prefer-valid-rules
     '@typescript-eslint/member-naming': [
       'warn',
       { private: '^_', protected: '^_' }
@@ -30,6 +25,11 @@ const config = {
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'typeLike', format: ['PascalCase'] },
+      {
+        selector: 'typeParameter',
+        format: ['PascalCase'],
+        custom: { match: true, regex: /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.source }
+      },
       { selector: 'variable', format: ['camelCase', 'UPPER_CASE'] },
       { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] }
     ],

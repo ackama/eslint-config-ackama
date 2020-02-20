@@ -17,6 +17,7 @@ const config = {
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
+    '@typescript-eslint/interface-name-prefix': 'off',
     // eslint-disable-next-line local/prefer-valid-rules
     '@typescript-eslint/member-naming': [
       'warn',
@@ -31,7 +32,12 @@ const config = {
         custom: { match: true, regex: /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.source }
       },
       { selector: 'variable', format: ['camelCase', 'UPPER_CASE'] },
-      { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] }
+      { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] },
+      {
+        selector: 'interface',
+        format: ['PascalCase'], // disallow "I" prefixing, but allow names like "IAM"
+        custom: { match: false, regex: /^I[A-Z][a-z]/u.source }
+      }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extra-non-null-assertion': 'error',

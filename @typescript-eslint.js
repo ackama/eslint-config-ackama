@@ -20,6 +20,10 @@ const config = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/naming-convention': [
       'error',
+      {
+        selector: 'default',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE']
+      },
       { selector: 'typeLike', format: ['PascalCase'] },
       {
         selector: 'typeParameter',

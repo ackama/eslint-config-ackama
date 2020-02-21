@@ -17,15 +17,49 @@ const config = {
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
-    // eslint-disable-next-line local/prefer-valid-rules
-    '@typescript-eslint/generic-type-naming': [
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/naming-convention': [
       'error',
-      /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.toString().slice(1, -2)
-    ],
-    // eslint-disable-next-line local/prefer-valid-rules
-    '@typescript-eslint/member-naming': [
-      'warn',
-      { private: '^_', protected: '^_' }
+      {
+        selector: 'default',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE']
+      },
+      { selector: 'property', format: null },
+      { selector: 'typeLike', format: ['PascalCase'] },
+      {
+        selector: 'typeParameter',
+        format: ['PascalCase'],
+        custom: { match: true, regex: /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.source }
+      },
+      { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] },
+      {
+        selector: 'interface',
+        format: ['PascalCase'], // disallow "I" prefixing, but allow names like "IAM"
+        custom: { match: false, regex: /^I[A-Z][a-z]/u.source }
+      },
+      {
+        selector: 'parameter',
+        format: ['camelCase'],
+        leadingUnderscore: 'allow'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['private'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'require'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['protected'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'require'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['public'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'forbid'
+      }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extra-non-null-assertion': 'error',

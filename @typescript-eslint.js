@@ -24,6 +24,7 @@ const config = {
         selector: 'default',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE']
       },
+      { selector: 'property', format: null },
       { selector: 'typeLike', format: ['PascalCase'] },
       {
         selector: 'typeParameter',

@@ -37,6 +37,11 @@ const config = {
         selector: 'interface',
         format: ['PascalCase'], // disallow "I" prefixing, but allow names like "IAM"
         custom: { match: false, regex: /^I[A-Z][a-z]/u.source }
+      },
+      {
+        selector: 'parameter',
+        format: ['camelCase'],
+        leadingUnderscore: 'allow'
       }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',

@@ -1,3 +1,24 @@
+# [1.3.0](https://github.com/ackama/eslint-config-ackama/compare/v1.2.3...v1.3.0) (2020-02-21)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** add default name formats ([b7b1168](https://github.com/ackama/eslint-config-ackama/commit/b7b1168c0535b43267beb3f5b022a84e46adf84a))
+* **@typescript-eslint:** allow leading underscores for parameters ([e82c398](https://github.com/ackama/eslint-config-ackama/commit/e82c398a90369c6072a31b5fb42a3a3d1b4f2ae4))
+* **@typescript-eslint:** allow properties to be any format ([de31f6a](https://github.com/ackama/eslint-config-ackama/commit/de31f6aefc32e63396aa8a294e72678f211aabf4))
+* **@typescript-eslint:** allow variables to be `PascalCase` named ([5abbf1c](https://github.com/ackama/eslint-config-ackama/commit/5abbf1c4decd71f44a1e0d142f72774f4e2479dc))
+* **@typescript-eslint:** require enum names to be pascal or upper case ([ad64b1f](https://github.com/ackama/eslint-config-ackama/commit/ad64b1f80425650a17132e40d81c8f92f0f5d56b))
+* **@typescript-eslint:** require typeLike names to be PascalCase ([c839b33](https://github.com/ackama/eslint-config-ackama/commit/c839b331f704f6ef558f1efe2ca5847ba6fbaea8))
+* **@typescript-eslint:** require var names to be camel or upper case ([52d2a30](https://github.com/ackama/eslint-config-ackama/commit/52d2a30978fe07fd756f6994a18f946d9516f163))
+* **@typescript-eslint:** use `naming-convention` for generic type naming ([ef2b574](https://github.com/ackama/eslint-config-ackama/commit/ef2b574fe9d1bf45a653eabdef0c51e09baeed83))
+* **@typescript-eslint:** use `naming-convention` for interface naming ([32a4b95](https://github.com/ackama/eslint-config-ackama/commit/32a4b95dee67bf16699a7faa0b004a23ede94438))
+* **@typescript-eslint:** use `naming-convention` for member naming ([e7a890e](https://github.com/ackama/eslint-config-ackama/commit/e7a890e9ca4ea107514dcde5f9f23b38127f55e8))
+
+
+### Features
+
+* **@typescript-eslint:** enable `@typescript-eslint/naming-convention` ([52885ac](https://github.com/ackama/eslint-config-ackama/commit/52885ac13bd60c1844f64a551ce25874df343b7d))
+
 ## [1.2.3](https://github.com/ackama/eslint-config-ackama/compare/v1.2.2...v1.2.3) (2020-02-10)
 
 

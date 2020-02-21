@@ -18,11 +18,6 @@ const config = {
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
-    // eslint-disable-next-line local/prefer-valid-rules
-    '@typescript-eslint/member-naming': [
-      'warn',
-      { private: '^_', protected: '^_' }
-    ],
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'typeLike', format: ['PascalCase'] },
@@ -42,6 +37,24 @@ const config = {
         selector: 'parameter',
         format: ['camelCase'],
         leadingUnderscore: 'allow'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['private'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'require'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['protected'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'require'
+      },
+      {
+        selector: 'memberLike',
+        modifiers: ['public'],
+        format: ['PascalCase', 'camelCase'],
+        leadingUnderscore: 'forbid'
       }
     ],
     '@typescript-eslint/no-dynamic-delete': 'error',

@@ -30,7 +30,6 @@ const config = {
         format: ['PascalCase'],
         custom: { match: true, regex: /^T([A-Z][a-zA-Z]+)$|^[A-Z]$/u.source }
       },
-      { selector: 'variable', format: ['camelCase', 'UPPER_CASE'] },
       { selector: 'enumMember', format: ['PascalCase', 'UPPER_CASE'] },
       {
         selector: 'interface',

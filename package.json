@@ -16,6 +16,9 @@
     "jest.js",
     "react.js"
   ],
+  "bin": {
+    "ackama-eslint-setup": "bin/setup.js"
+  },
   "scripts": {
     "lint": "eslint . --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/ackama/eslint-config-ackama.git",
@@ -51,16 +54,20 @@
     }
   },
   "dependencies": {
-    "eslint-config-prettier": "^6.10.0"
+    "eslint-config-prettier": "^6.10.0",
+    "inquirer": "^7.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@schemastore/package": "0.0.5",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@types/eslint": "^6.8.1",
+    "@types/inquirer": "^6.5.0",
     "@types/jest": "^26.0.3",
     "@types/node": "^12.12.47",
+    "@types/prettier": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.1.0",

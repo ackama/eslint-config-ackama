@@ -22,6 +22,7 @@ const config = {
     'lib/',
     'out/'
   ],
+  reportUnusedDisableDirectives: true,
   rules: {
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     'eslint-comments/no-unused-disable': 'error',
@@ -200,4 +201,5 @@ const config = {
   }
 };
 
+/** @ts-check @type import('eslint').Linter.Config */
 module.exports = config;

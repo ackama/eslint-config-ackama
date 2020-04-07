@@ -1,6 +1,11 @@
 name: Checks
 on: [pull_request]
 
+env:
+  # reduces noise from npm post-install scripts
+  DISABLE_OPENCOLLECTIVE: true
+  OPEN_SOURCE_CONTRIBUTOR: true
+
 jobs:
   commitlint:
     runs-on: ubuntu-latest

@@ -6,7 +6,6 @@ on:
 
 jobs:
   release:
-    name: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,9 +24,13 @@ jobs:
         run: npm ci
       - name: lint
         run: npm run lint
+      - name: typecheck
+        run: npm run typecheck
       - name: test
         run: npm run test
-      - run: npm run release
+
+      - name: release
+        run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

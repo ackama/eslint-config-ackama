@@ -29,6 +29,11 @@
   },
   "prettier": "prettier-config-ackama",
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",

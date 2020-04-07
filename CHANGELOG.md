@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/ackama/eslint-config-ackama/compare/v1.3.0...v1.4.0) (2020-04-07)
+
+
+### Features
+
+* **@typescript-eslint:** enable `method-signature-style` rule ([e0ca7cc](https://github.com/ackama/eslint-config-ackama/commit/e0ca7cc7d1db318d672b758ec6b6f69c6a62024f))
+* **@typescript-eslint:** enable new `no-unsafe-<subject>` rules ([fb70bb9](https://github.com/ackama/eslint-config-ackama/commit/fb70bb9863101f2d08c4a30d394fe3d474ef267a))
+
 # [1.3.0](https://github.com/ackama/eslint-config-ackama/compare/v1.2.3...v1.3.0) (2020-02-21)
 
 

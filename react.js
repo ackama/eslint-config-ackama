@@ -16,6 +16,7 @@ const config = {
     'plugin:jsx-a11y/recommended',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'prettier/react'
   ],
   overrides: [
@@ -29,8 +30,6 @@ const config = {
     }
   ],
   rules: {
-    'react-hooks/exhaustive-deps': 'warn',
-    'react-hooks/rules-of-hooks': 'error',
     'react/button-has-type': 'warn',
     'react/default-props-match-prop-types': 'warn',
     'react/display-name': 'off', // todo: re-look into

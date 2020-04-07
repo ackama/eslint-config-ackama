@@ -4,6 +4,11 @@ on:
     branches:
       - master
 
+env:
+  # reduces noise from npm post-install scripts
+  DISABLE_OPENCOLLECTIVE: true
+  OPEN_SOURCE_CONTRIBUTOR: true
+
 jobs:
   release:
     runs-on: ubuntu-latest

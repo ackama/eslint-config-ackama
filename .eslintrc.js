@@ -13,6 +13,7 @@ const config = {
     './@typescript-eslint.js',
     'plugin:eslint-plugin/recommended'
   ],
+  ignorePatterns: ['!.eslintplugin/'],
   overrides: [
     { files: ['*.spec.*'], extends: ['./jest.js'] },
     {

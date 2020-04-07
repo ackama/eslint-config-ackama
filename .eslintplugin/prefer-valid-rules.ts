@@ -14,7 +14,8 @@ const isNameOfESLintConfigFile = (fname: string): boolean =>
   configFiles.some(name => fname.endsWith(name));
 
 const compileConfigCode = (fileCode: string): ESLint.Linter.Config =>
-  runInNewContext(fileCode, { module: { exports: {} }, require }) ?? {};
+  (runInNewContext(fileCode, { module: { exports: {} }, require }) ??
+    {}) as ESLint.Linter.Config;
 
 const createCLIEngine = (config: ESLint.Linter.Config): ESLint.CLIEngine =>
   new ESLint.CLIEngine({

@@ -16,11 +16,15 @@ const configFiles = fs
   )
   .map(value => value.name);
 
-const requireConfig = (config: string): Required<ESLint.Linter.Config> => ({
+const requireConfig = (
+  config: string
+): ESLint.Linter.Config &
+  Required<Pick<ESLint.Linter.Config, 'plugins' | 'extends' | 'rules'>> => ({
   plugins: [],
   extends: [],
+  rules: {},
   // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
-  ...require(config)
+  ...(require(config) as Required<ESLint.Linter.Config>)
 });
 
 describe('package.json', () => {
@@ -35,9 +39,7 @@ describe('package.json', () => {
 
 describe('for each config file', () => {
   describe.each(configFiles)('%s config', configFile => {
-    const config: Required<ESLint.Linter.Config> = requireConfig(
-      `./../${configFile}`
-    );
+    const config = requireConfig(`./../${configFile}`);
 
     it('is valid', () => {
       expect.hasAssertions();

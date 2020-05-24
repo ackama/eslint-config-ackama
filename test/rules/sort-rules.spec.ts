@@ -6,30 +6,14 @@ const ruleTester = new TSESLint.RuleTester({
   parserOptions: { sourceType: 'module' }
 });
 
-// required by *all* tests, as otherwise they'll not be checked
-const filename = './index.js';
-
 ruleTester.run('sort-rules', rule, {
   valid: [
     {
-      filename: './notAConfig',
-      code: `
-module.exports = {
-  rules: {
-    'no-shadow': 'error',
-    'react/no-danger': 'error'
-  }
-};
-`
-    },
-    {
-      filename,
       code: `
 module.exports = [...[]];
 `
     },
     {
-      filename,
       code: `
 const o = {
   rules: {
@@ -39,7 +23,6 @@ const o = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -49,7 +32,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -59,7 +41,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint'],
@@ -71,7 +52,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const identifier = '@typescript-eslint/camelcase';
 
@@ -84,7 +64,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const identifier = '@typescript-eslint/camelcase';
 
@@ -97,7 +76,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const o = {
   '@typescript-eslint/array-type': 'error'
@@ -111,7 +89,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const moreRules = {
   '@typescript-eslint/camelcase': 'error'
@@ -131,7 +108,6 @@ module.exports = {
   ],
   invalid: [
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -161,7 +137,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['react'],
@@ -193,7 +168,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint', 'react'],
@@ -227,7 +201,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint'],
@@ -259,7 +232,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint', 'react'],

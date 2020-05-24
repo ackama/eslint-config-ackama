@@ -1,17 +1,6 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import ESLint from 'eslint';
-import * as fs from 'fs';
-import * as path from 'path';
 import { runInNewContext } from 'vm';
-
-const configFiles = fs
-  .readdirSync('.', { withFileTypes: true })
-  .filter(value => value.isFile() && value.name.endsWith('.js'))
-  .map(value => value.name);
-
-const isNameOfESLintConfigFile = (fname: string): boolean =>
-  path.relative(fname, '.') === '..' &&
-  configFiles.some(name => fname.endsWith(name));
 
 const compileConfigCode = (fileCode: string): ESLint.Linter.Config =>
   (runInNewContext(fileCode, { module: { exports: {} }, require }) ??
@@ -114,10 +103,6 @@ export = ESLintUtils.RuleCreator(name => name)({
   },
   defaultOptions: [],
   create(context) {
-    if (!isNameOfESLintConfigFile(context.getFilename())) {
-      return {};
-    }
-
     const results = tryCollectConfigFileInfo(context.getSourceCode().getText());
 
     if (!results) {

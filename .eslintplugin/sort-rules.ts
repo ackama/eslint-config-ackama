@@ -3,17 +3,6 @@ import {
   ESLintUtils,
   TSESTree
 } from '@typescript-eslint/experimental-utils';
-import * as fs from 'fs';
-import * as path from 'path';
-
-const configFiles = fs
-  .readdirSync('.', { withFileTypes: true })
-  .filter(value => value.isFile() && value.name.endsWith('.js'))
-  .map(value => value.name);
-
-const isNameOfESLintConfigFile = (fname: string): boolean =>
-  path.relative(fname, '.') === '..' &&
-  configFiles.some(name => fname.endsWith(name));
 
 const getPropertyName = (node: TSESTree.Property): string | null => {
   const key = node.key;
@@ -73,12 +62,6 @@ export = ESLintUtils.RuleCreator(name => name)({
   },
   defaultOptions: [],
   create(context) {
-    const fileName = context.getFilename();
-
-    if (!isNameOfESLintConfigFile(fileName)) {
-      return {};
-    }
-
     interface Stack {
       upper: Stack | null;
       prevName: string | null;

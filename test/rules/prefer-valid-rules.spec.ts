@@ -6,24 +6,9 @@ const ruleTester = new TSESLint.RuleTester({
   parserOptions: { sourceType: 'module' }
 });
 
-// required by *all* tests, as otherwise they'll not be checked
-const filename = './index.js';
-
 ruleTester.run('prefer-valid-rules', rule, {
   valid: [
     {
-      filename: './notAConfig',
-      code: `
-module.exports = {
-  rules: {
-    'react/no-danger': 'error',
-    'no-shadow': 'error'
-  }
-};
-`
-    },
-    {
-      filename,
       code: `
 module.exports = {
   invalidProperty: 'oh noes!'
@@ -31,7 +16,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   ...iDoNotExist
@@ -39,7 +23,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -49,7 +32,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const o = {
   rules: {
@@ -59,7 +41,6 @@ const o = {
 `
     },
     {
-      filename,
       code: `
 const o = {
   rules: {
@@ -69,7 +50,6 @@ const o = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -79,7 +59,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint'],
@@ -90,7 +69,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const o = {
   '@typescript-eslint/array-type': 'error'
@@ -104,7 +82,6 @@ module.exports = {
 `
     },
     {
-      filename,
       code: `
 const o = {
   '@typescript-eslint/array-type': 'error'
@@ -130,7 +107,6 @@ module.exports = {
   invalid: [
     //#region deprecatedRule
     {
-      filename,
       code: `
 const rules = {
   'no-shadow': 'error',
@@ -152,7 +128,6 @@ module.exports = { rules };
       ]
     },
     {
-      filename,
       code: `
 const rules = {
   'newline-before-return': 'error'
@@ -187,7 +162,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -208,7 +182,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint'],
@@ -230,7 +203,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 const moreRules = {
   'newline-before-return': 'error'
@@ -266,7 +238,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -286,7 +257,6 @@ module.exports = {
     //#endregion
     //#region unknownRule
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -304,7 +274,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 const rules = {
   'react/no-danger': 'error'
@@ -322,7 +291,6 @@ module.exports = { rules };
       ]
     },
     {
-      filename,
       code: `
 const rules = {
   'react/no-danger': 'error'
@@ -351,7 +319,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   plugins: ['@typescript-eslint'],
@@ -373,7 +340,6 @@ module.exports = {
     //#endregion
     //#region invalidRule
     {
-      filename,
       code: `
 module.exports = {
   rules: {
@@ -397,7 +363,6 @@ module.exports = {
     //#endregion
     //#region mixed
     {
-      filename,
       code: `
 const moreRules = {
   'react/no-danger': 'error'
@@ -430,7 +395,6 @@ module.exports = {
       ]
     },
     {
-      filename,
       code: `
 module.exports = {
   rules: {

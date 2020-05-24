@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/ackama/eslint-config-ackama/compare/v1.4.0...v1.4.1) (2020-05-24)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** disable `method-signature-style` ([5c73f45](https://github.com/ackama/eslint-config-ackama/commit/5c73f4501a587c52440a0074f4402c37b0579f16))
+
 # [1.4.0](https://github.com/ackama/eslint-config-ackama/compare/v1.3.0...v1.4.0) (2020-04-07)
 
 

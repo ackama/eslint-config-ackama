@@ -24,7 +24,7 @@ const requireConfig = (
   extends: [],
   rules: {},
   // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
-  ...(require(config) as Required<ESLint.Linter.Config>)
+  ...(require(config) as ESLint.Linter.Config)
 });
 
 describe('package.json', () => {

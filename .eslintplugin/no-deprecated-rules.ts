@@ -1,5 +1,20 @@
-import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
+import {
+  ESLintUtils,
+  TSESLint,
+  TSESTree
+} from '@typescript-eslint/experimental-utils';
 import { tryCollectConfigFileInfo } from './shared';
+
+const replaceDeprecatedRule = (
+  fullRule: string,
+  replacement: string
+): string => {
+  const split = fullRule.split('/');
+
+  split[split.length - 1] = replacement;
+
+  return split.join('/');
+};
 
 export = ESLintUtils.RuleCreator(name => name)({
   name: __filename,
@@ -8,11 +23,13 @@ export = ESLintUtils.RuleCreator(name => name)({
     docs: {
       description: 'Checks for usage of deprecated eslint rules',
       category: 'Best Practices',
-      recommended: 'warn'
+      recommended: 'warn',
+      suggestion: true
     },
     messages: {
       deprecatedRule:
-        "'{{ ruleId }}' is deprecated in favor of '{{ replacedBy }}'"
+        "'{{ ruleId }}' is deprecated in favor of '{{ replacedBy }}'",
+      suggestReplaceWith: 'Replace with "{{ replacement }}"'
     },
     schema: []
   },
@@ -41,7 +58,19 @@ export = ESLintUtils.RuleCreator(name => name)({
               replacedBy: deprecation.replacedBy.join(', ')
             },
             messageId: 'deprecatedRule',
-            node
+            node,
+            suggest: deprecation.replacedBy.map(replacement => ({
+              messageId: 'suggestReplaceWith',
+              data: { replacement },
+              fix: (fixer): TSESLint.RuleFix =>
+                fixer.replaceText(
+                  node,
+                  node.raw.replace(
+                    node.value.toString(),
+                    replaceDeprecatedRule(node.value.toString(), replacement)
+                  )
+                )
+            }))
           });
         }
       }

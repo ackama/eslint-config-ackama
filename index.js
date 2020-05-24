@@ -25,8 +25,8 @@ const config = {
       {
         'alphabetize': { order: 'asc' },
         'groups': [
-          ['builtin', 'external', 'internal', 'unknown', 'index'],
-          ['parent', 'sibling']
+          ['builtin', 'external', 'internal', 'unknown'],
+          ['parent', 'sibling', 'index']
         ],
         'newlines-between': 'never'
       }

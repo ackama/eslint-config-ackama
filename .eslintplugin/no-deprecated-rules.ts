@@ -6,14 +6,13 @@ export = ESLintUtils.RuleCreator(name => name)({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Ensures rules are valid.',
+      description: 'Checks for usage of deprecated eslint rules',
       category: 'Best Practices',
-      recommended: 'error'
+      recommended: 'warn'
     },
     messages: {
-      unknownRule: "Unknown rule '{{ ruleId }}' - Have you forgotten a plugin?",
-      invalidRule:
-        "The configuration for '{{ ruleId }}' is invalid: {{ reason }}"
+      deprecatedRule:
+        "'{{ ruleId }}' is deprecated in favor of '{{ replacedBy }}'"
     },
     schema: []
   },
@@ -31,22 +30,17 @@ export = ESLintUtils.RuleCreator(name => name)({
           return;
         }
 
-        const ruleId = node.value.toString();
+        const deprecation = results.deprecatedRules.find(
+          rule => rule.ruleId === node.value
+        );
 
-        if (results.unknownRules.includes(ruleId.toString())) {
+        if (deprecation) {
           context.report({
-            data: { ruleId },
-            messageId: 'unknownRule',
-            node
-          });
-
-          return;
-        }
-
-        if (ruleId in results.invalidRules) {
-          context.report({
-            data: { ruleId, reason: results.invalidRules[ruleId].trimRight() },
-            messageId: 'invalidRule',
+            data: {
+              ruleId: node.value.toString(),
+              replacedBy: deprecation.replacedBy.join(', ')
+            },
+            messageId: 'deprecatedRule',
             node
           });
         }

@@ -27,6 +27,7 @@ const config = {
     {
       files,
       rules: {
+        'local/no-deprecated-rules': 'warn',
         'local/prefer-valid-rules': 'error',
         'local/sort-rules': 'error'
       }

@@ -4,6 +4,7 @@ import {
   ESLintUtils,
   TSESLint
 } from '@typescript-eslint/experimental-utils';
+import dedent from 'dedent';
 import rule from '../../.eslintplugin/prefer-ast-types-enum';
 
 const ruleTester = new TSESLint.RuleTester({
@@ -17,29 +18,29 @@ ruleTester.run('prefer-ast-types-enum', rule, {
     'node.type === AST_NODE_TYPES.Literal',
     'node.type === AST_TOKEN_TYPES.Keyword',
     'node.type === 1',
-    `
-enum MY_ENUM {
-  Literal = 1
-}
+    dedent`
+      enum MY_ENUM {
+        Literal = 1
+      }
     `,
-    `
-enum AST_NODE_TYPES {
-  Literal = 'Literal'
-}
+    dedent`
+      enum AST_NODE_TYPES {
+        Literal = 'Literal'
+      }
     `
   ],
   invalid: ESLintUtils.batchedSingleLineTests({
-    code: `
-node.type === 'Literal'
-node.type === 'Keyword'
+    code: dedent`
+      node.type === 'Literal'
+      node.type === 'Keyword'
     `,
-    output: `
-node.type === AST_NODE_TYPES.Literal
-node.type === AST_TOKEN_TYPES.Keyword
+    output: dedent`
+      node.type === AST_NODE_TYPES.Literal
+      node.type === AST_TOKEN_TYPES.Keyword
     `,
     errors: [
       {
-        line: 2,
+        line: 1,
         column: 15,
         messageId: 'preferEnum',
         data: {
@@ -48,7 +49,7 @@ node.type === AST_TOKEN_TYPES.Keyword
         }
       },
       {
-        line: 3,
+        line: 2,
         column: 15,
         messageId: 'preferEnum',
         data: {

@@ -1,4 +1,5 @@
 import { TSESLint } from '@typescript-eslint/experimental-utils';
+import dedent from 'dedent';
 import rule from '../../.eslintplugin/prefer-valid-rules';
 
 const ruleTester = new TSESLint.RuleTester({
@@ -8,116 +9,98 @@ const ruleTester = new TSESLint.RuleTester({
 
 ruleTester.run('prefer-valid-rules', rule, {
   valid: [
-    {
-      code: `
-module.exports = {
-  invalidProperty: 'oh noes!'
-};
-`
-    },
-    {
-      code: `
-module.exports = {
-  ...iDoNotExist
-};
-`
-    },
-    {
-      code: `
-module.exports = {
-  rules: {
-    [null]: 'error',
-  }
-};
-`
-    },
-    {
-      code: `
-const o = {
-  rules: {
-    'no-shadow': 'error'
-  }
-}
-`
-    },
-    {
-      code: `
-const o = {
-  rules: {
-    1: 'error'
-  }
-}
-`
-    },
-    {
-      code: `
-module.exports = {
-  rules: {
-    'no-shadow': 'error'
-  }
-}
-`
-    },
-    {
-      code: `
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-  }
-}
-`
-    },
-    {
-      code: `
-const o = {
-  '@typescript-eslint/array-type': 'error'
-}
-
-module.exports = {
-  rules: {
-    'no-shadow': 'error'
-  }
-}
-`
-    },
-    {
-      code: `
-const o = {
-  '@typescript-eslint/array-type': 'error'
-}
-
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-    'spaced-comment': [
-      'warn',
-      'always',
-      {
-        markers: ['=', '#region'],
-        exceptions: ['#endregion']
+    dedent`
+      module.exports = {
+        invalidProperty: 'oh noes!'
+      };
+    `,
+    dedent`
+      module.exports = {
+        ...iDoNotExist
+      };
+    `,
+    dedent`
+      module.exports = {
+        rules: {
+          [null]: 'error',
+        }
+      };
+    `,
+    dedent`
+      const o = {
+        rules: {
+          'no-shadow': 'error'
+        }
       }
-    ]
-  }
-}
-`
-    }
+    `,
+    dedent`
+      const o = {
+        rules: {
+          1: 'error'
+        }
+      }
+    `,
+    dedent`
+      module.exports = {
+        rules: {
+          'no-shadow': 'error'
+        }
+      }
+    `,
+    dedent`
+      module.exports = {
+        plugins: ['@typescript-eslint'],
+        rules: {
+          '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+        }
+      }
+    `,
+    dedent`
+      const o = {
+        '@typescript-eslint/array-type': 'error'
+      }
+
+      module.exports = {
+        rules: {
+          'no-shadow': 'error'
+        }
+      }
+    `,
+    dedent`
+      const o = {
+        '@typescript-eslint/array-type': 'error'
+      }
+
+      module.exports = {
+        plugins: ['@typescript-eslint'],
+        rules: {
+          '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+          'spaced-comment': [
+            'warn',
+            'always',
+            {
+              markers: ['=', '#region'],
+              exceptions: ['#endregion']
+            }
+          ]
+        }
+      }
+    `
   ],
   invalid: [
     //#region deprecatedRule
     {
-      code: `
-const rules = {
-  'no-shadow': 'error',
-  'newline-before-return': 'error'
-};
+      code: dedent`
+        const rules = {
+          'no-shadow': 'error',
+          'newline-before-return': 'error'
+        };
 
-module.exports = { rules };
-`,
+        module.exports = { rules };
+      `,
       errors: [
         {
-          line: 4,
+          line: 3,
           column: 3,
           messageId: 'deprecatedRule',
           data: {
@@ -128,21 +111,97 @@ module.exports = { rules };
       ]
     },
     {
-      code: `
-const rules = {
-  'newline-before-return': 'error'
-};
+      code: dedent`
+        const rules = {
+          'newline-before-return': 'error'
+        };
 
-module.exports = {
-  rules: {
-    'newline-before-return': 'error',
-    'no-shadow': 'error'
-  }
-};
-`,
+        module.exports = {
+          rules: {
+            'newline-before-return': 'error',
+            'no-shadow': 'error'
+          }
+        };
+      `,
+      errors: [
+        {
+          line: 2,
+          column: 3,
+          messageId: 'deprecatedRule',
+          data: {
+            ruleId: 'newline-before-return',
+            replacedBy: 'padding-line-between-statements'
+          }
+        },
+        {
+          line: 7,
+          column: 5,
+          messageId: 'deprecatedRule',
+          data: {
+            ruleId: 'newline-before-return',
+            replacedBy: 'padding-line-between-statements'
+          }
+        }
+      ]
+    },
+    {
+      code: dedent`
+        module.exports = {
+          rules: {
+            'newline-before-return': 'error'
+          }
+        };
+      `,
       errors: [
         {
           line: 3,
+          column: 5,
+          messageId: 'deprecatedRule',
+          data: {
+            ruleId: 'newline-before-return',
+            replacedBy: 'padding-line-between-statements'
+          }
+        }
+      ]
+    },
+    {
+      code: dedent`
+        module.exports = {
+          plugins: ['@typescript-eslint'],
+          rules: {
+            '@typescript-eslint/camelcase': 'error'
+          }
+        };
+      `,
+      errors: [
+        {
+          line: 4,
+          column: 5,
+          messageId: 'deprecatedRule',
+          data: {
+            ruleId: '@typescript-eslint/camelcase',
+            replacedBy: 'naming-convention'
+          }
+        }
+      ]
+    },
+    {
+      code: dedent`
+        const moreRules = {
+          'newline-before-return': 'error'
+        }
+
+        module.exports = {
+          plugins: ['@typescript-eslint'],
+          rules: {
+            '@typescript-eslint/camelcase': 'error',
+            ...moreRules
+          }
+        };
+      `,
+      errors: [
+        {
+          line: 2,
           column: 3,
           messageId: 'deprecatedRule',
           data: {
@@ -155,47 +214,6 @@ module.exports = {
           column: 5,
           messageId: 'deprecatedRule',
           data: {
-            ruleId: 'newline-before-return',
-            replacedBy: 'padding-line-between-statements'
-          }
-        }
-      ]
-    },
-    {
-      code: `
-module.exports = {
-  rules: {
-    'newline-before-return': 'error'
-  }
-};
-`,
-      errors: [
-        {
-          line: 4,
-          column: 5,
-          messageId: 'deprecatedRule',
-          data: {
-            ruleId: 'newline-before-return',
-            replacedBy: 'padding-line-between-statements'
-          }
-        }
-      ]
-    },
-    {
-      code: `
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/camelcase': 'error'
-  }
-};
-`,
-      errors: [
-        {
-          line: 5,
-          column: 5,
-          messageId: 'deprecatedRule',
-          data: {
             ruleId: '@typescript-eslint/camelcase',
             replacedBy: 'naming-convention'
           }
@@ -203,51 +221,16 @@ module.exports = {
       ]
     },
     {
-      code: `
-const moreRules = {
-  'newline-before-return': 'error'
-}
-
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/camelcase': 'error',
-    ...moreRules
-  }
-};
-`,
+      code: dedent`
+        module.exports = {
+          rules: {
+            'react/no-danger': 'error'
+          }
+        };
+      `,
       errors: [
         {
           line: 3,
-          column: 3,
-          messageId: 'deprecatedRule',
-          data: {
-            ruleId: 'newline-before-return',
-            replacedBy: 'padding-line-between-statements'
-          }
-        },
-        {
-          line: 9,
-          column: 5,
-          messageId: 'deprecatedRule',
-          data: {
-            ruleId: '@typescript-eslint/camelcase',
-            replacedBy: 'naming-convention'
-          }
-        }
-      ]
-    },
-    {
-      code: `
-module.exports = {
-  rules: {
-    'react/no-danger': 'error'
-  }
-};
-`,
-      errors: [
-        {
-          line: 4,
           column: 5,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger' }
@@ -257,16 +240,16 @@ module.exports = {
     //#endregion
     //#region unknownRule
     {
-      code: `
-module.exports = {
-  rules: {
-    1: 'error'
-  }
-};
-`,
+      code: dedent`
+        module.exports = {
+          rules: {
+            1: 'error'
+          }
+        };
+      `,
       errors: [
         {
-          line: 4,
+          line: 3,
           column: 5,
           messageId: 'unknownRule',
           data: { ruleId: 1 }
@@ -274,16 +257,16 @@ module.exports = {
       ]
     },
     {
-      code: `
-const rules = {
-  'react/no-danger': 'error'
-};
+      code: dedent`
+        const rules = {
+          'react/no-danger': 'error'
+        };
 
-module.exports = { rules };
-`,
+        module.exports = { rules };
+      `,
       errors: [
         {
-          line: 3,
+          line: 2,
           column: 3,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger' }
@@ -291,27 +274,27 @@ module.exports = { rules };
       ]
     },
     {
-      code: `
-const rules = {
-  'react/no-danger': 'error'
-};
+      code: dedent`
+        const rules = {
+          'react/no-danger': 'error'
+        };
 
-module.exports = {
-  rules: {
-    'react/no-danger': 'error',
-    'no-shadow': 'error'
-  }
-};
-`,
+        module.exports = {
+          rules: {
+            'react/no-danger': 'error',
+            'no-shadow': 'error'
+          }
+        };
+      `,
       errors: [
         {
-          line: 3,
+          line: 2,
           column: 3,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger' }
         },
         {
-          line: 8,
+          line: 7,
           column: 5,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger' }
@@ -319,18 +302,18 @@ module.exports = {
       ]
     },
     {
-      code: `
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/array-type': 'error',
-    'react/no-danger': 'error'
-  }
-};
-`,
+      code: dedent`
+        module.exports = {
+          plugins: ['@typescript-eslint'],
+          rules: {
+            '@typescript-eslint/array-type': 'error',
+            'react/no-danger': 'error'
+          }
+        };
+      `,
       errors: [
         {
-          line: 6,
+          line: 5,
           column: 5,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger', myValue: 'hello' }
@@ -340,16 +323,16 @@ module.exports = {
     //#endregion
     //#region invalidRule
     {
-      code: `
-module.exports = {
-  rules: {
-    'camelcase': ['error', { ignore: ['child_process'] }],
-  }
-};
-`,
+      code: dedent`
+        module.exports = {
+          rules: {
+            'camelcase': ['error', { ignore: ['child_process'] }],
+          }
+        };
+      `,
       errors: [
         {
-          line: 4,
+          line: 3,
           column: 5,
           messageId: 'invalidRule',
           data: {
@@ -363,28 +346,28 @@ module.exports = {
     //#endregion
     //#region mixed
     {
-      code: `
-const moreRules = {
-  'react/no-danger': 'error'
-}
+      code: dedent`
+        const moreRules = {
+          'react/no-danger': 'error'
+        }
 
-module.exports = {
-  plugins: ['@typescript-eslint'],
-  rules: {
-    '@typescript-eslint/camelcase': 'error',
-    ...moreRules
-  }
-};
-`,
+        module.exports = {
+          plugins: ['@typescript-eslint'],
+          rules: {
+            '@typescript-eslint/camelcase': 'error',
+            ...moreRules
+          }
+        };
+      `,
       errors: [
         {
-          line: 3,
+          line: 2,
           column: 3,
           messageId: 'unknownRule',
           data: { ruleId: 'react/no-danger' }
         },
         {
-          line: 9,
+          line: 8,
           column: 5,
           messageId: 'deprecatedRule',
           data: {
@@ -395,23 +378,23 @@ module.exports = {
       ]
     },
     {
-      code: `
-module.exports = {
-  rules: {
-    '@typescript-eslint/array-type': 'error',
-    'camelcase': ['error', { ignore: ['child_process'] }],
-  }
-};
-`,
+      code: dedent`
+        module.exports = {
+          rules: {
+            '@typescript-eslint/array-type': 'error',
+            'camelcase': ['error', { ignore: ['child_process'] }],
+          }
+        };
+      `,
       errors: [
         {
-          line: 4,
+          line: 3,
           column: 5,
           messageId: 'unknownRule',
           data: { ruleId: '@typescript-eslint/array-type' }
         },
         {
-          line: 5,
+          line: 4,
           column: 5,
           messageId: 'invalidRule',
           data: {

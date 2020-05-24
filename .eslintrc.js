@@ -1,3 +1,5 @@
+const { files } = require('./package.json');
+
 /** @type {import('eslint').Linter.Config} */
 const config = {
   env: { node: true },
@@ -21,14 +23,20 @@ const config = {
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off'
       }
+    },
+    {
+      files,
+      rules: {
+        'local/no-deprecated-rules': 'warn',
+        'local/prefer-valid-rules': 'error',
+        'local/sort-rules': 'error'
+      }
     }
   ],
   rules: {
     '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-namespace': 'off',
     'local/prefer-ast-types-enum': 'error',
-    'local/prefer-valid-rules': 'error',
-    'local/sort-rules': 'error',
     'no-sync': 'off'
   }
 };

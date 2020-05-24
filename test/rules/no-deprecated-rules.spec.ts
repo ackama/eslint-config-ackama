@@ -131,7 +131,21 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'newline-before-return',
             replacedBy: 'padding-line-between-statements'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'newline-before-return' },
+              output: dedent`
+                const rules = {
+                  'no-shadow': 'error',
+                  'padding-line-between-statements': 'error'
+                };
+
+                module.exports = { rules };
+              `
+            }
+          ]
         }
       ]
     },
@@ -156,7 +170,25 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'newline-before-return',
             replacedBy: 'padding-line-between-statements'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'padding-line-between-statements' },
+              output: dedent`
+                const rules = {
+                  'padding-line-between-statements': 'error'
+                };
+
+                module.exports = {
+                  rules: {
+                    'newline-before-return': 'error',
+                    'no-shadow': 'error'
+                  }
+                };
+              `
+            }
+          ]
         },
         {
           line: 7,
@@ -165,7 +197,25 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'newline-before-return',
             replacedBy: 'padding-line-between-statements'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'padding-line-between-statements' },
+              output: dedent`
+                const rules = {
+                  'newline-before-return': 'error'
+                };
+
+                module.exports = {
+                  rules: {
+                    'padding-line-between-statements': 'error',
+                    'no-shadow': 'error'
+                  }
+                };
+              `
+            }
+          ]
         }
       ]
     },
@@ -185,7 +235,20 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'newline-before-return',
             replacedBy: 'padding-line-between-statements'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'padding-line-between-statements' },
+              output: dedent`
+                module.exports = {
+                  rules: {
+                    'padding-line-between-statements': 'error'
+                  }
+                };
+              `
+            }
+          ]
         }
       ]
     },
@@ -206,7 +269,21 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'prettier/deprecated-rule',
             replacedBy: 'replacement-rule'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'prettier/replacement-rule' },
+              output: dedent`
+                module.exports = {
+                  plugins: ['prettier'],
+                  rules: {
+                    'prettier/replacement-rule': 'error'
+                  }
+                };
+              `
+            }
+          ]
         }
       ]
     },
@@ -232,7 +309,26 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'newline-before-return',
             replacedBy: 'padding-line-between-statements'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'padding-line-between-statements' },
+              output: dedent`
+                const moreRules = {
+                  'padding-line-between-statements': 'error'
+                }
+
+                module.exports = {
+                  plugins: ['prettier'],
+                  rules: {
+                    'prettier/deprecated-rule': 'error',
+                    ...moreRules
+                  }
+                };
+              `
+            }
+          ]
         },
         {
           line: 8,
@@ -241,7 +337,26 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'prettier/deprecated-rule',
             replacedBy: 'replacement-rule'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'prettier/replacement-rule' },
+              output: dedent`
+                const moreRules = {
+                  'newline-before-return': 'error'
+                }
+
+                module.exports = {
+                  plugins: ['prettier'],
+                  rules: {
+                    'prettier/replacement-rule': 'error',
+                    ...moreRules
+                  }
+                };
+              `
+            }
+          ]
         }
       ]
     },
@@ -267,7 +382,26 @@ ruleTester.run('no-deprecated-rules', rule, {
           data: {
             ruleId: 'prettier/deprecated-rule',
             replacedBy: 'replacement-rule'
-          }
+          },
+          suggestions: [
+            {
+              messageId: 'suggestReplaceWith',
+              data: { replacement: 'prettier/replacement-rule' },
+              output: dedent`
+                const moreRules = {
+                  'react/no-danger': 'error'
+                }
+
+                module.exports = {
+                  plugins: ['prettier'],
+                  rules: {
+                    'prettier/replacement-rule': 'error',
+                    ...moreRules
+                  }
+                };
+              `
+            }
+          ]
         }
       ]
     }

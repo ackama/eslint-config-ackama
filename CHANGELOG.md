@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/ackama/eslint-config-ackama/compare/v1.4.1...v1.4.2) (2020-05-24)
+
+
+### Bug Fixes
+
+* **javascript:** group `index` with `parent` & `sibling` when ordering ([b8c299e](https://github.com/ackama/eslint-config-ackama/commit/b8c299e98195614638a8e63331f65a3b106d360f))
+
 ## [1.4.1](https://github.com/ackama/eslint-config-ackama/compare/v1.4.0...v1.4.1) (2020-05-24)
 
 

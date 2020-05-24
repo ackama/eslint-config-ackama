@@ -7,7 +7,7 @@ const ruleTester = new TSESLint.RuleTester({
   parserOptions: { sourceType: 'module' }
 });
 
-ruleTester.run('prefer-no-deprecated-rules', rule, {
+ruleTester.run('no-deprecated-rules', rule, {
   valid: [
     dedent`
       module.exports = {

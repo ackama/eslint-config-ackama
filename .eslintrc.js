@@ -5,14 +5,19 @@ const config = {
   env: { node: true },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: 'tsconfig.eslint.json',
+    project: 'tsconfig.json',
     sourceType: 'module',
     ecmaVersion: 2019
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'local', 'eslint-plugin'],
+  plugins: [
+    '@typescript-eslint/eslint-plugin',
+    'eslint-config',
+    'eslint-plugin'
+  ],
   extends: [
     './index.js',
     './@typescript-eslint.js',
+    'plugin:eslint-config/rc',
     'plugin:eslint-plugin/recommended'
   ],
   overrides: [
@@ -25,18 +30,16 @@ const config = {
       }
     },
     {
-      files,
+      files: files.map(file => `./${file}`),
+      extends: ['plugin:eslint-config/recommended-rules'],
       rules: {
-        'local/no-deprecated-rules': 'warn',
-        'local/prefer-valid-rules': 'error',
-        'local/sort-rules': 'error'
+        'eslint-config/sort-rules': 'error'
       }
     }
   ],
   rules: {
     '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    'local/prefer-ast-types-enum': 'error',
     'no-sync': 'off'
   }
 };

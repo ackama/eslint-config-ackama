@@ -17,5 +17,7 @@
     "removeComments": false,
     "esModuleInterop": true
   },
-  "exclude": [ "coverage", "node_modules" ]
+  "exclude": [ "coverage", "node_modules" ],
+  "files": [ ".eslintrc.js" ],
+  "include": [ "**/*.js", "**/*.ts" ]
 }

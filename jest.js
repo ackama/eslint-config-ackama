@@ -16,7 +16,8 @@ const config = {
       'error', // todo switch to top flag once merged
       { ignore: ['describe'] }
     ],
-    'jest/no-if': 'error', // todo: rename to no-conditional-expect
+    'jest/no-conditional-expect': 'error',
+    'jest/no-if': 'error',
     'jest/no-large-snapshots': 'warn',
     'jest/no-restricted-matchers': [
       'error',

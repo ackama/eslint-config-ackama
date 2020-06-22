@@ -16,16 +16,23 @@ const config = {
       'error', // todo switch to top flag once merged
       { ignore: ['describe'] }
     ],
-    'jest/no-expect-resolves': 'warn',
     'jest/no-if': 'error', // todo: rename to no-conditional-expect
     'jest/no-large-snapshots': 'warn',
+    'jest/no-restricted-matchers': [
+      'error',
+      {
+        toThrowErrorMatchingSnapshot:
+          'Use `toThrowErrorMatchingInlineSnapshot()` instead',
+        toMatchSnapshot: 'Use `toMatchInlineSnapshot()` instead',
+        toBeTruthy: 'Avoid `toBeTruthy`',
+        toBeFalsy: 'Avoid `toBeFalsy`'
+      }
+    ],
     'jest/no-test-return-statement': 'error',
-    'jest/no-truthy-falsy': 'error',
     'jest/prefer-called-with': 'error',
     // you can disable this if you use a `beforeEach` setup script,
     'jest/prefer-expect-assertions': 'warn',
     'jest/prefer-hooks-on-top': 'error',
-    'jest/prefer-inline-snapshots': 'warn',
     'jest/prefer-spy-on': 'error',
     'jest/prefer-strict-equal': 'error',
     'jest/prefer-todo': 'error',

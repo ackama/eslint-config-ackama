@@ -11,7 +11,6 @@ const config = {
   ],
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-    '@typescript-eslint/camelcase': ['error', { allow: ['child_process'] }],
     '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',

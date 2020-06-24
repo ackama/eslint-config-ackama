@@ -98,6 +98,7 @@ const config = {
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-readonly': 'warn',
+    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'warn',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
     '@typescript-eslint/promise-function-async': 'error',

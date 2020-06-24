@@ -17,6 +17,7 @@ const config = {
       { ignore: ['describe'] }
     ],
     'jest/no-conditional-expect': 'error',
+    'jest/no-deprecated-functions': 'error',
     'jest/no-if': 'error',
     'jest/no-large-snapshots': 'warn',
     'jest/no-restricted-matchers': [

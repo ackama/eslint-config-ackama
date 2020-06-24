@@ -101,6 +101,7 @@ const config = {
     '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'warn',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+    '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'error',

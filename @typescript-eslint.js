@@ -16,6 +16,7 @@ const config = {
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/lines-between-class-members': 'error',
     '@typescript-eslint/naming-convention': [
       'error',
       {
@@ -119,6 +120,7 @@ const config = {
     'default-param-last': 'off',
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
+    'lines-between-class-members': 'off',
     'no-import-assign': 'off',
     'no-invalid-this': 'off',
     'no-iterator': 'off',

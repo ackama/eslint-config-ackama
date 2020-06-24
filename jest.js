@@ -12,10 +12,7 @@ const config = {
       // todo: TBD - this will need adjusting for react-testing-library
       { assertFunctionNames: ['expect'] }
     ],
-    'jest/lowercase-name': [
-      'error', // todo switch to top flag once merged
-      { ignore: ['describe'] }
-    ],
+    'jest/lowercase-name': ['error', { ignoreTopLevelDescribe: true }],
     'jest/no-conditional-expect': 'error',
     'jest/no-deprecated-functions': 'error',
     'jest/no-if': 'error',

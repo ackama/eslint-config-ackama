@@ -47,7 +47,9 @@ describe('for each config file', () => {
       const makeRuleWarn = (
         value: ESLint.Linter.RuleLevel | ESLint.Linter.RuleLevelAndOptions
       ): ESLint.Linter.RuleLevel | ESLint.Linter.RuleLevelAndOptions =>
-        Array.isArray(value) ? ['warn', ...value.slice(1)] : 'warn';
+        Array.isArray(value)
+          ? ['warn', ...(value.slice(1) as unknown[])]
+          : 'warn';
 
       expect(() => {
         const baseConfig: ESLint.Linter.Config = {

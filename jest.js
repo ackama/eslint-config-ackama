@@ -1,9 +1,10 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
-  plugins: ['eslint-plugin-jest'],
+  plugins: ['jest', 'jest-formatting'],
   extends: [
-    'plugin:eslint-plugin-jest/recommended',
-    'plugin:eslint-plugin-jest/style'
+    'plugin:jest/recommended',
+    'plugin:jest/style',
+    'plugin:jest-formatting/recommended'
   ],
   rules: {
     'jest/consistent-test-it': 'error',

@@ -45,8 +45,8 @@ describe('for each config file', () => {
       expect.hasAssertions();
 
       const makeRuleWarn = (
-        value: ESLint.Linter.RuleLevel | ESLint.Linter.RuleLevelAndOptions
-      ): ESLint.Linter.RuleLevel | ESLint.Linter.RuleLevelAndOptions =>
+        value: ESLint.Linter.RuleEntry
+      ): ESLint.Linter.RuleEntry =>
         Array.isArray(value)
           ? ['warn', ...(value.slice(1) as unknown[])]
           : 'warn';
@@ -61,11 +61,7 @@ describe('for each config file', () => {
             sourceType: 'module'
           },
           // turn all rules on so ESLint warns if they're unknown
-          rules: Object.keys(config.rules).reduce<{
-            [name: string]:
-              | ESLint.Linter.RuleLevel
-              | ESLint.Linter.RuleLevelAndOptions;
-          }>(
+          rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
             (rules, name) => ({
               ...rules,
               [name]: makeRuleWarn(config.rules[name] ?? 'warn')

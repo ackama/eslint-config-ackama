@@ -1,3 +1,24 @@
+# [1.5.0](https://github.com/ackama/eslint-config-ackama/compare/v1.4.2...v1.5.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** replace deprecated rules ([81291c3](https://github.com/ackama/eslint-config-ackama/commit/81291c3c2e58333bf6337d6d41f212eb1084ebad))
+* **jest:** replace deprecated rules ([193d6e1](https://github.com/ackama/eslint-config-ackama/commit/193d6e1f71fb11b70a25b8cb78932b111dda2e9f))
+
+
+### Features
+
+* **@typescript-eslint:** enable `lines-between-class-members` ([b933691](https://github.com/ackama/eslint-config-ackama/commit/b9336913e91285b95aad241b0c820a59b1e06868))
+* **@typescript-eslint:** enable `no-unsafe-assignment` ([d9526b9](https://github.com/ackama/eslint-config-ackama/commit/d9526b935fc67d93fdd233c757ff58f26b73eab8))
+* **@typescript-eslint:** enable `prefer-reduce-type-parameter` ([e7d8832](https://github.com/ackama/eslint-config-ackama/commit/e7d8832bafbe3d678c931619dc59df8a7aa06fc1))
+* **@typescript-eslint:** enable `prefer-ts-expect-error` ([10bbc22](https://github.com/ackama/eslint-config-ackama/commit/10bbc223ed7124f3f4a5a29673ff75ef482937dd))
+* **javascript:** always require a newline between class members ([fefb98d](https://github.com/ackama/eslint-config-ackama/commit/fefb98d42159e522f96a327058aa890ac5a9ced2))
+* **jest:** add `eslint-plugin-jest-formatting` ([c87a4f8](https://github.com/ackama/eslint-config-ackama/commit/c87a4f805ed6954798e2afbf092e175544086e4a))
+* **jest:** enable `ignoreTopLevelDescribe` for `lowercase-name` ([f4650a5](https://github.com/ackama/eslint-config-ackama/commit/f4650a5b86593c8e05d7a2cb0aed6c9ddda5031e))
+* **jest:** enable `no-conditional-expect` ([4929337](https://github.com/ackama/eslint-config-ackama/commit/4929337234d53f6314a47925a50cc9dc685885a2))
+* **jest:** enable `no-deprecated-functions` ([1368a62](https://github.com/ackama/eslint-config-ackama/commit/1368a62e0dd678da0f437d2dbb217238c0049a83))
+
 ## [1.4.2](https://github.com/ackama/eslint-config-ackama/compare/v1.4.1...v1.4.2) (2020-05-24)
 
 

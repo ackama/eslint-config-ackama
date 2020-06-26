@@ -11,7 +11,7 @@ const config = {
       version: 'detect'
     }
   },
-  plugins: ['react', 'react-hooks', 'jsx-a11y', 'eslint-comments'],
+  plugins: ['react', 'react-hooks', 'jsx-a11y'],
   extends: [
     'plugin:jsx-a11y/recommended',
     'plugin:jsx-a11y/strict',

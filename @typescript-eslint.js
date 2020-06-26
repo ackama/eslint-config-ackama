@@ -11,12 +11,12 @@ const config = {
   ],
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-    '@typescript-eslint/camelcase': ['error', { allow: ['child_process'] }],
     '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/lines-between-class-members': 'error',
     '@typescript-eslint/naming-convention': [
       'error',
       {
@@ -82,6 +82,7 @@ const config = {
     ],
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
     '@typescript-eslint/no-unsafe-call': 'error',
     '@typescript-eslint/no-unsafe-member-access': 'error',
     '@typescript-eslint/no-unsafe-return': 'error',
@@ -97,8 +98,10 @@ const config = {
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-readonly': 'warn',
+    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'warn',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+    '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'error',
@@ -120,6 +123,7 @@ const config = {
     'default-param-last': 'off',
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
+    'lines-between-class-members': 'off',
     'no-import-assign': 'off',
     'no-invalid-this': 'off',
     'no-iterator': 'off',

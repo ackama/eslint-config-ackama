@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/ackama/eslint-config-ackama/compare/v1.5.0...v1.6.0) (2020-07-05)
+
+
+### Features
+
+* **@typescript-eslint:** enable `exceptAfterSingleLine` option ([419725d](https://github.com/ackama/eslint-config-ackama/commit/419725dd91da2cd4017ee82667bbc6b2ef691128))
+* **javascript:** enable `exceptAfterSingleLine` option ([edd25f9](https://github.com/ackama/eslint-config-ackama/commit/edd25f93df9e0bc265db6c4ee8cd651333700834))
+
 # [1.5.0](https://github.com/ackama/eslint-config-ackama/compare/v1.4.2...v1.5.0) (2020-06-26)
 
 

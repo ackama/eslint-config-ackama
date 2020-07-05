@@ -48,7 +48,11 @@ const config = {
     'grouped-accessor-pairs': ['error', 'getBeforeSet'],
     'guard-for-in': 'error',
     'init-declarations': 'error',
-    'lines-between-class-members': 'error',
+    'lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: true }
+    ],
     'max-classes-per-file': ['error', 1],
     'max-statements-per-line': ['error', { max: 1 }],
     'new-cap': ['error', { capIsNewExceptions: ['ESLintUtils.RuleCreator'] }],

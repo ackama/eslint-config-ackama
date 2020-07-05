@@ -16,7 +16,11 @@ const config = {
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/lines-between-class-members': 'error',
+    '@typescript-eslint/lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: true }
+    ],
     '@typescript-eslint/naming-convention': [
       'error',
       {

@@ -11,6 +11,17 @@ const config = {
     'plugin:prettier/recommended',
     'plugin:eslint-comments/recommended'
   ],
+  ignorePatterns: [
+    '!.eslintrc.js',
+    'node_modules/',
+    'coverage/',
+    'bundle/',
+    'public/',
+    'vendor/',
+    'dist/',
+    'lib/',
+    'out/'
+  ],
   rules: {
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     'eslint-comments/no-unused-disable': 'error',

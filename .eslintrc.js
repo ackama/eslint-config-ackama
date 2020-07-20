@@ -20,6 +20,7 @@ const config = {
     'plugin:eslint-config/rc',
     'plugin:eslint-plugin/recommended'
   ],
+  ignorePatterns: ['!.eslintplugin/'],
   overrides: [
     { files: ['*.spec.*'], extends: ['./jest.js'] },
     {

@@ -1,9 +1,0 @@
-/node_modules/
-/coverage/
-/bundle/
-/vendor/
-/dist/
-/lib/
-/out/
-!.eslintrc.js
-!.eslintplugin/

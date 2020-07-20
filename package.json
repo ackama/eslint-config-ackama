@@ -17,7 +17,7 @@
     "react.js"
   ],
   "scripts": {
-    "lint": "eslint . --ignore-pattern '!.eslintrc.js' --ext js,ts",
+    "lint": "eslint . --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/ackama/eslint-config-ackama.git",
     "test": "jest",
     "typecheck": "tsc --noEmit"
@@ -88,7 +88,7 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "eslint": ">= 6",
+    "eslint": ">= 6.7",
     "eslint-plugin-eslint-comments": ">= 3",
     "eslint-plugin-prettier": ">= 3.1",
     "prettier": ">= 1.19"

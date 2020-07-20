@@ -12,7 +12,25 @@ Install this package:
 
 #### `.eslintignore`
 
-You can use the `.eslintignore` file used by this repo. It includes relevant files for TypeScript, Ruby, and PHP projects.
+The configurations provided in this package specify `ignorePatterns` with common
+folders to be ignored as part of best practice, meaning an `.eslintignore` file
+is not required.
+
+Projects can use this property themselves instead of an `.eslintignore` to
+ignore additional files & folders, using standard ignore-glob syntax:
+
+```js
+/** @type {import('eslint').Linter.Config} */
+const config = {
+  extends: ['ackama'],
+  ignorePatterns: ['!.myFile.js', 'test/fixtures', '!test/fixtures/**.ts']
+};
+
+module.exports = config;
+```
+
+As `ignorePatterns` is merged across all configs being extended from, you can
+use `!` to un-ignore entries.
 
 #### @typescript-eslint
 

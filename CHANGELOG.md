@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/ackama/eslint-config-ackama/compare/v1.6.0...v1.7.0) (2020-07-20)
+
+
+### Features
+
+* use `ignorePatterns` in configs instead of `.eslintignore` ([4420a9b](https://github.com/ackama/eslint-config-ackama/commit/4420a9b5e19825f74fe80b2f0df50bed64a1299e))
+
 # [1.6.0](https://github.com/ackama/eslint-config-ackama/compare/v1.5.0...v1.6.0) (2020-07-05)
 
 

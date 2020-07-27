@@ -4,7 +4,11 @@ import * as ESLint from 'eslint';
 import * as fs from 'fs';
 import * as path from 'path';
 import prettier, { Options } from 'prettier';
-import { files, prettier as prettierConfigPackage } from '../package.json';
+import {
+  files,
+  peerDependencies,
+  prettier as prettierConfigPackage
+} from '../package.json';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports,global-require
 const prettierConfig = require(prettierConfigPackage) as Options;
@@ -92,8 +96,21 @@ const configs = files
   ])
   .join('\n');
 
+const updateInstallLine = (readme: string): string => {
+  const npmInstallLine = '    npm install --save-dev';
+  const dependenciesToInstall = [
+    'eslint-config-ackama',
+    '@types/eslint'
+  ].concat(Object.keys(peerDependencies));
+
+  return readme.replace(
+    new RegExp(`${npmInstallLine} .*\n`, 'u'),
+    [npmInstallLine, ...dependenciesToInstall].join(' ')
+  );
+};
+
 const pathToReadme = path.resolve(__dirname, '../README.md');
-const readme = fs.readFileSync(pathToReadme, 'utf8');
+const readme = updateInstallLine(fs.readFileSync(pathToReadme, 'utf8'));
 
 const listBeginMarker = `<!-- begin configs list -->`;
 const listEndMarker = `<!-- end configs list -->`;

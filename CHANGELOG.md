@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/ackama/eslint-config-ackama/compare/v1.7.0...v1.7.1) (2020-07-28)
+
+
+### Bug Fixes
+
+* specify `eslint-plugin-import` as `peerDependencies` ([46ef44a](https://github.com/ackama/eslint-config-ackama/commit/46ef44a859c856cd4058eec47de5c712648604aa))
+
 # [1.7.0](https://github.com/ackama/eslint-config-ackama/compare/v1.6.0...v1.7.0) (2020-07-20)
 
 

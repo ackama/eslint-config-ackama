@@ -20,6 +20,7 @@
     "lint": "eslint . --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/ackama/eslint-config-ackama.git",
     "test": "jest",
+    "tools:generate-configs-list": "ts-node -T tools/generate-configs-list.ts",
     "typecheck": "tsc --noEmit"
   },
   "commitlint": {

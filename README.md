@@ -2,70 +2,143 @@
 
 Standard ESLint configurations for Ackama projects.
 
-#### Usage
+#### Basic Setup
 
-Install this package:
+Install this package & the required plugins:
 
-    npm install --save-dev eslint-config-ackama
+    npm install --save-dev eslint-config-ackama @types/eslint eslint eslint-plugin-eslint-comments eslint-plugin-prettier eslint-plugin-import prettier
 
-### Additional Setup
-
-#### `.eslintignore`
-
-The configurations provided in this package specify `ignorePatterns` with common
-folders to be ignored as part of best practice, meaning an `.eslintignore` file
-is not required.
-
-Projects can use this property themselves instead of an `.eslintignore` to
-ignore additional files & folders, using standard ignore-glob syntax:
+Add an `.eslintrc.js` to your repo that extends from this config:
 
 ```js
 /** @type {import('eslint').Linter.Config} */
 const config = {
-  extends: ['ackama'],
-  ignorePatterns: ['!.myFile.js', 'test/fixtures', '!test/fixtures/**.ts']
+  extends: ['ackama']
 };
 
 module.exports = config;
 ```
 
-As `ignorePatterns` is merged across all configs being extended from, you can
-use `!` to un-ignore entries.
+You'll want to tell ESLint about the environment you're working in using the
+[`env`](https://eslint.org/docs/user-guide/configuring#specifying-environments)
+toplevel property.
 
-#### @typescript-eslint
+To reduce potential errors, the configurations provided by this package
+deliberately avoid enabling or disabling any envs without good reason, opting to
+set only the `es2017` env, since the majority of projects should be using ES2017
+or higher.
 
-The `@typescript-eslint` configuration requires type checking to be setup.
-
-You can do this by making a `tsconfig.eslint.json` with the following:
-
-```json
-{
-  "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "coverage", "public", "build", "dist", "lib"],
-  "include": ["bin", "src", "types", "test", "*.ts", "*.tsx", "*.js", "*.jsx"]
-}
-```
-
-### Environments
-
-ESLint uses the toplevel `env` property to track what variables are available
-globally. To reduce potential errors, the configurations provided by this
-package deliberately avoid enabling or disabling any envs without good reason.
-
-Currently, the only exception to this is the `es2017` env, since the majority of
-projects should be using ES2017 or higher.
-
-As such, it's up to the developer to enable the appropriate envs when setting
-eslint up on a project.
-
-In general, the primary ones to know about are
+These are the three most common envs you'll want to use:
 
 - `node` for NodeJS apps
 - `browser` for browser apps
 - `commonjs` for browser apps that are bundled using a bundler such as webpack
 
-You'll find a full list of the envs & their use-cases
-[here](https://eslint.org/docs/user-guide/configuring#specifying-environments).
+You can also add a `lint` script to the `scripts` property in your apps
+`package.json` to make it easier for developers to run eslint against the app:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint . --ext js,jsx,ts,tsx"
+  }
+}
+```
+
+This can be called via `npm run lint` or `yarn run lint`, depending on the
+package manager you're using.
+
+#### Additional Configs
+
+In addition to the `ackama` config (which pulls in `index.js`) for vanilla
+Javascript, this config package ships with a number of other configs for linting
+specific packages and frameworks.
+
+You can use these by extending them by their names in the same way as the base
+config, except you must prefix them with `ackama/`. You will also be required to
+install any extra plugins and dependencies these configs require that are not
+required for the base config.
+
+Below is a complete list of the configs provided, and their dependencies:
+
+<!-- begin configs list -->
+
+- `ackama`
+  - `eslint-plugin-import`
+  - `eslint-plugin-prettier`
+  - `eslint-plugin-eslint-comments`
+- `ackama/@typescript-eslint`
+  - `@typescript-eslint/eslint-plugin`
+  - `@typescript-eslint/parser`
+- `ackama/flowtype`
+  - `eslint-plugin-flowtype`
+  - `babel-eslint`
+- `ackama/jest`
+  - `eslint-plugin-jest`
+  - `eslint-plugin-jest-formatting`
+- `ackama/react`
+  - `eslint-plugin-react`
+  - `eslint-plugin-react-hooks`
+  - `eslint-plugin-jsx-a11y`
+
+<!-- end configs list -->
+
+### Ignoring files
+
+Often there are files and folders that you don't want ESLint to check. While the
+base config already setups ignores for common folders, including `node_modules`,
+`vendor`, `coverage`, `lib`, `out`, and a few more, unique projects might need
+to ignore additional folders, or inversely might want to un-ignore a preset
+ignore.
+
+This can be done using the
+[`ignorePatterns`](https://eslint.org/docs/user-guide/configuring#ignorepatterns-in-config-files)
+toplevel property, which is an array that accepts `.gitignore` glob-like
+strings:
+
+```js
+/** @type {import('eslint').Linter.Config} */
+const config = {
+  ignorePatterns: ['!public/', 'tmp/']
+};
+
+module.exports = config;
+```
+
+### Typical complete example
+
+Here's what a typical `.eslintrc.js` would look like for a TypeScript project
+that uses `jest` & `react`:
+
+```js
+/** @type {import('eslint').Linter.Config} */
+const config = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    ecmaVersion: 2019,
+    sourceType: 'module'
+  },
+  env: { commonjs: true },
+  extends: ['ackama', 'ackama/@typescript-eslint', 'ackama/react'],
+  ignorePatterns: ['coverage', 'lib', 'infra'],
+  overrides: [
+    {
+      files: ['test/**'],
+      extends: ['ackama/jest'],
+      rules: { 'jest/prefer-expect-assertions': 'off' }
+    }
+  ],
+  rules: {}
+};
+
+module.exports = config;
+```
+
+Note the use of `overrides` to target specific files for the `ackama/jest`
+config. This is not a requirement, but can help reduce the changes of false
+positives.
 
 ### Notes & Considerations
 
@@ -92,7 +165,7 @@ passing it the name of your custom hook via its `additionalHooks` option:
 }
 ```
 
-Note that this option expects a _RegExp string_
+Note that this option expects a _RegExp string_.
 
 ### Releasing
 

@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/ackama/eslint-config-ackama/compare/v1.7.1...v1.7.2) (2020-08-13)
+
+
+### Bug Fixes
+
+* don't ignore parent dirs, to allow for negation globs ([3192bd1](https://github.com/ackama/eslint-config-ackama/commit/3192bd1ffb7861a2e5814c93472ab1eaf331e995))
+
 ## [1.7.1](https://github.com/ackama/eslint-config-ackama/compare/v1.7.0...v1.7.1) (2020-07-28)
 
 

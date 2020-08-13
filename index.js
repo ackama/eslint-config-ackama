@@ -13,14 +13,14 @@ const config = {
   ],
   ignorePatterns: [
     '!.eslintrc.js',
-    'node_modules/',
-    'coverage/',
-    'bundle/',
-    'public/',
-    'vendor/',
-    'dist/',
-    'lib/',
-    'out/'
+    'node_modules/*',
+    'coverage/*',
+    'bundle/*',
+    'public/*',
+    'vendor/*',
+    'dist/*',
+    'lib/*',
+    'out/*'
   ],
   rules: {
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],

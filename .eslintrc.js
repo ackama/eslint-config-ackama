@@ -41,7 +41,7 @@ const config = {
   rules: {
     '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    'no-sync': 'off'
+    'node/no-sync': 'off'
   }
 };
 

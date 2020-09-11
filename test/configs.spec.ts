@@ -23,7 +23,7 @@ const requireConfig = (
   plugins: [],
   extends: [],
   rules: {},
-  // eslint-disable-next-line global-require,@typescript-eslint/no-require-imports
+  // eslint-disable-next-line node/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
   ...(require(config) as ESLint.Linter.Config)
 });
 

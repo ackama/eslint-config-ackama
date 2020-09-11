@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/ackama/eslint-config-ackama/compare/v1.7.2...v2.0.0) (2020-09-11)
+
+
+### Features
+
+* upgrade to eslint 7 ([44b916d](https://github.com/ackama/eslint-config-ackama/commit/44b916d82e80e7fe6378900bf92b1949b4d5a85b))
+
+
+### BREAKING CHANGES
+
+* require `eslint` 7 or higher
+* require `prettier` 2 or higher
+* require `@typescript-eslint` 4 or higher
+* require `eslint-plugin-jest` 24 or higher
+* require `eslint-plugin-jest-formatting` 2 or higher
+* require `eslint-plugin-flowtype` 5 or higher
+* require `eslint-plugin-node`
+
 ## [1.7.2](https://github.com/ackama/eslint-config-ackama/compare/v1.7.1...v1.7.2) (2020-08-13)
 
 

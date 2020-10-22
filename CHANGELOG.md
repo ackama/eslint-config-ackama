@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/ackama/eslint-config-ackama/compare/v2.0.0...v2.0.1) (2020-10-22)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** remove `interface-name-prefix` rule ([e1c5271](https://github.com/ackama/eslint-config-ackama/commit/e1c527185b34f72fb52d7d4330a420d4ac4e4260))
+
 # [2.0.0](https://github.com/ackama/eslint-config-ackama/compare/v1.7.2...v2.0.0) (2020-09-11)
 
 

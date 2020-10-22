@@ -15,7 +15,6 @@ const config = {
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/lines-between-class-members': [
       'error',
       'always',

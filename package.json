@@ -52,7 +52,7 @@
     }
   },
   "dependencies": {
-    "eslint-config-prettier": "^6.10.0"
+    "eslint-config-prettier": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

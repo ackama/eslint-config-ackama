@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/ackama/eslint-config-ackama/compare/v2.0.1...v2.1.0) (2021-02-18)
+
+
+### Features
+
+* **react:** make `jsx-no-bind` `warn` instead of `error` ([#75](https://github.com/ackama/eslint-config-ackama/issues/75)) ([c570c76](https://github.com/ackama/eslint-config-ackama/commit/c570c761b6ae968f7c6cbeac9a80d33f6206f68f))
+
 ## [2.0.1](https://github.com/ackama/eslint-config-ackama/compare/v2.0.0...v2.0.1) (2020-10-22)
 
 

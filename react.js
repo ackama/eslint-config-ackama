@@ -45,7 +45,7 @@ const config = {
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }],
     'react/jsx-fragments': 'error',
     'react/jsx-handler-names': 'error',
-    'react/jsx-no-bind': 'error',
+    'react/jsx-no-bind': 'warn',
     'react/jsx-no-script-url': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-pascal-case': 'error',

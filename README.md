@@ -73,7 +73,7 @@ Below is a complete list of the configs provided, and their dependencies:
   - `@typescript-eslint/parser`
 - `ackama/flowtype`
   - `eslint-plugin-flowtype`
-  - `babel-eslint`
+  - `@babel/eslint-parser`
 - `ackama/jest`
   - `eslint-plugin-jest`
   - `eslint-plugin-jest-formatting`

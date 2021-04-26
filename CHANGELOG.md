@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/ackama/eslint-config-ackama/compare/v2.1.0...v2.1.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **flowtype:** switch to `@babel/eslint-parser` ([#98](https://github.com/ackama/eslint-config-ackama/issues/98)) ([09bc833](https://github.com/ackama/eslint-config-ackama/commit/09bc833d8f8ee5c14f1380a9816b293ca6fd67e9))
+
 # [2.1.0](https://github.com/ackama/eslint-config-ackama/compare/v2.0.1...v2.1.0) (2021-02-18)
 
 

@@ -1,6 +1,6 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   plugins: ['flowtype'],
   extends: ['plugin:flowtype/recommended', 'prettier/flowtype'],
   rules: {

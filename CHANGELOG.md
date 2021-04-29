@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/ackama/eslint-config-ackama/compare/v2.1.1...v2.1.2) (2021-04-29)
+
+
+### Bug Fixes
+
+* bring quote props rule inline with prettier config ([#101](https://github.com/ackama/eslint-config-ackama/issues/101)) ([98b448b](https://github.com/ackama/eslint-config-ackama/commit/98b448bc2a0b8a9d481a680b25e7e8ad799c28f2))
+
 ## [2.1.1](https://github.com/ackama/eslint-config-ackama/compare/v2.1.0...v2.1.1) (2021-04-26)
 
 

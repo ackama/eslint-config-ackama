@@ -7,6 +7,7 @@ const config = {
     'plugin:jest-formatting/recommended'
   ],
   rules: {
+    '@typescript-eslint/unbound-method': 'off',
     'jest/consistent-test-it': 'error',
     'jest/expect-expect': [
       'error',
@@ -38,6 +39,7 @@ const config = {
     'jest/prefer-todo': 'error',
     'jest/require-to-throw-message': 'error',
     'jest/require-top-level-describe': 'error',
+    'jest/unbound-method': 'error',
     'jest/valid-title': 'error'
   }
 };

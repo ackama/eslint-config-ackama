@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/ackama/eslint-config-ackama/compare/v2.1.2...v2.2.0) (2021-08-11)
+
+
+### Features
+
+* **jest:** use enhanced version of `unbound-method` rule ([#146](https://github.com/ackama/eslint-config-ackama/issues/146)) ([9357d36](https://github.com/ackama/eslint-config-ackama/commit/9357d36de5e8cca90d31cc1b6447ea5ceb03e862))
+
 ## [2.1.2](https://github.com/ackama/eslint-config-ackama/compare/v2.1.1...v2.1.2) (2021-04-29)
 
 

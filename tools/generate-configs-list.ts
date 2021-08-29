@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node-transpile-only
 
-import * as ESLint from 'eslint';
+import type { Linter } from 'eslint';
 import * as fs from 'fs';
 import * as path from 'path';
 import prettier, { Options } from 'prettier';
@@ -13,9 +13,9 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-require-imports,node/global-require,@typescript-eslint/no-var-requires
 const prettierConfig = require(prettierConfigPackage) as Options;
 
-const requireConfig = (config: string): Required<ESLint.Linter.Config> => {
+const requireConfig = (config: string): Required<Linter.Config> => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports,node/global-require,@typescript-eslint/no-var-requires
-  const requiredConfig = require(config) as ESLint.Linter.Config;
+  const requiredConfig = require(config) as Linter.Config;
 
   return {
     $schema: '',

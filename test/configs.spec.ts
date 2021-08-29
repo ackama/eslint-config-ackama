@@ -1,4 +1,4 @@
-import ESLint from 'eslint';
+import { ESLint, Linter } from 'eslint';
 import packageJsonPrettier from 'eslint-config-prettier/package.json';
 import * as fs from 'fs';
 import packageJson from '../package.json';
@@ -18,13 +18,13 @@ const configFiles = fs
 
 const requireConfig = (
   config: string
-): ESLint.Linter.Config &
-  Required<Pick<ESLint.Linter.Config, 'plugins' | 'extends' | 'rules'>> => ({
+): Linter.Config &
+  Required<Pick<Linter.Config, 'plugins' | 'extends' | 'rules'>> => ({
   plugins: [],
   extends: [],
   rules: {},
   // eslint-disable-next-line node/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
-  ...(require(config) as ESLint.Linter.Config)
+  ...(require(config) as Linter.Config)
 });
 
 describe('package.json', () => {
@@ -44,15 +44,13 @@ describe('for each config file', () => {
     it('is valid', () => {
       expect.hasAssertions();
 
-      const makeRuleWarn = (
-        value: ESLint.Linter.RuleEntry
-      ): ESLint.Linter.RuleEntry =>
+      const makeRuleWarn = (value: Linter.RuleEntry): Linter.RuleEntry =>
         Array.isArray(value)
           ? ['warn', ...(value.slice(1) as unknown[])]
           : 'warn';
 
       expect(() => {
-        const baseConfig: ESLint.Linter.Config = {
+        const baseConfig: Linter.Config = {
           ...config,
           parserOptions: {
             project: 'tsconfig.eslint.json',
@@ -61,7 +59,7 @@ describe('for each config file', () => {
             sourceType: 'module'
           },
           // turn all rules on so ESLint warns if they're unknown
-          rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
+          rules: Object.keys(config.rules).reduce<Linter.RulesRecord>(
             (rules, name) => ({
               ...rules,
               [name]: makeRuleWarn(config.rules[name] ?? 'warn')
@@ -70,13 +68,13 @@ describe('for each config file', () => {
           )
         };
 
-        const cliEngine = new ESLint.CLIEngine({
+        const cliEngine = new ESLint({
           useEslintrc: false,
-          envs: ['node'],
+          // envs: ['node'],
           baseConfig
         });
 
-        cliEngine.executeOnText('');
+        cliEngine.lintText('');
       }).not.toThrow();
     });
 

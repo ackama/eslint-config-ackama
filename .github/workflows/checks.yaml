@@ -26,6 +26,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
+          cache: npm
       - name: install
         run: npm ci
       - name: regenerate docs
@@ -49,13 +50,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: npm
 
       - run: npm ci
       - run: npm install eslint@${{ matrix.eslint }} --no-fund
@@ -72,13 +67,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: npm
 
       - run: npm ci
       - run: npm run test
@@ -94,13 +83,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: npm
 
       - run: npm ci
       - run: npm run typecheck

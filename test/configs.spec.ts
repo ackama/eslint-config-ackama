@@ -145,6 +145,56 @@ describe('for each config file', () => {
       });
     }
 
+    if (configFile !== 'index.js') {
+      it('lists any plugins as optional peer dependencies', () => {
+        expect.hasAssertions();
+
+        expect(packageJson.peerDependenciesMeta).toStrictEqual(
+          expect.objectContaining(
+            Object.fromEntries(
+              config.plugins
+                .filter(plugin => plugin !== 'prettier')
+                .map(plugin => [
+                  determinePluginPackageName(plugin),
+                  { optional: true }
+                ])
+            )
+          )
+        );
+      });
+
+      if (config.parser) {
+        it("lists it's parser as an optional peer dependency", () => {
+          expect.hasAssertions();
+
+          expect(Object.keys(packageJson.peerDependencies)).toContain(
+            config.parser
+          );
+          expect(packageJson.peerDependenciesMeta).toHaveProperty(
+            config.parser as string,
+            { optional: true }
+          );
+        });
+      }
+    }
+
+    if (configFile === 'index.js') {
+      it('lists any plugins as required peer dependencies', () => {
+        expect.hasAssertions();
+
+        expect(packageJson.peerDependenciesMeta).toStrictEqual(
+          expect.not.objectContaining(
+            Object.fromEntries(
+              config.plugins.map(plugin => [
+                determinePluginPackageName(plugin),
+                { optional: true }
+              ])
+            )
+          )
+        );
+      });
+    }
+
     if (configFile !== 'jest.js') {
       it('should include prettier', () => {
         expect.hasAssertions();

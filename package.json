@@ -94,6 +94,7 @@
     "eslint-plugin-prettier": ">= 3.1",
     "prettier": ">= 2.0"
   },
+  "peerDependenciesMeta": {},
   "release": {
     "branches": [
       "main"

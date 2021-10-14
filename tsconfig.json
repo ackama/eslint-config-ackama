@@ -17,7 +17,8 @@
     "removeComments": false,
     "esModuleInterop": true,
     "useUnknownInCatchVariables": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "noImplicitOverride": true
   },
   "exclude": [ "coverage", "node_modules" ],
   "files": [ ".eslintrc.js" ],

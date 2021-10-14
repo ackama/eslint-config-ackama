@@ -12,6 +12,32 @@ const configFiles = fs
   )
   .map(value => value.name);
 
+/**
+ * Determines the canonical package name for the given eslint `plugin`,
+ * that can be used to install the plugin using a package manager.
+ *
+ * Generally this is done by returning the plugin name with `eslint-plugin-`
+ * appended to it (if the name does not already start with that string).
+ *
+ * Scoped plugins must be explicitly checked for to handle properly;
+ * Currently the `@typescript-eslint` is the only supported scoped plugin.
+ *
+ * @param {string} plugin
+ *
+ * @return {string}
+ */
+const determinePluginPackageName = (plugin: string): string => {
+  if (plugin.startsWith('eslint-plugin-')) {
+    return plugin;
+  }
+
+  if (plugin === '@typescript-eslint') {
+    return `${plugin}/eslint-plugin`;
+  }
+
+  return `eslint-plugin-${plugin}`;
+};
+
 const requireConfig = (
   config: string
 ): ESLint.Linter.Config &
@@ -97,6 +123,16 @@ describe('for each config file', () => {
           fatalErrorCount: 0
         })
       ]);
+    });
+
+    it('lists any plugins as peer dependencies', () => {
+      expect.hasAssertions();
+
+      expect(Object.keys(packageJson.peerDependencies)).toStrictEqual(
+        expect.arrayContaining(
+          config.plugins.map(plugin => determinePluginPackageName(plugin))
+        )
+      );
     });
 
     if (configFile !== 'jest.js') {

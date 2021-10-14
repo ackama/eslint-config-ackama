@@ -3,7 +3,7 @@
     "target": "ES2019",
     "module": "CommonJS",
     "moduleResolution": "Node",
-    "lib": [ "ES2019" ],
+    "lib": ["ES2019"],
     "allowJs": true,
     "checkJs": true,
     "strict": true,
@@ -15,9 +15,12 @@
     "noEmitOnError": true,
     "sourceMap": true,
     "removeComments": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": true,
+    "useDefineForClassFields": true,
+    "noImplicitOverride": true
   },
-  "exclude": [ "coverage", "node_modules" ],
-  "files": [ ".eslintrc.js" ],
-  "include": [ "**/*.js", "**/*.ts" ]
+  "exclude": ["coverage", "node_modules"],
+  "files": [".eslintrc.js"],
+  "include": ["**/*.js", "**/*.ts"]
 }

@@ -16,7 +16,8 @@
     "sourceMap": true,
     "removeComments": false,
     "esModuleInterop": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "useDefineForClassFields": true
   },
   "exclude": [ "coverage", "node_modules" ],
   "files": [ ".eslintrc.js" ],

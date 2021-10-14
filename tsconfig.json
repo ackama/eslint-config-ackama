@@ -15,7 +15,8 @@
     "noEmitOnError": true,
     "sourceMap": true,
     "removeComments": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": true
   },
   "exclude": [ "coverage", "node_modules" ],
   "files": [ ".eslintrc.js" ],

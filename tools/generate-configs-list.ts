@@ -7,6 +7,7 @@ import prettier, { Options } from 'prettier';
 import {
   files,
   peerDependencies,
+  peerDependenciesMeta,
   prettier as prettierConfigPackage
 } from '../package.json';
 
@@ -95,12 +96,24 @@ const configs = files
   ])
   .join('\n');
 
+type PeerDependenciesMeta = Record<string, { optional?: boolean }>;
+
+const determineRequiredPeerDependencies = (): string[] => {
+  return Object.keys(peerDependencies).filter(dep => {
+    if (dep in peerDependenciesMeta) {
+      return !(peerDependenciesMeta as PeerDependenciesMeta)[dep].optional;
+    }
+
+    return true;
+  });
+};
+
 const updateInstallLine = (readme: string): string => {
   const npmInstallLine = '    npm install --save-dev';
   const dependenciesToInstall = [
     'eslint-config-ackama',
     '@types/eslint'
-  ].concat(Object.keys(peerDependencies));
+  ].concat(determineRequiredPeerDependencies());
 
   return readme.replace(
     new RegExp(`${npmInstallLine} .*\n`, 'u'),

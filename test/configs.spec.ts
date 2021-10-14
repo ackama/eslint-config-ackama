@@ -67,6 +67,20 @@ describe('package.json', () => {
       expect.arrayContaining(configFiles)
     );
   });
+
+  it('includes eslint and prettier as required peer dependencies', () => {
+    expect.hasAssertions();
+
+    expect(Object.keys(packageJson.peerDependencies)).toContain('eslint');
+    expect(Object.keys(packageJson.peerDependencies)).toContain('prettier');
+
+    expect(packageJson.peerDependenciesMeta).toStrictEqual(
+      expect.not.objectContaining({
+        eslint: { optional: true },
+        prettier: { optional: true }
+      })
+    );
+  });
 });
 
 const makeEnabledRulesWarn = (

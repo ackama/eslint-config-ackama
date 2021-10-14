@@ -135,6 +135,16 @@ describe('for each config file', () => {
       );
     });
 
+    if (config.parser) {
+      it("lists it's parser as a peer dependency", () => {
+        expect.hasAssertions();
+
+        expect(Object.keys(packageJson.peerDependencies)).toContain(
+          config.parser
+        );
+      });
+    }
+
     if (configFile !== 'jest.js') {
       it('should include prettier', () => {
         expect.hasAssertions();

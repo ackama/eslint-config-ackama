@@ -69,7 +69,7 @@ describe('for each config file', () => {
           requireConfigFile: false,
 
           // @typescript-eslint/parser
-          project: 'tsconfig.eslint.json',
+          project: 'tsconfig.json',
           createDefaultProgram: false,
           ecmaVersion: 2019,
           sourceType: 'module'

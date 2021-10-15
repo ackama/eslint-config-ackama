@@ -9,17 +9,8 @@ const config = {
     sourceType: 'module',
     ecmaVersion: 2019
   },
-  plugins: [
-    '@typescript-eslint/eslint-plugin',
-    'eslint-config',
-    'eslint-plugin'
-  ],
-  extends: [
-    './index.js',
-    './@typescript-eslint.js',
-    'plugin:eslint-config/rc',
-    'plugin:eslint-plugin/recommended'
-  ],
+  plugins: ['@typescript-eslint/eslint-plugin', 'eslint-config'],
+  extends: ['./index.js', './@typescript-eslint.js', 'plugin:eslint-config/rc'],
   ignorePatterns: ['!.eslintplugin/'],
   overrides: [
     { files: ['*.spec.*'], extends: ['./jest.js'] },

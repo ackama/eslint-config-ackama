@@ -43,6 +43,10 @@ describe('for each config file', () => {
       const baseConfig: ESLint.Linter.Config = {
         ...config,
         parserOptions: {
+          // @babel/eslint-parser
+          requireConfigFile: false,
+
+          // @typescript-eslint/parser
           project: 'tsconfig.eslint.json',
           createDefaultProgram: false,
           ecmaVersion: 2019,

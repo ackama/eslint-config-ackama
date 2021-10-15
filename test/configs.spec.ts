@@ -37,43 +37,41 @@ describe('for each config file', () => {
   describe.each(configFiles)('%s config', configFile => {
     const config = requireConfig(`./../${configFile}`);
 
-    it('is valid', () => {
+    it('is valid', async () => {
       expect.hasAssertions();
 
-      const makeRuleWarn = (
-        value: ESLint.Linter.RuleEntry
-      ): ESLint.Linter.RuleEntry =>
-        Array.isArray(value)
-          ? ['warn', ...(value.slice(1) as unknown[])]
-          : 'warn';
+      const baseConfig: ESLint.Linter.Config = {
+        ...config,
+        parserOptions: {
+          project: 'tsconfig.eslint.json',
+          createDefaultProgram: false,
+          ecmaVersion: 2019,
+          sourceType: 'module'
+        },
+        // turn all rules on so ESLint warns if they're unknown
+        rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
+          (rules, name) => ({
+            ...rules,
+            [name]: makeRuleWarn(config.rules[name] ?? 'warn')
+          }),
+          {}
+        )
+      };
 
-      expect(() => {
-        const baseConfig: ESLint.Linter.Config = {
-          ...config,
-          parserOptions: {
-            project: 'tsconfig.eslint.json',
-            createDefaultProgram: false,
-            ecmaVersion: 2019,
-            sourceType: 'module'
-          },
-          // turn all rules on so ESLint warns if they're unknown
-          rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
-            (rules, name) => ({
-              ...rules,
-              [name]: makeRuleWarn(config.rules[name] ?? 'warn')
-            }),
-            {}
-          )
-        };
+      const linter = new ESLint.ESLint({
+        useEslintrc: false,
+        baseConfig
+      });
 
-        const cliEngine = new ESLint.CLIEngine({
-          useEslintrc: false,
-          envs: ['node'],
-          baseConfig
-        });
-
-        cliEngine.executeOnText('');
-      }).not.toThrow();
+      await expect(
+        linter.lintText('', { filePath: './test/configs.spec.ts' })
+      ).resolves.toStrictEqual([
+        expect.objectContaining<Partial<ESLint.ESLint.LintResult>>({
+          errorCount: 0,
+          warningCount: 0,
+          fatalErrorCount: 0
+        })
+      ]);
     });
 
     if (configFile !== 'jest.js') {

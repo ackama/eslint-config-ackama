@@ -47,9 +47,10 @@ const makeEnabledRulesWarn = (
   value: ESLint.Linter.RuleEntry
 ): ESLint.Linter.RuleEntry => {
   if (Array.isArray(value)) {
-    return value[0] !== 'off'
-      ? ['warn', ...(value.slice(1) as unknown[])]
-      : ['off'];
+    return [
+      value[0] !== 'off' ? 'warn' : 'off',
+      ...(value.slice(1) as unknown[])
+    ];
   }
 
   return value !== 'off' ? 'warn' : 'off';
@@ -75,12 +76,11 @@ describe('for each config file', () => {
           sourceType: 'module'
         },
         // make all enabled rules warn, since misconfigured rules will create errors
-        rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
-          (rules, name) => ({
-            ...rules,
-            [name]: makeEnabledRulesWarn(config.rules[name] ?? 'warn')
-          }),
-          {}
+        rules: Object.fromEntries(
+          Object.entries(config.rules).map(([name, value]) => [
+            name,
+            makeEnabledRulesWarn(value ?? 'warn')
+          ])
         )
       };
 

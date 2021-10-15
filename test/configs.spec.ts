@@ -23,6 +23,16 @@ const requireConfig = (
   ...(require(config) as ESLint.Linter.Config)
 });
 
+// todo: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56545
+declare module 'eslint' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  namespace ESLint {
+    interface LintResult {
+      fatalErrorCount: number;
+    }
+  }
+}
+
 describe('package.json', () => {
   it('includes every config file', () => {
     expect.hasAssertions();

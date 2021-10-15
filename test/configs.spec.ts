@@ -94,7 +94,6 @@ describe('for each config file', () => {
       ).resolves.toStrictEqual([
         expect.objectContaining<Partial<ESLint.ESLint.LintResult>>({
           errorCount: 0,
-          warningCount: 0,
           fatalErrorCount: 0
         })
       ]);

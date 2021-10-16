@@ -14,7 +14,6 @@ const config = {
       // todo: TBD - this will need adjusting for react-testing-library
       { assertFunctionNames: ['expect'] }
     ],
-    'jest/lowercase-name': ['error', { ignoreTopLevelDescribe: true }],
     'jest/no-conditional-expect': 'error',
     'jest/no-deprecated-functions': 'error',
     'jest/no-if': 'error',
@@ -34,6 +33,7 @@ const config = {
     // you can disable this if you use a `beforeEach` setup script,
     'jest/prefer-expect-assertions': 'warn',
     'jest/prefer-hooks-on-top': 'error',
+    'jest/prefer-lowercase-title': ['error', { ignoreTopLevelDescribe: true }],
     'jest/prefer-spy-on': 'error',
     'jest/prefer-strict-equal': 'error',
     'jest/prefer-todo': 'error',

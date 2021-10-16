@@ -42,7 +42,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        eslint: [6, 7]
+        eslint: [7]
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:

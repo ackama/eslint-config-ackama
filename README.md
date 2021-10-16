@@ -71,13 +71,16 @@ Below is a complete list of the configs provided, and their dependencies:
 - `ackama/@typescript-eslint`
   - `@typescript-eslint/parser`
   - `@typescript-eslint/eslint-plugin`
+  - `eslint-plugin-prettier`
 - `ackama/flowtype`
   - `@babel/eslint-parser`
   - `eslint-plugin-flowtype`
+  - `eslint-plugin-prettier`
 - `ackama/jest`
   - `eslint-plugin-jest`
   - `eslint-plugin-jest-formatting`
 - `ackama/react`
+  - `eslint-plugin-prettier`
   - `eslint-plugin-react`
   - `eslint-plugin-react-hooks`
   - `eslint-plugin-jsx-a11y`

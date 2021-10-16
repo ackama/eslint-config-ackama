@@ -78,7 +78,7 @@ const determineConfigDependencies = (configName: string): string[] => {
   const deps = configFile.plugins.map(determinePluginPackageName);
 
   if (configFile.parser) {
-    deps.push(configFile.parser);
+    deps.unshift(configFile.parser);
   }
 
   return deps;

@@ -37,6 +37,7 @@ const config = {
     'jest/prefer-spy-on': 'error',
     'jest/prefer-strict-equal': 'error',
     'jest/prefer-todo': 'error',
+    'jest/require-hook': 'error',
     'jest/require-to-throw-message': 'error',
     'jest/require-top-level-describe': 'error',
     'jest/unbound-method': 'error',

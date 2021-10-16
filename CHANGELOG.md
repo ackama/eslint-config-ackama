@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/ackama/eslint-config-ackama/compare/v2.2.0...v2.2.1) (2021-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-config-prettier to v8 ([#76](https://github.com/ackama/eslint-config-ackama/issues/76)) ([708e436](https://github.com/ackama/eslint-config-ackama/commit/708e436823a583420d9515d34b42362ee52af93a))
+
 # [2.2.0](https://github.com/ackama/eslint-config-ackama/compare/v2.1.2...v2.2.0) (2021-08-11)
 
 

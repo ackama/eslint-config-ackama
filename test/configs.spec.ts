@@ -1,5 +1,6 @@
 import ESLint from 'eslint';
 import * as fs from 'fs';
+import semver from 'semver/preload';
 import packageJson from '../package.json';
 
 const configFiles = fs
@@ -68,17 +69,33 @@ describe('package.json', () => {
     );
   });
 
-  it('includes eslint and prettier as required peer dependencies', () => {
-    expect.hasAssertions();
+  describe('peer dependencies', () => {
+    it('includes eslint and prettier as required peer dependencies', () => {
+      expect.hasAssertions();
 
-    expect(Object.keys(packageJson.peerDependencies)).toContain('eslint');
-    expect(Object.keys(packageJson.peerDependencies)).toContain('prettier');
+      expect(Object.keys(packageJson.peerDependencies)).toContain('eslint');
+      expect(Object.keys(packageJson.peerDependencies)).toContain('prettier');
 
-    expect(packageJson.peerDependenciesMeta).toStrictEqual(
-      expect.not.objectContaining({
-        eslint: { optional: true },
-        prettier: { optional: true }
-      })
+      expect(packageJson.peerDependenciesMeta).toStrictEqual(
+        expect.not.objectContaining({
+          eslint: { optional: true },
+          prettier: { optional: true }
+        })
+      );
+    });
+
+    it.each(Object.entries(packageJson.peerDependencies))(
+      'the constraint for "%s" intersects with the dev constraint',
+      (name, peerConstraint) => {
+        expect.hasAssertions();
+
+        const devConstraint =
+          packageJson.devDependencies[
+            name as keyof typeof packageJson.devDependencies
+          ];
+
+        expect(semver.intersects(peerConstraint, devConstraint)).toBe(true);
+      }
     );
   });
 });

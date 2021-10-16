@@ -10,7 +10,8 @@ const config = {
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
-    'plugin:eslint-comments/recommended'
+    'plugin:eslint-comments/recommended',
+    'plugin:prettier/recommended'
   ],
   ignorePatterns: [
     '!.eslintrc.js',

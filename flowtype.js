@@ -1,8 +1,8 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
   parser: '@babel/eslint-parser',
-  plugins: ['flowtype'],
-  extends: ['plugin:flowtype/recommended', 'prettier/flowtype'],
+  plugins: ['flowtype', 'prettier'],
+  extends: ['plugin:flowtype/recommended', 'plugin:prettier/recommended'],
   rules: {
     'flowtype/array-style-complex-type': ['error', 'verbose'],
     'flowtype/array-style-simple-type': ['error', 'shorthand'],

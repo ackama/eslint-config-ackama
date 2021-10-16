@@ -1,11 +1,7 @@
 import ESLint from 'eslint';
-import packageJsonPrettier from 'eslint-config-prettier/package.json';
 import * as fs from 'fs';
 import packageJson from '../package.json';
 
-const prettierLangConfigs = packageJsonPrettier.files.filter(file =>
-  file.endsWith('.js')
-);
 const configFiles = fs
   .readdirSync('.', { withFileTypes: true })
   .filter(
@@ -80,20 +76,11 @@ describe('for each config file', () => {
       }).not.toThrow();
     });
 
-    if (configFile !== 'index.js' && prettierLangConfigs.includes(configFile)) {
-      it('should include the prettier language config', () => {
+    if (configFile !== 'jest.js') {
+      it('should include prettier', () => {
         expect.hasAssertions();
 
-        expect(config.extends).toContainEqual(
-          `prettier/${configFile.slice(0, -3)}`
-        );
-      });
-    }
-
-    if (config.plugins.includes('prettier')) {
-      it('should extend prettier/recommended', () => {
-        expect.hasAssertions();
-
+        expect(config.plugins).toContainEqual('prettier');
         expect(config.extends).toContainEqual('plugin:prettier/recommended');
       });
     }

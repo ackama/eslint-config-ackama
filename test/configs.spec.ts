@@ -23,6 +23,16 @@ const requireConfig = (
   ...(require(config) as ESLint.Linter.Config)
 });
 
+// todo: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56545
+declare module 'eslint' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  namespace ESLint {
+    interface LintResult {
+      fatalErrorCount: number;
+    }
+  }
+}
+
 describe('package.json', () => {
   it('includes every config file', () => {
     expect.hasAssertions();
@@ -33,47 +43,60 @@ describe('package.json', () => {
   });
 });
 
+const makeEnabledRulesWarn = (
+  value: ESLint.Linter.RuleEntry
+): ESLint.Linter.RuleEntry => {
+  if (Array.isArray(value)) {
+    return [
+      value[0] !== 'off' ? 'warn' : 'off',
+      ...(value.slice(1) as unknown[])
+    ];
+  }
+
+  return value !== 'off' ? 'warn' : 'off';
+};
+
 describe('for each config file', () => {
   describe.each(configFiles)('%s config', configFile => {
     const config = requireConfig(`./../${configFile}`);
 
-    it('is valid', () => {
+    it('is valid', async () => {
       expect.hasAssertions();
 
-      const makeRuleWarn = (
-        value: ESLint.Linter.RuleEntry
-      ): ESLint.Linter.RuleEntry =>
-        Array.isArray(value)
-          ? ['warn', ...(value.slice(1) as unknown[])]
-          : 'warn';
+      const baseConfig: ESLint.Linter.Config = {
+        ...config,
+        parserOptions: {
+          // @babel/eslint-parser
+          requireConfigFile: false,
 
-      expect(() => {
-        const baseConfig: ESLint.Linter.Config = {
-          ...config,
-          parserOptions: {
-            project: 'tsconfig.eslint.json',
-            createDefaultProgram: false,
-            ecmaVersion: 2019,
-            sourceType: 'module'
-          },
-          // turn all rules on so ESLint warns if they're unknown
-          rules: Object.keys(config.rules).reduce<ESLint.Linter.RulesRecord>(
-            (rules, name) => ({
-              ...rules,
-              [name]: makeRuleWarn(config.rules[name] ?? 'warn')
-            }),
-            {}
-          )
-        };
+          // @typescript-eslint/parser
+          project: 'tsconfig.json',
+          createDefaultProgram: false,
+          ecmaVersion: 2019,
+          sourceType: 'module'
+        },
+        // make all enabled rules warn, since misconfigured rules will create errors
+        rules: Object.fromEntries(
+          Object.entries(config.rules).map(([name, value]) => [
+            name,
+            makeEnabledRulesWarn(value ?? 'warn')
+          ])
+        )
+      };
 
-        const cliEngine = new ESLint.CLIEngine({
-          useEslintrc: false,
-          envs: ['node'],
-          baseConfig
-        });
+      const linter = new ESLint.ESLint({
+        useEslintrc: false,
+        baseConfig
+      });
 
-        cliEngine.executeOnText('');
-      }).not.toThrow();
+      await expect(
+        linter.lintText('', { filePath: './test/configs.spec.ts' })
+      ).resolves.toStrictEqual([
+        expect.objectContaining<Partial<ESLint.ESLint.LintResult>>({
+          errorCount: 0,
+          fatalErrorCount: 0
+        })
+      ]);
     });
 
     if (configFile !== 'jest.js') {

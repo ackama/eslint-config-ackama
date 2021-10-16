@@ -69,11 +69,11 @@ Below is a complete list of the configs provided, and their dependencies:
   - `eslint-plugin-import`
   - `eslint-plugin-node`
 - `ackama/@typescript-eslint`
-  - `@typescript-eslint/eslint-plugin`
   - `@typescript-eslint/parser`
+  - `@typescript-eslint/eslint-plugin`
 - `ackama/flowtype`
-  - `eslint-plugin-flowtype`
   - `@babel/eslint-parser`
+  - `eslint-plugin-flowtype`
 - `ackama/jest`
   - `eslint-plugin-jest`
   - `eslint-plugin-jest-formatting`

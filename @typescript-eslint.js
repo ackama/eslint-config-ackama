@@ -77,6 +77,7 @@ const config = {
         allowDefinitionFiles: true
       }
     ],
+    '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     '@typescript-eslint/no-parameter-properties': 'error',
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-require-imports': 'error',

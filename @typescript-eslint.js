@@ -13,6 +13,7 @@ const config = {
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',
+    '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/lines-between-class-members': [
@@ -108,6 +109,7 @@ const config = {
     'camelcase': 'off',
     'consistent-return': 'off', // via --noImplicitReturns
     'default-param-last': 'off',
+    'dot-notation': 'off', // @typescript-eslint
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
     'lines-between-class-members': 'off',

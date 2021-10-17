@@ -65,6 +65,7 @@ const config = {
         leadingUnderscore: 'forbid'
       }
     ],
+    '@typescript-eslint/no-base-to-string': 'error',
     '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',

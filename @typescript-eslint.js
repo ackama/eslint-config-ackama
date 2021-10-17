@@ -66,6 +66,10 @@ const config = {
       }
     ],
     '@typescript-eslint/no-base-to-string': 'error',
+    '@typescript-eslint/no-confusing-void-expression': [
+      'error',
+      { ignoreArrowShorthand: true }
+    ],
     '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',

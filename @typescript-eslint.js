@@ -10,6 +10,7 @@ const config = {
   ],
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+    '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',

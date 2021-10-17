@@ -32,6 +32,7 @@ const config = {
     'jest/prefer-called-with': 'error',
     // you can disable this if you use a `beforeEach` setup script,
     'jest/prefer-expect-assertions': 'warn',
+    'jest/prefer-expect-resolves': 'error',
     'jest/prefer-hooks-on-top': 'error',
     'jest/prefer-lowercase-title': ['error', { ignoreTopLevelDescribe: true }],
     'jest/prefer-spy-on': 'error',

@@ -65,6 +65,7 @@ const config = {
         leadingUnderscore: 'forbid'
       }
     ],
+    '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-loop-func': 'error',
@@ -115,6 +116,7 @@ const config = {
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
     'lines-between-class-members': 'off',
+    'no-dupe-class-members': 'off', // @typescript-eslint
     'no-import-assign': 'off',
     'no-invalid-this': 'off',
     'no-iterator': 'off',

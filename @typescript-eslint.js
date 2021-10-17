@@ -68,6 +68,7 @@ const config = {
     '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
+    '@typescript-eslint/no-invalid-this': 'error',
     '@typescript-eslint/no-loop-func': 'error',
     '@typescript-eslint/no-meaningless-void-operator': 'error',
     '@typescript-eslint/no-namespace': [
@@ -120,7 +121,7 @@ const config = {
     'lines-between-class-members': 'off',
     'no-dupe-class-members': 'off', // @typescript-eslint
     'no-import-assign': 'off',
-    'no-invalid-this': 'off',
+    'no-invalid-this': 'off', // @typescript-eslint
     'no-iterator': 'off',
     'no-loop-func': 'off', // @typescript-eslint
     'no-proto': 'off', // TS2339

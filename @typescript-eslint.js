@@ -85,6 +85,7 @@ const config = {
     '@typescript-eslint/no-shadow': 'warn',
     '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
     '@typescript-eslint/no-throw-literal': 'error',
+    '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
     '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',

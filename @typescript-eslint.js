@@ -69,6 +69,7 @@ const config = {
     '@typescript-eslint/no-dynamic-delete': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-loop-func': 'error',
+    '@typescript-eslint/no-meaningless-void-operator': 'error',
     '@typescript-eslint/no-namespace': [
       'off', // todo: need to audit existing codebase to see if declare is fine
       {

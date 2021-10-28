@@ -171,6 +171,28 @@ passing it the name of your custom hook via its `additionalHooks` option:
 
 Note that this option expects a _RegExp string_.
 
+### Versioning
+
+Versioning is modeled after [semantic versioning](https://semver.org/); however,
+since these configurations are for a code quality tool meaning just about every
+change to a config is likely going to result in a new error in at least one of
+our codebases (and so arguably be a breaking change), we consider general
+configuration changes to be _minor features_, and release them as such.
+
+In addition to this covering changes like enabling a new rule and adjusting the
+configuration of an already-enabled rule, this also includes updating to new
+major versions of a plugin which might have removed or renamed rules used in our
+configs.
+
+We specify which versions of plugins is expected by our configs as optional peer
+dependencies, meaning your package manager should warn you if a minor version of
+our package requires a related plugin to be updated for compatibility.
+
+Major versions are generally reserved for when we're making a significant number
+of changes, which can be common with new major versions of ESLint that have
+significant breaking changes that require the surrounding ecosystem to release
+new major versions.
+
 ### Releasing
 
 Releases are handled using

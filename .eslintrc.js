@@ -1,5 +1,3 @@
-const { files } = require('./package.json');
-
 /** @type {import('eslint').Linter.Config} */
 const config = {
   env: { node: true },
@@ -9,8 +7,8 @@ const config = {
     sourceType: 'module',
     ecmaVersion: 2019
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'eslint-config'],
-  extends: ['./index.js', './@typescript-eslint.js', 'plugin:eslint-config/rc'],
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: ['./index.js', './@typescript-eslint.js'],
   ignorePatterns: ['!.eslintplugin/'],
   overrides: [
     { files: ['*.spec.*'], extends: ['./jest.js'] },
@@ -19,13 +17,6 @@ const config = {
       rules: {
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off'
-      }
-    },
-    {
-      files: files.map(file => `./${file}`),
-      extends: ['plugin:eslint-config/recommended-rules'],
-      rules: {
-        'eslint-config/sort-rules': 'error'
       }
     }
   ],

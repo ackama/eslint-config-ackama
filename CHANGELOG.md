@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/ackama/eslint-config-ackama/compare/v2.2.1...v2.3.0) (2021-10-28)
+
+
+### Features
+
+* specify config dependencies as optional peer dependencies ([#188](https://github.com/ackama/eslint-config-ackama/issues/188)) ([a15ab94](https://github.com/ackama/eslint-config-ackama/commit/a15ab940dd361abb09bf4676b9ce32fdb51433d9))
+
 ## [2.2.1](https://github.com/ackama/eslint-config-ackama/compare/v2.2.0...v2.2.1) (2021-10-16)
 
 

@@ -1,5 +1,6 @@
 import ESLint from 'eslint';
 import * as fs from 'fs';
+import semver from 'semver/preload';
 import packageJson from '../package.json';
 
 const configFiles = fs
@@ -11,6 +12,32 @@ const configFiles = fs
       value.name !== '.eslintrc.js'
   )
   .map(value => value.name);
+
+/**
+ * Determines the canonical package name for the given eslint `plugin`,
+ * that can be used to install the plugin using a package manager.
+ *
+ * Generally this is done by returning the plugin name with `eslint-plugin-`
+ * appended to it (if the name does not already start with that string).
+ *
+ * Scoped plugins must be explicitly checked for to handle properly;
+ * Currently the `@typescript-eslint` is the only supported scoped plugin.
+ *
+ * @param {string} plugin
+ *
+ * @return {string}
+ */
+const determinePluginPackageName = (plugin: string): string => {
+  if (plugin.startsWith('eslint-plugin-')) {
+    return plugin;
+  }
+
+  if (plugin === '@typescript-eslint') {
+    return `${plugin}/eslint-plugin`;
+  }
+
+  return `eslint-plugin-${plugin}`;
+};
 
 const requireConfig = (
   config: string
@@ -39,6 +66,36 @@ describe('package.json', () => {
 
     expect(packageJson.files).toStrictEqual(
       expect.arrayContaining(configFiles)
+    );
+  });
+
+  describe('peer dependencies', () => {
+    it('includes eslint and prettier as required peer dependencies', () => {
+      expect.hasAssertions();
+
+      expect(Object.keys(packageJson.peerDependencies)).toContain('eslint');
+      expect(Object.keys(packageJson.peerDependencies)).toContain('prettier');
+
+      expect(packageJson.peerDependenciesMeta).toStrictEqual(
+        expect.not.objectContaining({
+          eslint: { optional: true },
+          prettier: { optional: true }
+        })
+      );
+    });
+
+    it.each(Object.entries(packageJson.peerDependencies))(
+      'the constraint for "%s" intersects with the dev constraint',
+      (name, peerConstraint) => {
+        expect.hasAssertions();
+
+        const devConstraint =
+          packageJson.devDependencies[
+            name as keyof typeof packageJson.devDependencies
+          ];
+
+        expect(semver.intersects(peerConstraint, devConstraint)).toBe(true);
+      }
     );
   });
 });
@@ -98,6 +155,76 @@ describe('for each config file', () => {
         })
       ]);
     });
+
+    it('lists any plugins as peer dependencies', () => {
+      expect.hasAssertions();
+
+      expect(Object.keys(packageJson.peerDependencies)).toStrictEqual(
+        expect.arrayContaining(
+          config.plugins.map(plugin => determinePluginPackageName(plugin))
+        )
+      );
+    });
+
+    if (config.parser) {
+      it("lists it's parser as a peer dependency", () => {
+        expect.hasAssertions();
+
+        expect(Object.keys(packageJson.peerDependencies)).toContain(
+          config.parser
+        );
+      });
+    }
+
+    if (configFile !== 'index.js') {
+      it('lists any plugins as optional peer dependencies', () => {
+        expect.hasAssertions();
+
+        expect(packageJson.peerDependenciesMeta).toStrictEqual(
+          expect.objectContaining(
+            Object.fromEntries(
+              config.plugins
+                .filter(plugin => plugin !== 'prettier')
+                .map(plugin => [
+                  determinePluginPackageName(plugin),
+                  { optional: true }
+                ])
+            )
+          )
+        );
+      });
+
+      if (config.parser) {
+        it("lists it's parser as an optional peer dependency", () => {
+          expect.hasAssertions();
+
+          expect(Object.keys(packageJson.peerDependencies)).toContain(
+            config.parser
+          );
+          expect(packageJson.peerDependenciesMeta).toHaveProperty(
+            config.parser as string,
+            { optional: true }
+          );
+        });
+      }
+    }
+
+    if (configFile === 'index.js') {
+      it('lists any plugins as required peer dependencies', () => {
+        expect.hasAssertions();
+
+        expect(packageJson.peerDependenciesMeta).toStrictEqual(
+          expect.not.objectContaining(
+            Object.fromEntries(
+              config.plugins.map(plugin => [
+                determinePluginPackageName(plugin),
+                { optional: true }
+              ])
+            )
+          )
+        );
+      });
+    }
 
     if (configFile !== 'jest.js') {
       it('should include prettier', () => {

@@ -43,6 +43,9 @@
       "jsx",
       "node"
     ],
+    "moduleNameMapper": {
+      "eslint/use-at-your-own-risk": "eslint/lib/unsupported-api.js"
+    },
     "resetMocks": true,
     "restoreMocks": true,
     "testEnvironment": "node",

@@ -70,7 +70,6 @@
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-eslint-config": "^2.0.0",
     "eslint-plugin-flowtype": "^6.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^25.0.0",

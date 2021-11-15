@@ -1,6 +1,10 @@
 {
   "extends": ["config:base"],
-  "lockFileMaintenance": { "enabled": true, "automerge": true },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["after 1am and before 2am on monday"]
+  },
   "rangeStrategy": "replace",
   "postUpdateOptions": ["npmDedupe"]
 }

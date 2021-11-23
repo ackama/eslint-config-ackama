@@ -1,3 +1,38 @@
+# [3.0.0](https://github.com/ackama/eslint-config-ackama/compare/v2.3.0...v3.0.0) (2021-11-23)
+
+
+### Bug Fixes
+
+* **jest:** update renamed rules ([89b3fa9](https://github.com/ackama/eslint-config-ackama/commit/89b3fa9c413c8ec870ccb51fecbc461ba9862913))
+
+
+### Features
+
+* **@typescript-eslint:** enable `ban-tslint-comment` ([c7a3921](https://github.com/ackama/eslint-config-ackama/commit/c7a39213bb60d40574a99f2a3524c07de083ee2b))
+* **@typescript-eslint:** enable `no-base-to-string` ([63fe11a](https://github.com/ackama/eslint-config-ackama/commit/63fe11ae9d37a25035bcc5a124e415df19ea8dc3))
+* **@typescript-eslint:** enable `no-confusing-void-expression` ([4fdb5c3](https://github.com/ackama/eslint-config-ackama/commit/4fdb5c3e3d0e062ac98042a63b06e10c857f78e4))
+* **@typescript-eslint:** enable `no-dupe-class-members` ([881ac65](https://github.com/ackama/eslint-config-ackama/commit/881ac65d1bbf63e48dcf93c8d80ebceee84f0921))
+* **@typescript-eslint:** enable `no-invalid-this` ([84de298](https://github.com/ackama/eslint-config-ackama/commit/84de29822eb900e38f524bd0e9201679f881eeac))
+* **@typescript-eslint:** enable `no-meaningless-void-operator` ([eab50a1](https://github.com/ackama/eslint-config-ackama/commit/eab50a1e6cfda895c991296ece1ac47465746c63))
+* **@typescript-eslint:** enable `no-non-null-asserted-nullish-coalescing` ([d400c17](https://github.com/ackama/eslint-config-ackama/commit/d400c17970390dcf977b14d06a90f35129ceac48))
+* **@typescript-eslint:** enable `no-unnecessary-boolean-literal-compare` ([18ac8f3](https://github.com/ackama/eslint-config-ackama/commit/18ac8f38076f7a270afc9b3c95ffc8bd2f5c4731))
+* **@typescript-eslint:** enable `switch-exhaustiveness-check` ([8a275c5](https://github.com/ackama/eslint-config-ackama/commit/8a275c58f7939119835c80868302b9507a83ab26))
+* **@typescript-eslint:** use extended version of `dot-notation` ([eadef42](https://github.com/ackama/eslint-config-ackama/commit/eadef426d2ffdacb90082cb90ceed6c92d72546e))
+* **javascript:** enable `no-promise-executor-return` ([7cd705f](https://github.com/ackama/eslint-config-ackama/commit/7cd705f03fe21b361e6b39a234f478719b7f7e8a))
+* **jest:** enable `prefer-expect-resolves` ([f7873fd](https://github.com/ackama/eslint-config-ackama/commit/f7873fd3fa1492a0b440f2d3140a349a913f1859))
+* **jest:** enable `require-hook` ([2cb2534](https://github.com/ackama/eslint-config-ackama/commit/2cb25343f3420a115497a8b97dd6911ac59abbd0))
+* update `[@typescript-eslint](https://github.com/typescript-eslint)` to v5 ([8ff77f2](https://github.com/ackama/eslint-config-ackama/commit/8ff77f280c1cbfc5152880844cb550076cb7a3db))
+* update `eslint-plugin-flowtype` to v8 ([adca9ec](https://github.com/ackama/eslint-config-ackama/commit/adca9ecf6b02935772c3133a36aa9914106ff980))
+* update `eslint-plugin-jest` to v25 ([ae54b14](https://github.com/ackama/eslint-config-ackama/commit/ae54b14a87d8626870e8e00bafab60e2b663f608))
+* update to `eslint` v8 ([729e217](https://github.com/ackama/eslint-config-ackama/commit/729e2173a04572fe807b02925ac99af9126d2a0b))
+
+
+### BREAKING CHANGES
+
+* require `eslint-plugin-flowtype v8
+* require `eslint-plugin-jest` v25
+* require `@typescript-eslint` v5
+
 # [2.3.0](https://github.com/ackama/eslint-config-ackama/compare/v2.2.1...v2.3.0) (2021-10-28)
 
 

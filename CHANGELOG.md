@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/ackama/eslint-config-ackama/compare/v3.0.0...v3.0.1) (2022-03-25)
+
+
+### Bug Fixes
+
+* **jest:** switch to using `no-conditional-in-test` rule ([#234](https://github.com/ackama/eslint-config-ackama/issues/234)) ([4ddb974](https://github.com/ackama/eslint-config-ackama/commit/4ddb974d405bd6cf833b8e23ca66e74e46c2d4b2))
+
 # [3.0.0](https://github.com/ackama/eslint-config-ackama/compare/v2.3.0...v3.0.0) (2021-11-23)
 
 

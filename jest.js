@@ -15,8 +15,8 @@ const config = {
       { assertFunctionNames: ['expect'] }
     ],
     'jest/no-conditional-expect': 'error',
+    'jest/no-conditional-in-test': 'error',
     'jest/no-deprecated-functions': 'error',
-    'jest/no-if': 'error',
     'jest/no-large-snapshots': 'warn',
     'jest/no-restricted-matchers': [
       'error',

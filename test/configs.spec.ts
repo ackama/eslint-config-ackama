@@ -134,9 +134,9 @@ describe('for each config file', () => {
         },
         // make all enabled rules warn, since misconfigured rules will create errors
         rules: Object.fromEntries(
-          Object.entries(config.rules).map(([name, value]) => [
+          Object.entries(config.rules).map(([name, value = 'warn']) => [
             name,
-            makeEnabledRulesWarn(value ?? 'warn')
+            makeEnabledRulesWarn(value)
           ])
         )
       };

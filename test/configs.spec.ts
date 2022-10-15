@@ -167,7 +167,7 @@ describe('for each config file', () => {
     });
 
     if (config.parser) {
-      it("lists it's parser as a peer dependency", () => {
+      it('lists its parser as a peer dependency', () => {
         expect.hasAssertions();
 
         expect(Object.keys(packageJson.peerDependencies)).toContain(
@@ -195,7 +195,7 @@ describe('for each config file', () => {
       });
 
       if (config.parser) {
-        it("lists it's parser as an optional peer dependency", () => {
+        it('lists its parser as an optional peer dependency', () => {
           expect.hasAssertions();
 
           expect(Object.keys(packageJson.peerDependencies)).toContain(

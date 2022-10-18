@@ -121,6 +121,9 @@ describe('for each config file', () => {
       expect.hasAssertions();
 
       const baseConfig: ESLint.Linter.Config = {
+        // default to using the @typescript-eslint/parser in case we have any
+        // rules that can use the type services, like `jest/unbound-method`
+        parser: '@typescript-eslint/parser',
         ...config,
         parserOptions: {
           // @babel/eslint-parser

@@ -1,3 +1,23 @@
+/**
+ * Generates a config for `jest/no-restricted-matchers` that bans all variations
+ * of the given base matchers
+ *
+ * @param {Record<string, string>} matchers
+ *
+ * @return {Record<string, string>}
+ */
+const banMatchers = matchers => {
+  return Object.fromEntries(
+    Object.entries(matchers).flatMap(([matcher, message]) => [
+      [matcher, message],
+      [`resolves.${matcher}`, message],
+      [`resolves.not.${matcher}`, message],
+      [`rejects.not.${matcher}`, message],
+      [`not.${matcher}`, message]
+    ])
+  );
+};
+
 /** @type {import('eslint').Linter.Config} */
 const config = {
   plugins: ['jest', 'jest-formatting'],
@@ -20,13 +40,13 @@ const config = {
     'jest/no-large-snapshots': 'warn',
     'jest/no-restricted-matchers': [
       'error',
-      {
+      banMatchers({
         toThrowErrorMatchingSnapshot:
           'Use `toThrowErrorMatchingInlineSnapshot()` instead',
         toMatchSnapshot: 'Use `toMatchInlineSnapshot()` instead',
         toBeTruthy: 'Avoid `toBeTruthy`',
         toBeFalsy: 'Avoid `toBeFalsy`'
-      }
+      })
     ],
     'jest/no-test-return-statement': 'error',
     'jest/prefer-called-with': 'error',

@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import * as ESLint from 'eslint';
-import * as fs from 'fs';
+import { promises as fs } from 'fs';
 import * as path from 'path';
 import prettier, { Options } from 'prettier';
 import {
@@ -121,31 +121,33 @@ const updateInstallLine = (readme: string): string => {
   );
 };
 
-const pathToReadme = path.resolve(__dirname, '../README.md');
-const readme = updateInstallLine(fs.readFileSync(pathToReadme, 'utf8'));
+(async () => {
+  const pathToReadme = path.resolve(__dirname, '../README.md');
+  const readme = updateInstallLine(await fs.readFile(pathToReadme, 'utf8'));
 
-const listBeginMarker = `<!-- begin configs list -->`;
-const listEndMarker = `<!-- end configs list -->`;
+  const listBeginMarker = `<!-- begin configs list -->`;
+  const listEndMarker = `<!-- end configs list -->`;
 
-const listStartIndex = readme.indexOf(listBeginMarker);
-const listEndIndex = readme.indexOf(listEndMarker);
+  const listStartIndex = readme.indexOf(listBeginMarker);
+  const listEndIndex = readme.indexOf(listEndMarker);
 
-if (listStartIndex === -1 || listEndIndex === -1) {
-  throw new Error(`cannot find start or end of configs list`);
-}
+  if (listStartIndex === -1 || listEndIndex === -1) {
+    throw new Error(`cannot find start or end of configs list`);
+  }
 
-fs.writeFileSync(
-  pathToReadme,
-  prettier.format(
-    [
-      readme.substring(0, listStartIndex - 1),
-      listBeginMarker,
-      '',
-      configs,
-      '',
-      readme.substring(listEndIndex)
-    ].join('\n'),
-    { ...prettierConfig, parser: 'markdown' }
-  ),
-  'utf8'
-);
+  await fs.writeFile(
+    pathToReadme,
+    await prettier.format(
+      [
+        readme.substring(0, listStartIndex - 1),
+        listBeginMarker,
+        '',
+        configs,
+        '',
+        readme.substring(listEndIndex)
+      ].join('\n'),
+      { ...prettierConfig, parser: 'markdown' }
+    ),
+    'utf8'
+  );
+})().catch(console.error);

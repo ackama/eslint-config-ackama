@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/ackama/eslint-config-ackama/compare/v3.1.0...v3.1.1) (2023-07-14)
+
+
+### Bug Fixes
+
+* **@typescript-eslint:** replace `no-parameter-properties` with `parameter-properties` ([#284](https://github.com/ackama/eslint-config-ackama/issues/284)) ([7274099](https://github.com/ackama/eslint-config-ackama/commit/7274099b8d49f43a1158137587ac2685925936a1))
+
 # [3.1.0](https://github.com/ackama/eslint-config-ackama/compare/v3.0.1...v3.1.0) (2022-10-18)
 
 

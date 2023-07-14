@@ -13,10 +13,13 @@ const config = {
     '@typescript-eslint/ban-types': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-definitions': 'error',
+    'default-param-last': 'off',
     '@typescript-eslint/default-param-last': 'error',
+    'dot-notation': 'off',
     '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
+    'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': [
       'error',
       'always',
@@ -72,6 +75,7 @@ const config = {
       'error',
       { ignoreArrowShorthand: true }
     ],
+    'no-dupe-class-members': 'off',
     '@typescript-eslint/no-dupe-class-members': 'error',
     '@typescript-eslint/no-dynamic-delete': 'error',
     'no-empty-function': 'off',
@@ -87,7 +91,9 @@ const config = {
     'no-implied-eval': 'off',
     '@typescript-eslint/no-implied-eval': 'error',
     '@typescript-eslint/no-inferrable-types': 'error',
+    'no-invalid-this': 'off',
     '@typescript-eslint/no-invalid-this': 'error',
+    'no-loop-func': 'off',
     '@typescript-eslint/no-loop-func': 'error',
     'no-loss-of-precision': 'off',
     '@typescript-eslint/no-loss-of-precision': 'error',
@@ -106,8 +112,10 @@ const config = {
     '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-require-imports': 'error',
+    'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'warn',
     '@typescript-eslint/no-this-alias': ['error', { allowDestructuring: true }],
+    'no-throw-literal': 'off',
     '@typescript-eslint/no-throw-literal': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
     '@typescript-eslint/no-unnecessary-condition': 'error',
@@ -120,13 +128,16 @@ const config = {
     '@typescript-eslint/no-unsafe-call': 'error',
     '@typescript-eslint/no-unsafe-member-access': 'error',
     '@typescript-eslint/no-unsafe-return': 'error',
+    'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': [
       'error', // Purely stylistic b/c of TS
       { typedefs: false, variables: false }
     ],
+    'no-useless-constructor': 'off',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-var-requires': 'error',
     '@typescript-eslint/parameter-properties': 'error',
@@ -156,24 +167,13 @@ const config = {
     'block-scoped-var': 'off',
     'camelcase': 'off',
     'consistent-return': 'off', // via --noImplicitReturns
-    'default-param-last': 'off',
-    'dot-notation': 'off', // @typescript-eslint
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
-    'lines-between-class-members': 'off',
-    'no-dupe-class-members': 'off', // @typescript-eslint
     'no-import-assign': 'off',
-    'no-invalid-this': 'off', // @typescript-eslint
     'no-iterator': 'off',
-    'no-loop-func': 'off', // @typescript-eslint
     'no-proto': 'off', // TS2339
     'no-setter-return': 'off', // TS2408
-    'no-shadow': 'off', // @typescript-eslint
-    'no-throw-literal': 'off', // @typescript-eslint
     'no-underscore-dangle': 'off',
-    'no-unused-expressions': 'off',
-    'no-use-before-define': 'off',
-    'no-useless-constructor': 'off', // @typescript-eslint
     'strict': 'off' // via --alwaysStrict
   }
 };

@@ -71,6 +71,8 @@ const config = {
     '@typescript-eslint/no-invalid-this': 'error',
     '@typescript-eslint/no-loop-func': 'error',
     '@typescript-eslint/no-meaningless-void-operator': 'error',
+    '@typescript-eslint/no-mixed-enums': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'error',
     '@typescript-eslint/no-namespace': [
       'off', // todo: need to audit existing codebase to see if declare is fine
       {
@@ -102,6 +104,7 @@ const config = {
     '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'warn',
+    '@typescript-eslint/sort-type-constituents': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/unified-signatures': 'warn', // can be a bit wrong
     'array-callback-return': 'off',

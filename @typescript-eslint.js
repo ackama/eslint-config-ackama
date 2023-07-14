@@ -4,17 +4,13 @@ const config = {
   parserOptions: { sourceType: 'module' },
   plugins: ['@typescript-eslint', 'prettier'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:prettier/recommended'
   ],
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-    '@typescript-eslint/ban-tslint-comment': 'error',
-    '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/consistent-type-definitions': 'error',
     '@typescript-eslint/default-param-last': 'error',
-    '@typescript-eslint/dot-notation': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/lines-between-class-members': [
@@ -65,7 +61,6 @@ const config = {
         leadingUnderscore: 'forbid'
       }
     ],
-    '@typescript-eslint/no-base-to-string': 'error',
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
       { ignoreArrowShorthand: true }
@@ -83,7 +78,6 @@ const config = {
         allowDefinitionFiles: true
       }
     ],
-    '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-require-imports': 'error',
     '@typescript-eslint/no-shadow': 'warn',
@@ -101,19 +95,13 @@ const config = {
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/parameter-properties': 'error',
-    '@typescript-eslint/prefer-for-of': 'error',
-    '@typescript-eslint/prefer-function-type': 'error',
     '@typescript-eslint/prefer-includes': 'error',
-    '@typescript-eslint/prefer-nullish-coalescing': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-readonly': 'warn',
     '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
     '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'warn',
-    // yes: with types, this is actually useful and correct
-    '@typescript-eslint/return-await': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/unified-signatures': 'warn', // can be a bit wrong
     'array-callback-return': 'off',

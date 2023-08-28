@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/ackama/eslint-config-ackama/compare/v3.1.1...v3.2.0) (2023-08-28)
+
+
+### Features
+
+* **@typescript-eslint:** upgrade to v6 and enable a few new rules ([#285](https://github.com/ackama/eslint-config-ackama/issues/285)) ([96aab43](https://github.com/ackama/eslint-config-ackama/commit/96aab4365e5e6a19d1d185aa8c97c03890b4f3b6))
+
 ## [3.1.1](https://github.com/ackama/eslint-config-ackama/compare/v3.1.0...v3.1.1) (2023-07-14)
 
 

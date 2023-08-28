@@ -42,7 +42,7 @@ const determinePluginPackageName = (plugin: string): string => {
 const requireConfig = (
   config: string
 ): ESLint.Linter.Config &
-  Required<Pick<ESLint.Linter.Config, 'plugins' | 'extends' | 'rules'>> => ({
+  Required<Pick<ESLint.Linter.Config, 'extends' | 'plugins' | 'rules'>> => ({
   plugins: [],
   extends: [],
   rules: {},
@@ -205,7 +205,8 @@ describe('for each config file', () => {
             config.parser
           );
           expect(packageJson.peerDependenciesMeta).toHaveProperty(
-            config.parser as string,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            config.parser!,
             { optional: true }
           );
         });

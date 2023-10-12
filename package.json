@@ -30,11 +30,6 @@
   },
   "prettier": "prettier-config-ackama",
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "isolatedModules": true
-      }
-    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -47,7 +42,12 @@
     "restoreMocks": true,
     "testEnvironment": "node",
     "transform": {
-      "\\.tsx?": "ts-jest"
+      "\\.tsx?": [
+        "ts-jest",
+        {
+          "isolatedModules": true
+        }
+      ]
     }
   },
   "dependencies": {

@@ -4,6 +4,10 @@ const config = {
   plugins: ['flowtype', 'prettier'],
   extends: ['plugin:flowtype/recommended', 'plugin:prettier/recommended'],
   rules: {
+    // explicitly (re)enable this as it's disabled by eslint-config-prettier
+    // and its likely our standard JS config will be used alongside this one
+    'curly': 'error',
+
     'flowtype/array-style-complex-type': ['error', 'verbose'],
     'flowtype/array-style-simple-type': ['error', 'shorthand'],
     'flowtype/arrow-parens': ['error', 'as-needed'],

@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/ackama/eslint-config-ackama/compare/v3.2.0...v3.2.1) (2023-10-22)
+
+
+### Bug Fixes
+
+* explicitly enable `curly` in configs that include `prettier` ([#293](https://github.com/ackama/eslint-config-ackama/issues/293)) ([496a4fa](https://github.com/ackama/eslint-config-ackama/commit/496a4faa2ccb710d4bd46a06de73859e7a3c1fed))
+
 # [3.2.0](https://github.com/ackama/eslint-config-ackama/compare/v3.1.1...v3.2.0) (2023-08-28)
 
 

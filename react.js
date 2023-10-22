@@ -30,6 +30,10 @@ const config = {
     }
   ],
   rules: {
+    // explicitly (re)enable this as it's disabled by eslint-config-prettier
+    // and its likely our standard JS config will be used alongside this one
+    'curly': 'error',
+
     'react/button-has-type': 'warn',
     'react/default-props-match-prop-types': 'warn',
     'react/display-name': 'off', // todo: re-look into

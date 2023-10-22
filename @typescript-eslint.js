@@ -9,6 +9,10 @@ const config = {
     'plugin:prettier/recommended'
   ],
   rules: {
+    // explicitly (re)enable this as it's disabled by eslint-config-prettier
+    // and its likely our standard JS config will be used alongside this one
+    'curly': 'error',
+
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',

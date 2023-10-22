@@ -237,6 +237,12 @@ describe('for each config file', () => {
         expect(config.plugins).toContainEqual('prettier');
         expect(config.extends).toContainEqual('plugin:prettier/recommended');
       });
+
+      it('should explicitly set curly', () => {
+        expect.hasAssertions();
+
+        expect(config.rules).toHaveProperty('curly', 'error');
+      });
     }
   });
 });

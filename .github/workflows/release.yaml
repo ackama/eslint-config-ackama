@@ -4,6 +4,10 @@ on:
     branches:
       - main
 
+# Restrict jobs in this workflow to have no permissions by default; permissions
+# should be granted per job as needed using a dedicated `permissions` block
+permissions: {}
+
 env:
   # reduces noise from npm post-install scripts
   DISABLE_OPENCOLLECTIVE: true
@@ -11,6 +15,10 @@ env:
 
 jobs:
   release:
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

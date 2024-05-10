@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/ackama/eslint-config-ackama/compare/v3.2.1...v3.2.2) (2024-05-10)
+
+
+### Bug Fixes
+
+* allow v7 of `[@typescript-eslint](https://github.com/typescript-eslint)` and v28 of `eslint-plugin-jest` ([#321](https://github.com/ackama/eslint-config-ackama/issues/321)) ([99f27da](https://github.com/ackama/eslint-config-ackama/commit/99f27da573ef7e2c7c9e8190f818ee1adcbdee72))
+
 ## [3.2.1](https://github.com/ackama/eslint-config-ackama/compare/v3.2.0...v3.2.1) (2023-10-22)
 
 

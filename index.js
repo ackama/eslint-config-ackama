@@ -4,7 +4,7 @@ const config = {
   plugins: [
     '@eslint-community/eslint-comments',
     'prettier', //
-    'import',
+    'import-x',
     'n'
   ],
   extends: [
@@ -30,13 +30,13 @@ const config = {
       { allowWholeFile: true }
     ],
     '@eslint-community/eslint-comments/no-unused-disable': 'error',
-    'import/export': 'error',
-    'import/no-absolute-path': 'error',
-    'import/no-anonymous-default-export': 'error',
-    'import/no-mutable-exports': 'error',
-    'import/no-self-import': 'error',
-    'import/no-webpack-loader-syntax': 'error',
-    'import/order': [
+    'import-x/export': 'error',
+    'import-x/no-absolute-path': 'error',
+    'import-x/no-anonymous-default-export': 'error',
+    'import-x/no-mutable-exports': 'error',
+    'import-x/no-self-import': 'error',
+    'import-x/no-webpack-loader-syntax': 'error',
+    'import-x/order': [
       'error',
       {
         'alphabetize': { order: 'asc' },

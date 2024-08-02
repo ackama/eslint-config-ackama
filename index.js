@@ -2,7 +2,7 @@
 const config = {
   env: { es2017: true },
   plugins: [
-    'eslint-comments',
+    '@eslint-community/eslint-comments',
     'prettier', //
     'import',
     'node'
@@ -10,7 +10,7 @@ const config = {
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
-    'plugin:eslint-comments/recommended',
+    'plugin:@eslint-community/eslint-comments/recommended',
     'plugin:prettier/recommended'
   ],
   ignorePatterns: [
@@ -25,8 +25,11 @@ const config = {
     'out/*'
   ],
   rules: {
-    'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-    'eslint-comments/no-unused-disable': 'error',
+    '@eslint-community/eslint-comments/disable-enable-pair': [
+      'error',
+      { allowWholeFile: true }
+    ],
+    '@eslint-community/eslint-comments/no-unused-disable': 'error',
     'import/export': 'error',
     'import/no-absolute-path': 'error',
     'import/no-anonymous-default-export': 'error',

@@ -23,7 +23,7 @@ const config = {
   rules: {
     '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    'node/no-sync': 'off'
+    'n/no-sync': 'off'
   }
 };
 

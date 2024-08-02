@@ -11,11 +11,11 @@ import {
   prettier as prettierConfigPackage
 } from '../package.json';
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports,node/global-require,@typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports,n/global-require,@typescript-eslint/no-var-requires
 const prettierConfig = require(prettierConfigPackage) as Options;
 
 const requireConfig = (config: string): Required<ESLint.Linter.Config> => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports,node/global-require,@typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports,n/global-require,@typescript-eslint/no-var-requires
   const requiredConfig = require(config) as ESLint.Linter.Config;
 
   return {

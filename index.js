@@ -5,7 +5,7 @@ const config = {
     '@eslint-community/eslint-comments',
     'prettier', //
     'import',
-    'node'
+    'n'
   ],
   extends: [
     'eslint:recommended',
@@ -47,14 +47,14 @@ const config = {
         'newlines-between': 'never'
       }
     ],
-    'node/callback-return': 'warn',
-    'node/global-require': 'error',
-    'node/no-deprecated-api': 'error',
-    'node/no-mixed-requires': 'error',
-    'node/no-new-require': 'error',
-    'node/no-path-concat': 'error',
-    'node/no-process-exit': 'error',
-    'node/no-sync': 'warn',
+    'n/callback-return': 'warn',
+    'n/global-require': 'error',
+    'n/no-deprecated-api': 'error',
+    'n/no-mixed-requires': 'error',
+    'n/no-new-require': 'error',
+    'n/no-path-concat': 'error',
+    'n/no-process-exit': 'error',
+    'n/no-sync': 'warn',
     'accessor-pairs': ['error', { enforceForClassMembers: true }],
     'array-callback-return': 'error',
     'block-scoped-var': 'warn',

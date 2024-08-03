@@ -3,13 +3,14 @@ import * as fs from 'fs';
 import semver from 'semver/preload';
 import packageJson from '../package.json';
 
+// eslint-disable-next-line n/no-sync
 const configFiles = fs
   .readdirSync('.', { withFileTypes: true })
   .filter(
     value =>
       value.isFile() &&
       value.name.endsWith('.js') &&
-      value.name !== '.eslintrc.js'
+      !value.name.startsWith('eslint.config.')
   )
   .map(value => value.name);
 

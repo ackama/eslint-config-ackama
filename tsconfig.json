@@ -21,6 +21,5 @@
     "noImplicitOverride": true
   },
   "exclude": ["coverage", "node_modules"],
-  "files": [".eslintrc.js"],
   "include": ["**/*.js", "**/*.ts"]
 }

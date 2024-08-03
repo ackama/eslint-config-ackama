@@ -22,22 +22,6 @@ declare module 'eslint-config-ackama/@typescript-eslint.js' {
   export = config;
 }
 
-declare module 'eslint-config-ackama/flowtype' {
-  import type { Linter } from 'eslint';
-
-  const config: Linter.Config;
-
-  export = config;
-}
-
-declare module 'eslint-config-ackama/flowtype.js' {
-  import type { Linter } from 'eslint';
-
-  const config: Linter.Config;
-
-  export = config;
-}
-
 declare module 'eslint-config-ackama/jest' {
   import type { Linter } from 'eslint';
 

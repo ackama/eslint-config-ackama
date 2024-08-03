@@ -1,4 +1,4 @@
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint').Linter.LegacyConfig} */
 const config = {
   env: { node: true },
   parser: '@typescript-eslint/parser',
@@ -20,11 +20,7 @@ const config = {
       }
     }
   ],
-  rules: {
-    '@typescript-eslint/no-dynamic-delete': 'off',
-    '@typescript-eslint/no-namespace': 'off',
-    'n/no-sync': 'off'
-  }
+  rules: {}
 };
 
 module.exports = config;

@@ -3,6 +3,7 @@ const config = {
   env: { es2017: true },
   plugins: [
     '@eslint-community/eslint-comments',
+    '@stylistic/js',
     'prettier', //
     'import',
     'n'
@@ -70,13 +71,12 @@ const config = {
     'grouped-accessor-pairs': ['error', 'getBeforeSet'],
     'guard-for-in': 'error',
     'init-declarations': 'error',
-    'lines-between-class-members': [
+    '@stylistic/js/lines-between-class-members': [
       'error',
       'always',
       { exceptAfterSingleLine: true }
     ],
     'max-classes-per-file': ['error', 1],
-    'max-statements-per-line': ['error', { max: 1 }],
     'new-cap': ['error', { capIsNewExceptions: ['ESLintUtils.RuleCreator'] }],
     'no-alert': 'warn',
     'no-array-constructor': 'error',
@@ -141,7 +141,7 @@ const config = {
     'object-shorthand': 'error',
     'one-var': ['error', 'never'],
     'operator-assignment': 'error',
-    'padding-line-between-statements': [
+    '@stylistic/js/padding-line-between-statements': [
       'error',
       {
         blankLine: 'always',
@@ -191,7 +191,7 @@ const config = {
     'require-unicode-regexp': 'error',
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
     'sort-vars': 'error',
-    'spaced-comment': [
+    '@stylistic/js/spaced-comment': [
       'warn',
       'always',
       {

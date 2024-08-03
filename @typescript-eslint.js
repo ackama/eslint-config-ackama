@@ -120,6 +120,7 @@ const config = {
     'guard-for-in': 'off',
     'init-declarations': 'off', // handled by TS & --noImplicitAny
     'lines-between-class-members': 'off',
+    '@stylistic/js/lines-between-class-members': 'off',
     'no-dupe-class-members': 'off', // @typescript-eslint
     'no-import-assign': 'off',
     'no-invalid-this': 'off', // @typescript-eslint

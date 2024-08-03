@@ -78,6 +78,7 @@
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/git": "^10.0.0",
     "@stylistic/eslint-plugin-js": "^2.6.1",
+    "@stylistic/eslint-plugin-ts": "^2.6.1",
     "@types/eslint": "^8.0.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
@@ -109,6 +110,7 @@
     "@babel/eslint-parser": "^7.0.0",
     "@eslint-community/eslint-plugin-eslint-comments": ">= 4",
     "@stylistic/eslint-plugin-js": ">= 2.0.0",
+    "@stylistic/eslint-plugin-ts": ">= 2.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "eslint": ">= 8.0",
@@ -125,6 +127,9 @@
   },
   "peerDependenciesMeta": {
     "@babel/eslint-parser": {
+      "optional": true
+    },
+    "@stylistic/eslint-plugin-ts": {
       "optional": true
     },
     "@typescript-eslint/eslint-plugin": {

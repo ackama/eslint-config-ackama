@@ -2,7 +2,7 @@
 const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: { sourceType: 'module' },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', '@stylistic/ts', 'prettier'],
   extends: [
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
@@ -17,7 +17,7 @@ const config = {
     '@typescript-eslint/default-param-last': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/lines-between-class-members': [
+    '@stylistic/ts/lines-between-class-members': [
       'error',
       'always',
       { exceptAfterSingleLine: true }

@@ -183,7 +183,6 @@ const config = {
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
     'prefer-template': 'warn',
-    'quote-props': ['error', 'consistent-as-needed'],
     'radix': ['error', 'as-needed'],
     'require-await': 'off', // never
     'require-unicode-regexp': 'error',

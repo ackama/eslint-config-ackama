@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/ackama/eslint-config-ackama/compare/v3.2.2...v3.2.3) (2024-08-06)
+
+
+### Bug Fixes
+
+* let `prettier` handle `quote-props` ([#334](https://github.com/ackama/eslint-config-ackama/issues/334)) ([9eb3923](https://github.com/ackama/eslint-config-ackama/commit/9eb392354916e40e3f1e5326d2155a74151225d7)), closes [#101](https://github.com/ackama/eslint-config-ackama/issues/101)
+
 ## [3.2.2](https://github.com/ackama/eslint-config-ackama/compare/v3.2.1...v3.2.2) (2024-05-10)
 
 

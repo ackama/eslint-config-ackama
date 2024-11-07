@@ -45,9 +45,6 @@ const requireConfig = (config: string): Required<ESLint.Linter.Config> => {
  * Generally this is done by returning the plugin name with `eslint-plugin-`
  * appended to it (if the name does not already start with that string).
  *
- * Scoped plugins must be explicitly checked for to handle properly;
- * Currently the `@typescript-eslint` is the only supported scoped plugin.
- *
  * @param {string} plugin
  *
  * @return {string}
@@ -57,8 +54,16 @@ const determinePluginPackageName = (plugin: string): string => {
     return plugin;
   }
 
-  if (plugin === '@typescript-eslint') {
-    return `${plugin}/eslint-plugin`;
+  if (plugin.startsWith('@')) {
+    const [scope, name] = plugin.split('/');
+
+    let packageName = `${scope}/eslint-plugin`;
+
+    if (name) {
+      packageName += `-${name}`;
+    }
+
+    return packageName;
   }
 
   return `eslint-plugin-${plugin}`;

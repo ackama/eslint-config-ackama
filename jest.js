@@ -20,12 +20,8 @@ const banMatchers = matchers => {
 
 /** @type {import('eslint').Linter.Config} */
 const config = {
-  plugins: ['jest', 'jest-formatting'],
-  extends: [
-    'plugin:jest/recommended',
-    'plugin:jest/style',
-    'plugin:jest-formatting/recommended'
-  ],
+  plugins: ['jest'],
+  extends: ['plugin:jest/recommended', 'plugin:jest/style'],
   rules: {
     '@typescript-eslint/unbound-method': 'off',
     'jest/consistent-test-it': 'error',
@@ -62,7 +58,14 @@ const config = {
     'jest/require-to-throw-message': 'error',
     'jest/require-top-level-describe': 'error',
     'jest/unbound-method': 'error',
-    'jest/valid-title': 'error'
+    'jest/valid-title': 'error',
+
+    'jest/padding-around-after-all-blocks': 'error',
+    'jest/padding-around-after-each-blocks': 'error',
+    'jest/padding-around-before-all-blocks': 'error',
+    'jest/padding-around-before-each-blocks': 'error',
+    'jest/padding-around-describe-blocks': 'error',
+    'jest/padding-around-test-blocks': 'error'
   }
 };
 

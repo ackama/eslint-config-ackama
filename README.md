@@ -76,7 +76,6 @@ Below is a complete list of the configs provided, and their dependencies:
   - `eslint-plugin-prettier`
 - `ackama/jest`
   - `eslint-plugin-jest`
-  - `eslint-plugin-jest-formatting`
 - `ackama/react`
   - `eslint-plugin-prettier`
   - `eslint-plugin-react`

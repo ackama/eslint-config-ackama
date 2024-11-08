@@ -1,31 +1,26 @@
-const { FlatCompat } = require('@eslint/eslintrc');
-const js = require('@eslint/js');
 const globals = require('globals');
 const configAckamaTypeScript = require('./@typescript-eslint');
 const configAckamaBase = require('./index');
 const configAckamaJest = require('./jest');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended
-});
-
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
-  ...compat.config(configAckamaBase),
-  ...compat.config(configAckamaTypeScript),
-  { languageOptions: { parserOptions: { project: true } } },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase),
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaTypeScript),
   {
-    files: ['*.spec.*'],
-    ...compat.config(configAckamaJest)
+    languageOptions: {
+      parserOptions: { project: true },
+      globals: globals.node
+    }
+  },
+  {
+    files: ['**/*.spec.*'],
+    .../** @type {import('eslint').Linter.FlatConfig} */ (configAckamaJest)
   },
   {
     files: ['**/*.js'],
-    languageOptions: {
-      sourceType: 'script',
-      globals: globals.node
-    },
+    languageOptions: { sourceType: 'script' },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-var-requires': 'off'

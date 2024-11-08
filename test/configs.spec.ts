@@ -3,6 +3,8 @@ import * as fs from 'fs';
 import semver from 'semver/preload';
 import packageJson from '../package.json';
 
+process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+
 // eslint-disable-next-line n/no-sync
 const configFiles = fs
   .readdirSync('.', { withFileTypes: true })
@@ -49,13 +51,15 @@ const determinePluginPackageName = (plugin: string): string => {
 
 const requireConfig = (
   config: string
-): ESLint.Linter.Config &
-  Required<Pick<ESLint.Linter.Config, 'extends' | 'plugins' | 'rules'>> => ({
+): ESLint.Linter.LegacyConfig &
+  Required<
+    Pick<ESLint.Linter.LegacyConfig, 'extends' | 'plugins' | 'rules'>
+  > => ({
   plugins: [],
   extends: [],
   rules: {},
   // eslint-disable-next-line n/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
-  ...(require(config) as ESLint.Linter.Config)
+  ...(require(config) as ESLint.Linter.LegacyConfig)
 });
 
 describe('package.json', () => {
@@ -125,7 +129,7 @@ describe('for each config file', () => {
     it('is valid', async () => {
       expect.hasAssertions();
 
-      const baseConfig: ESLint.Linter.Config = {
+      const baseConfig: ESLint.Linter.LegacyConfig = {
         // default to using the @typescript-eslint/parser in case we have any
         // rules that can use the type services, like `jest/unbound-method`
         parser: '@typescript-eslint/parser',

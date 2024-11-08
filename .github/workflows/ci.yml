@@ -65,7 +65,7 @@ jobs:
       matrix:
         eslint: [8]
         typescript-eslint: [7]
-        jest-eslint: [27, 28]
+        jest-eslint: [28]
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:

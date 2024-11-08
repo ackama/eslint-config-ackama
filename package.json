@@ -66,6 +66,7 @@
     }
   },
   "dependencies": {
+    "@eslint/js": "^8.57.1",
     "eslint-config-prettier": "^8.0.0"
   },
   "devDependencies": {
@@ -74,15 +75,13 @@
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.0.0",
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^8.57.1",
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/git": "^10.0.0",
     "@stylistic/eslint-plugin-js": "^2.6.1",
     "@stylistic/eslint-plugin-ts": "^2.6.1",
     "@types/eslint": "^8.0.0",
-    "@types/eslint__eslintrc": "^2.1.2",
     "@types/eslint__js": "^8.42.3",
+    "@types/eslint-plugin-jsx-a11y": "^6.9.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
     "@types/semver": "^7.3.8",

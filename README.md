@@ -8,10 +8,31 @@ Install this package & the required plugins:
 
     npm install --save-dev eslint-config-ackama @types/eslint @eslint-community/eslint-plugin-eslint-comments @stylistic/eslint-plugin-js eslint eslint-plugin-import eslint-plugin-n eslint-plugin-prettier prettier
 
-Add an `.eslintrc.js` to your repo that extends from this config:
+Add an `eslint.config.js` to your repo that imports this config:
 
 ```js
-/** @type {import('eslint').Linter.Config} */
+const configAckamaBase = require('eslint-config-ackama');
+
+/** @type {import('eslint').Linter.FlatConfig[]} */
+const config = [
+  { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase)
+];
+
+module.exports = config;
+```
+
+By default, the configurations use the
+["flat config"](https://eslint.org/blog/2022/08/new-config-system-part-2/)
+system introduced in ESLint 8.x. This allows for a more flexible and powerful
+configuration system, but it does require a bit more boilerplate to set up.
+
+You can set the `ESLINT_USE_FLAT_CONFIG` environment variable to `false` if you
+wish to have the configurations use the legacy format for use with
+`.eslintrc.js`:
+
+```js
+/** @type {import('eslint').Linter.LegacyConfig} */
 const config = {
   extends: ['ackama']
 };
@@ -19,23 +40,78 @@ const config = {
 module.exports = config;
 ```
 
-You'll want to tell ESLint about the environment you're working in using the
-[`env`](https://eslint.org/docs/user-guide/configuring#specifying-environments)
-toplevel property.
+> [!NOTE]
+>
+> This environment variable is also what tells ESLint v9 to use the legacy
+> configuration format.
 
 To reduce potential errors, the configurations provided by this package
-deliberately avoid enabling or disabling any envs without good reason, opting to
-set only the `es2017` env, since the majority of projects should be using ES2017
-or higher.
+deliberately avoid making assumptions about the environment you're working in,
+meaning you will need to configure what globals are available using the
+`globals` package:
 
-These are the three most common envs you'll want to use:
+```js
+const configAckamaBase = require('eslint-config-ackama');
+const globals = require('globals');
 
-- `node` for NodeJS apps
-- `browser` for browser apps
-- `commonjs` for browser apps that are bundled using a bundler such as webpack
+/** @type {import('eslint').Linter.FlatConfig[]} */
+const config = [
+  { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase),
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node, // for NodeJS apps
+        ...globals.browser, // for browser apps
+        ...globals.commonjs // for browser apps that are bundled using a bundler such as webpack
+      }
+    }
+  }
+];
+
+module.exports = config;
+```
+
+If you're using an `.eslintrc.js`, you want to use the
+[`env`](https://eslint.org/docs/user-guide/configuring#specifying-environments)
+toplevel property:
+
+```js
+/** @type {import('eslint').Linter.LegacyConfig} */
+const config = {
+  extends: ['ackama'],
+  env: {
+    node: true, // for NodeJS apps
+    browser: true, // for browser apps
+    commonjs: true // for browser apps that are bundled using a bundler such as webpack
+  }
+};
+
+module.exports = config;
+```
+
+> [!NOTE]
+>
+> The legacy configuration sets the `es2017` env by default, since the majority
+> of projects should be using ES2017 or higher.
+>
+> The equivalent to this in the flat configuration format is the
+> `languageOptions.ecmaVersion` property, which defaults to `latest` meaning you
+> don't need to set it unless you're using a different version of ECMAScript.
 
 You can also add a `lint` script to the `scripts` property in your apps
 `package.json` to make it easier for developers to run eslint against the app:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint"
+  }
+}
+```
+
+If you're using the legacy configuration format, you will also need to specify a
+file or directory along with the file extensions you want to lint:
 
 ```json
 {
@@ -92,13 +168,34 @@ base config already setups ignores for common folders, including `node_modules`,
 to ignore additional folders, or inversely might want to un-ignore a preset
 ignore.
 
-This can be done using the
+This can be done by
+[including a configuration object with just an `ignores` key](https://eslint.org/docs/latest/use/configure/ignore),
+making it act as a global ignore:
+
+```js
+const configAckamaBase = require('eslint-config-ackama');
+
+/** @type {import('eslint').Linter.FlatConfig[]} */
+const config = [
+  { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
+  { ignores: ['infra'] },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase)
+];
+
+module.exports = config;
+```
+
+> [!NOTE]
+>
+> The flat configuration system does not support `.eslintignore`
+
+For legacy configurations, this can be done using the
 [`ignorePatterns`](https://eslint.org/docs/user-guide/configuring#ignorepatterns-in-config-files)
 toplevel property, which is an array that accepts `.gitignore` glob-like
 strings:
 
 ```js
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint').Linter.LegacyConfig} */
 const config = {
   ignorePatterns: ['!public/', 'tmp/']
 };
@@ -108,16 +205,58 @@ module.exports = config;
 
 ### Typical complete example
 
+Here's what a typical `eslint.config.js` would look like for a TypeScript
+project that uses `jest` & `react`:
+
+```js
+const configAckamaBase = require('eslint-config-ackama');
+const configAckamaTypeScript = require('eslint-config-ackama/@typescript-eslint');
+const configAckamaJest = require('eslint-config-ackama/jest');
+const configAckamaReact = require('eslint-config-ackama/react');
+const globals = require('globals');
+
+/** @type {import('eslint').Linter.FlatConfig[]} */
+const config = [
+  { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
+  { ignores: ['infra'] },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase),
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaTypeScript),
+  {
+    languageOptions: {
+      parserOptions: { project: true },
+      globals: globals.commonjs
+    }
+  },
+  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaReact),
+  ...[
+    /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaJest),
+    /** @type {import('eslint').Linter.FlatConfig} */ ({
+      rules: { 'jest/prefer-expect-assertions': 'off' }
+    })
+  ].map(c => ({ ...c, files: ['test/**'] })),
+  {
+    files: ['**/*.js'],
+    languageOptions: { sourceType: 'script' },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-var-requires': 'off'
+    }
+  }
+];
+
+module.exports = config;
+```
+
 Here's what a typical `.eslintrc.js` would look like for a TypeScript project
 that uses `jest` & `react`:
 
 ```js
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint').Linter.LegacyConfig} */
 const config = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: 'tsconfig.json',
+    project: true,
     ecmaVersion: 2019,
     sourceType: 'module'
   },

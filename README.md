@@ -196,7 +196,9 @@ new major versions.
 ### Releasing
 
 Releases are handled using
-[semantically](https://github.com/semantic-release/semantic-release).
+[semantic release](https://github.com/semantic-release/semantic-release), which
+is run on `main` and releases versions based on
+[the commit messages](https://semantic-release.gitbook.io/semantic-release#commit-message-format).
 
 #### Contributing
 

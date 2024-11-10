@@ -208,7 +208,7 @@ semantic releases & changelog generation, which requires that commits on the
 `main` branch follow that format.
 
 As we squash our pull requests when merging by default, you should ideally use
-title your pull requests using the convectional commit format since that will be
+title your pull requests using the conventional commit format since that will be
 used as the commit message for the squashed commit.
 
 We run `commitlint` on pull requests to ensure that commit messages follow the

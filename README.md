@@ -201,15 +201,14 @@ Releases are handled using
 #### Contributing
 
 This repo uses
-[convectional commits](https://www.conventionalcommits.org/en/v1.0.0/) to enable
-semantic releases & changelog generation.
+[conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to enable
+semantic releases & changelog generation, which requires that commits on the
+`main` branch follow that format.
 
-When making a PR, `Semantic Pull Request` will check if the PR will trigger a
-release, based on the title & commits in the PR.
+As we squash our pull requests when merging by default, you should ideally use
+title your pull requests using the convectional commit format since that will be
+used as the commit message for the squashed commit.
 
-This is done via a status check, which will pass if a release would be triggered
-by merging. _You are can merge regardless of if this status check passes or
-not._
-
-Please keep in mind that if you're denoting a release via the PRs title, you
-will have to squashed. `SPR` will inform you if you should merge or squash.
+We run `commitlint` on pull requests to ensure that commit messages follow the
+format - while not strictly required when the commits will be squashed, it can
+help ensure you're following the format correctly.

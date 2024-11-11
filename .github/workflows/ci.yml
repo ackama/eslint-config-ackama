@@ -59,13 +59,12 @@ jobs:
     permissions:
       contents: read # to fetch code (actions/checkout)
     # prettier-ignore
-    name: Lint on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, eslint-plugin-jest v${{ matrix.jest-eslint }}, and using Node.js LTS
+    name: Lint on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
     strategy:
       fail-fast: false
       matrix:
         eslint: [8]
         typescript-eslint: [7, 8]
-        jest-eslint: [28]
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -79,7 +78,7 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: npm install eslint@${{ matrix.eslint }} @typescript-eslint/parser@${{ matrix.typescript-eslint }} @typescript-eslint/eslint-plugin@${{ matrix.typescript-eslint }} eslint-plugin-jest@${{ matrix.jest-eslint }} --no-fund
+      - run: npm install eslint@${{ matrix.eslint }} @typescript-eslint/parser@${{ matrix.typescript-eslint }} @typescript-eslint/eslint-plugin@${{ matrix.typescript-eslint }} --no-fund
       - run: npm run lint
   test:
     permissions:

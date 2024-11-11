@@ -6,7 +6,7 @@ Standard ESLint configurations for Ackama projects.
 
 Install this package & the required plugins:
 
-    npm install --save-dev eslint-config-ackama @types/eslint @eslint-community/eslint-plugin-eslint-comments @stylistic/eslint-plugin-js eslint eslint-plugin-import eslint-plugin-n eslint-plugin-prettier prettier
+    npm install --save-dev eslint-config-ackama @types/eslint @eslint-community/eslint-plugin-eslint-comments @eslint/js @stylistic/eslint-plugin-js eslint eslint-plugin-import eslint-plugin-n eslint-plugin-prettier prettier
 
 Add an `eslint.config.js` to your repo that imports this config:
 

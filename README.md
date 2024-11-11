@@ -227,7 +227,7 @@ const config = [
   ),
   {
     languageOptions: {
-      parserOptions: { project: true },
+      parserOptions: { projectService: true },
       globals: globals.commonjs
     }
   },
@@ -260,7 +260,7 @@ const config = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: true,
+    projectService: true,
     ecmaVersion: 2019,
     sourceType: 'module'
   },

@@ -1,9 +1,17 @@
+process.env.ESLINT_USE_FLAT_CONFIG = 'true';
+
+import * as parserTypeScriptESLint from '@typescript-eslint/parser';
 import ESLint from 'eslint';
+import { FlatESLint } from 'eslint/use-at-your-own-risk';
 import * as fs from 'fs';
 import semver from 'semver/preload';
 import packageJson from '../package.json';
 
-process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+// flat config does not include any information about the package that provides
+// the parser being used, so this map holds that information manually
+const packagesForParsers = new Map<unknown, string>([
+  [parserTypeScriptESLint, '@typescript-eslint/parser']
+]);
 
 // eslint-disable-next-line n/no-sync
 const configFiles = fs
@@ -16,6 +24,7 @@ const configFiles = fs
   )
   .map(value => value.name);
 
+// eslint-disable-next-line n/no-sync
 const typeDeclarations = fs.readFileSync('configs.d.ts', 'utf8');
 
 /**
@@ -51,16 +60,19 @@ const determinePluginPackageName = (plugin: string): string => {
 
 const requireConfig = (
   config: string
-): ESLint.Linter.LegacyConfig &
-  Required<
-    Pick<ESLint.Linter.LegacyConfig, 'extends' | 'plugins' | 'rules'>
-  > => ({
-  plugins: [],
-  extends: [],
-  rules: {},
-  // eslint-disable-next-line n/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
-  ...(require(config) as ESLint.Linter.LegacyConfig)
-});
+): Array<
+  ESLint.Linter.FlatConfig &
+    Required<Pick<ESLint.Linter.FlatConfig, 'plugins' | 'rules'>>
+> => {
+  return (
+    // eslint-disable-next-line n/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
+    (require(config) as ESLint.Linter.FlatConfig[])
+      // exclude config objects that are specifying global ignores
+      .filter(c => Object.keys(c).length !== 1 || !('ignores' in c))
+      // ensure that all configs have default values for plugins and rules
+      .map(c => ({ plugins: {}, rules: {}, ...c }))
+  );
+};
 
 describe('package.json', () => {
   it('includes every config file', () => {
@@ -114,12 +126,12 @@ const makeEnabledRulesWarn = (
 ): ESLint.Linter.RuleEntry => {
   if (Array.isArray(value)) {
     return [
-      value[0] !== 'off' ? 'warn' : 'off',
+      value[0] !== 'off' && value[0] !== 0 ? 'warn' : 'off',
       ...(value.slice(1) as unknown[])
     ];
   }
 
-  return value !== 'off' ? 'warn' : 'off';
+  return value !== 'off' && value !== 0 ? 'warn' : 'off';
 };
 
 describe('for each config file', () => {
@@ -129,41 +141,43 @@ describe('for each config file', () => {
     it('is valid', async () => {
       expect.hasAssertions();
 
-      const baseConfig: ESLint.Linter.LegacyConfig = {
-        // default to using the @typescript-eslint/parser in case we have any
-        // rules that can use the type services, like `jest/unbound-method`
-        parser: '@typescript-eslint/parser',
-        ...config,
-        parserOptions: {
-          // @babel/eslint-parser
-          requireConfigFile: false,
-
-          // @typescript-eslint/parser
-          project: 'tsconfig.json',
-          createDefaultProgram: false,
-          ecmaVersion: 2019,
-          sourceType: 'module'
+      const baseConfig: ESLint.Linter.FlatConfig[] = config.map(c => ({
+        files: ['**/test/empty.ts'],
+        ...c,
+        languageOptions: {
+          // default to using the @typescript-eslint/parser in case we have any
+          // rules that can use the type services, like `jest/unbound-method`
+          parser: parserTypeScriptESLint,
+          ...c.languageOptions,
+          parserOptions: {
+            ...c.languageOptions?.parserOptions,
+            // @typescript-eslint/parser
+            project: true,
+            createDefaultProgram: false,
+            ecmaVersion: 2019
+          }
         },
         // make all enabled rules warn, since misconfigured rules will create errors
         rules: Object.fromEntries(
-          Object.entries(config.rules).map(([name, value = 'warn']) => [
+          Object.entries(c.rules).map(([name, value = 'warn']) => [
             name,
             makeEnabledRulesWarn(value)
           ])
         )
-      };
+      }));
 
-      const linter = new ESLint.ESLint({
-        useEslintrc: false,
-        baseConfig
+      const linter = new FlatESLint({
+        overrideConfig: baseConfig,
+        overrideConfigFile: true
       });
 
       await expect(
-        linter.lintText('', { filePath: './test/configs.spec.ts' })
+        linter.lintText('', { filePath: './test/empty.ts' })
       ).resolves.toStrictEqual([
         expect.objectContaining<Partial<ESLint.ESLint.LintResult>>({
           errorCount: 0,
-          fatalErrorCount: 0
+          fatalErrorCount: 0,
+          warningCount: 0
         })
       ]);
     });
@@ -190,17 +204,37 @@ describe('for each config file', () => {
 
       expect(Object.keys(packageJson.peerDependencies)).toStrictEqual(
         expect.arrayContaining(
-          config.plugins.map(plugin => determinePluginPackageName(plugin))
+          config
+            .flatMap(c => Object.keys(c.plugins))
+            .map(plugin => determinePluginPackageName(plugin))
         )
       );
     });
 
-    if (config.parser) {
+    if (config.some(c => c.languageOptions?.parser)) {
       it('lists its parser as a peer dependency', () => {
         expect.hasAssertions();
 
-        expect(Object.keys(packageJson.peerDependencies)).toContain(
-          config.parser
+        const parserPackages = config.flatMap(c => {
+          // eslint-disable-next-line jest/no-conditional-in-test
+          if (!c.languageOptions?.parser) {
+            return [];
+          }
+
+          const parser = packagesForParsers.get(c.languageOptions.parser);
+
+          // eslint-disable-next-line jest/no-conditional-in-test
+          if (!parser) {
+            throw new Error(
+              `could not determine what package imports parser used by ${configFile}`
+            );
+          }
+
+          return [parser];
+        });
+
+        expect(Object.keys(packageJson.peerDependencies)).toStrictEqual(
+          expect.arrayContaining(parserPackages)
         );
       });
     }
@@ -212,7 +246,8 @@ describe('for each config file', () => {
         expect(packageJson.peerDependenciesMeta).toStrictEqual(
           expect.objectContaining(
             Object.fromEntries(
-              config.plugins
+              config
+                .flatMap(c => Object.keys(c.plugins))
                 .filter(plugin => plugin !== 'prettier')
                 .map(plugin => [
                   determinePluginPackageName(plugin),
@@ -223,17 +258,38 @@ describe('for each config file', () => {
         );
       });
 
-      if (config.parser) {
+      if (config.some(c => c.languageOptions?.parser)) {
         it('lists its parser as an optional peer dependency', () => {
           expect.hasAssertions();
 
-          expect(Object.keys(packageJson.peerDependencies)).toContain(
-            config.parser
+          const parserPackages = config.flatMap(c => {
+            // eslint-disable-next-line jest/no-conditional-in-test
+            if (!c.languageOptions?.parser) {
+              return [];
+            }
+
+            const parser = packagesForParsers.get(c.languageOptions.parser);
+
+            // eslint-disable-next-line jest/no-conditional-in-test
+            if (!parser) {
+              throw new Error(
+                `could not determine what package imports parser used by ${configFile}`
+              );
+            }
+
+            return [parser];
+          });
+
+          expect(Object.keys(packageJson.peerDependencies)).toStrictEqual(
+            expect.arrayContaining(parserPackages)
           );
-          expect(packageJson.peerDependenciesMeta).toHaveProperty(
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            config.parser!,
-            { optional: true }
+
+          expect(packageJson.peerDependenciesMeta).toStrictEqual(
+            expect.objectContaining(
+              Object.fromEntries(
+                parserPackages.map(parser => [parser, { optional: true }])
+              )
+            )
           );
         });
       }
@@ -246,10 +302,12 @@ describe('for each config file', () => {
         expect(packageJson.peerDependenciesMeta).toStrictEqual(
           expect.not.objectContaining(
             Object.fromEntries(
-              config.plugins.map(plugin => [
-                determinePluginPackageName(plugin),
-                { optional: true }
-              ])
+              config
+                .flatMap(c => Object.keys(c.plugins))
+                .map(plugin => [
+                  determinePluginPackageName(plugin),
+                  { optional: true }
+                ])
             )
           )
         );
@@ -260,14 +318,13 @@ describe('for each config file', () => {
       it('should include prettier', () => {
         expect.hasAssertions();
 
-        expect(config.plugins).toContainEqual('prettier');
-        expect(config.extends).toContainEqual('plugin:prettier/recommended');
+        expect(config.some(c => 'prettier/prettier' in c.rules)).toBe(true);
       });
 
       it('should explicitly set curly', () => {
         expect.hasAssertions();
 
-        expect(config.rules).toHaveProperty('curly', 'error');
+        expect(config.some(c => 'curly' in c.rules)).toBe(true);
       });
     }
   });

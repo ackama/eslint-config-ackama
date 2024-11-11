@@ -6,18 +6,19 @@ const configAckamaJest = require('./jest');
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
-  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaBase),
-  /** @type {import('eslint').Linter.FlatConfig} */ (configAckamaTypeScript),
+  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase),
+  .../** @type {import('eslint').Linter.FlatConfig[]} */ (
+    configAckamaTypeScript
+  ),
   {
     languageOptions: {
       parserOptions: { project: true },
       globals: globals.node
     }
   },
-  {
-    files: ['**/*.spec.*'],
-    .../** @type {import('eslint').Linter.FlatConfig} */ (configAckamaJest)
-  },
+  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaJest).map(
+    c => ({ ...c, files: ['**/*.spec.*'] })
+  ),
   {
     files: ['**/*.js'],
     languageOptions: { sourceType: 'script' },

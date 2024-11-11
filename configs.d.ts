@@ -1,7 +1,7 @@
 declare module 'eslint-config-ackama' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -9,7 +9,7 @@ declare module 'eslint-config-ackama' {
 declare module 'eslint-config-ackama/@typescript-eslint' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -17,7 +17,7 @@ declare module 'eslint-config-ackama/@typescript-eslint' {
 declare module 'eslint-config-ackama/@typescript-eslint.js' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -25,7 +25,7 @@ declare module 'eslint-config-ackama/@typescript-eslint.js' {
 declare module 'eslint-config-ackama/jest' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -33,7 +33,7 @@ declare module 'eslint-config-ackama/jest' {
 declare module 'eslint-config-ackama/jest.js' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -41,7 +41,7 @@ declare module 'eslint-config-ackama/jest.js' {
 declare module 'eslint-config-ackama/react' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }
@@ -49,7 +49,7 @@ declare module 'eslint-config-ackama/react' {
 declare module 'eslint-config-ackama/react.js' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig | Linter.FlatConfig;
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
 
   export = config;
 }

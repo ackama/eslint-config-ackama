@@ -18,6 +18,12 @@ const config = {
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off'
       }
+    },
+    {
+      files: ['**/*.d.ts'],
+      rules: {
+        'max-classes-per-file': 'off'
+      }
     }
   ],
   rules: {}

@@ -120,3 +120,164 @@ declare module '@typescript-eslint/parser' {
   const parser: ESLint.Linter.ParserModule;
   export = parser;
 }
+
+// todo: these are only typed in v9, which is also where they've been removed...
+declare module 'eslint/use-at-your-own-risk' {
+  import { ESLint, Linter } from 'eslint';
+
+  type FixType = 'directive' | 'layout' | 'problem' | 'suggestion';
+
+  type CacheStrategy = 'content' | 'metadata';
+
+  interface FlatOptions {
+    // File enumeration
+    cwd?: string | undefined;
+    errorOnUnmatchedPattern?: boolean | undefined;
+    globInputPaths?: boolean | undefined;
+    ignore?: boolean | undefined;
+    ignorePatterns?: string[] | null | undefined;
+    passOnNoPatterns?: boolean | undefined;
+    warnIgnored?: boolean | undefined;
+
+    // Linting
+    allowInlineConfig?: boolean | undefined;
+    baseConfig?: Linter.FlatConfig | Linter.FlatConfig[] | null | undefined;
+    overrideConfig?: Linter.FlatConfig | Linter.FlatConfig[] | null | undefined;
+    overrideConfigFile?: boolean | string | undefined;
+    plugins?: Record<string, ESLint.Plugin> | null | undefined;
+    ruleFilter?:
+      | ((arg: {
+          ruleId: string;
+          severity: Exclude<Linter.Severity, 0>;
+        }) => boolean)
+      | undefined;
+    stats?: boolean | undefined;
+
+    // Autofix
+    fix?: boolean | ((message: Linter.LintMessage) => boolean) | undefined;
+    fixTypes?: FixType[] | undefined;
+
+    // Cache-related
+    cache?: boolean | undefined;
+    cacheLocation?: string | undefined;
+    cacheStrategy?: CacheStrategy | undefined;
+
+    // Other Options
+    flags?: string[] | undefined;
+  }
+
+  type LoadedFormatter = unknown;
+
+  export class FlatESLint {
+    public static configType: 'flat';
+
+    public static readonly version: string;
+
+    /**
+     * The default configuration that ESLint uses internally. This is provided for tooling that wants to calculate configurations using the same defaults as ESLint.
+     * Keep in mind that the default configuration may change from version to version, so you shouldn't rely on any particular keys or values to be present.
+     */
+    public static readonly defaultConfig: Linter.Config[];
+
+    public static outputFixes(results: ESLint.LintResult[]): Promise<void>;
+
+    public static getErrorResults(
+      results: ESLint.LintResult[]
+    ): ESLint.LintResult[];
+
+    public constructor(options?: FlatOptions);
+
+    public lintFiles(patterns: string[] | string): Promise<ESLint.LintResult[]>;
+
+    public lintText(
+      code: string,
+      options?: {
+        filePath?: string | undefined;
+        warnIgnored?: boolean | undefined;
+      }
+    ): Promise<ESLint.LintResult[]>;
+
+    public getRulesMetaForResults(
+      results: ESLint.LintResult[]
+    ): ESLint.LintResultData['rulesMeta'];
+
+    public hasFlag(flag: string): boolean;
+
+    public calculateConfigForFile(filePath: string): Promise<unknown>;
+
+    public findConfigFile(): Promise<string | undefined>;
+
+    public isPathIgnored(filePath: string): Promise<boolean>;
+
+    public loadFormatter(nameOrPath?: string): Promise<LoadedFormatter>;
+  }
+
+  interface LegacyOptions {
+    // File enumeration
+    cwd?: string | undefined;
+    errorOnUnmatchedPattern?: boolean | undefined;
+    extensions?: string[] | undefined;
+    globInputPaths?: boolean | undefined;
+    ignore?: boolean | undefined;
+    ignorePath?: string | undefined;
+
+    // Linting
+    allowInlineConfig?: boolean | undefined;
+    baseConfig?: Linter.LegacyConfig | undefined;
+    overrideConfig?: Linter.LegacyConfig | undefined;
+    overrideConfigFile?: string | undefined;
+    plugins?: Record<string, ESLint.Plugin> | undefined;
+    reportUnusedDisableDirectives?: Linter.StringSeverity | undefined;
+    resolvePluginsRelativeTo?: string | undefined;
+    rulePaths?: string[] | undefined;
+    useEslintrc?: boolean | undefined;
+
+    // Autofix
+    fix?: boolean | ((message: Linter.LintMessage) => boolean) | undefined;
+    fixTypes?: FixType[] | undefined;
+
+    // Cache-related
+    cache?: boolean | undefined;
+    cacheLocation?: string | undefined;
+    cacheStrategy?: CacheStrategy | undefined;
+
+    // Other Options
+    flags?: string[] | undefined;
+  }
+
+  export class LegacyESLint {
+    public static configType: 'eslintrc';
+
+    public static readonly version: string;
+
+    public static outputFixes(results: ESLint.LintResult[]): Promise<void>;
+
+    public static getErrorResults(
+      results: ESLint.LintResult[]
+    ): ESLint.LintResult[];
+
+    public constructor(options?: LegacyOptions);
+
+    public lintFiles(patterns: string[] | string): Promise<ESLint.LintResult[]>;
+
+    public lintText(
+      code: string,
+      options?: {
+        filePath?: string | undefined;
+        warnIgnored?: boolean | undefined;
+      }
+    ): Promise<ESLint.LintResult[]>;
+
+    public getRulesMetaForResults(
+      results: ESLint.LintResult[]
+    ): ESLint.LintResultData['rulesMeta'];
+
+    public hasFlag(flag: string): false;
+
+    public calculateConfigForFile(filePath: string): Promise<unknown>;
+
+    public isPathIgnored(filePath: string): Promise<boolean>;
+
+    public loadFormatter(nameOrPath?: string): Promise<ESLint.Formatter>;
+  }
+}

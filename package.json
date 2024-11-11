@@ -21,7 +21,7 @@
     "lint": "eslint .",
     "lint-old": "ESLINT_USE_FLAT_CONFIG=false eslint . --config eslint.config.old.js --ignore-pattern '!.eslintrc.js' --ext js,ts",
     "release": "semantic-release -r git+ssh://git@github.com/ackama/eslint-config-ackama.git",
-    "test": "jest",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
     "tools:generate-configs-list": "ts-node -T tools/generate-configs-list.ts",
     "typecheck": "tsc --noEmit"
   },

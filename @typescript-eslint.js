@@ -109,18 +109,11 @@ const generateConfig = () => {
             }
           ],
           '@typescript-eslint/no-redeclare': 'error',
-          '@typescript-eslint/no-require-imports': 'error',
           '@typescript-eslint/no-shadow': 'warn',
-          '@typescript-eslint/no-this-alias': [
-            'error',
-            { allowDestructuring: true }
-          ],
-          '@typescript-eslint/no-throw-literal': 'error',
           '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
           '@typescript-eslint/no-unnecessary-condition': 'error',
           '@typescript-eslint/no-unnecessary-qualifier': 'error',
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
-          '@typescript-eslint/no-unused-expressions': 'error',
           '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' }
@@ -131,11 +124,9 @@ const generateConfig = () => {
           ],
           '@typescript-eslint/no-useless-constructor': 'error',
           '@typescript-eslint/parameter-properties': 'error',
-          '@typescript-eslint/prefer-includes': 'error',
           '@typescript-eslint/prefer-readonly': 'warn',
           '@typescript-eslint/prefer-reduce-type-parameter': 'error',
           '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
-          '@typescript-eslint/prefer-ts-expect-error': 'error',
           '@typescript-eslint/promise-function-async': 'error',
           '@typescript-eslint/require-array-sort-compare': 'warn',
           '@typescript-eslint/sort-type-constituents': 'error',
@@ -159,12 +150,34 @@ const generateConfig = () => {
           'no-proto': 'off', // TS2339
           'no-setter-return': 'off', // TS2408
           'no-shadow': 'off', // @typescript-eslint
-          'no-throw-literal': 'off', // @typescript-eslint
           'no-underscore-dangle': 'off',
-          'no-unused-expressions': 'off',
           'no-use-before-define': 'off',
           'no-useless-constructor': 'off', // @typescript-eslint
-          'strict': 'off' // via --alwaysStrict
+          'strict': 'off', // via --alwaysStrict
+
+          // todo: these are all managed by @typescript-eslint configs in v8+
+          //  and so can go away when we drop support for v7
+          ...{
+            // these are in the recommended-type-checked config
+            '@typescript-eslint/no-array-delete': 'error',
+            '@typescript-eslint/no-empty-object-type': 'error',
+            '@typescript-eslint/no-require-imports': 'error',
+            'no-throw-literal': 'off',
+            '@typescript-eslint/no-unsafe-function-type': 'error',
+            '@typescript-eslint/no-unsafe-unary-minus': 'error',
+            'no-unused-expressions': 'off',
+            '@typescript-eslint/no-unused-expressions': 'error',
+            '@typescript-eslint/no-wrapper-object-types': 'error',
+            '@typescript-eslint/only-throw-error': 'error',
+            '@typescript-eslint/prefer-namespace-keyword': 'error',
+            'prefer-promise-reject-errors': 'off',
+            '@typescript-eslint/prefer-promise-reject-errors': 'error',
+
+            // these are in the stylistic-type-checked config
+            '@typescript-eslint/prefer-find': 'error',
+            '@typescript-eslint/prefer-includes': 'error',
+            '@typescript-eslint/prefer-regexp-exec': 'error'
+          }
         }
       }
     ];
@@ -259,18 +272,11 @@ const generateConfig = () => {
         }
       ],
       '@typescript-eslint/no-redeclare': 'error',
-      '@typescript-eslint/no-require-imports': 'error',
       '@typescript-eslint/no-shadow': 'warn',
-      '@typescript-eslint/no-this-alias': [
-        'error',
-        { allowDestructuring: true }
-      ],
-      '@typescript-eslint/no-throw-literal': 'error',
       '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
       '@typescript-eslint/no-unnecessary-condition': 'error',
       '@typescript-eslint/no-unnecessary-qualifier': 'error',
       '@typescript-eslint/no-unnecessary-type-arguments': 'error',
-      '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_' }
@@ -281,11 +287,9 @@ const generateConfig = () => {
       ],
       '@typescript-eslint/no-useless-constructor': 'error',
       '@typescript-eslint/parameter-properties': 'error',
-      '@typescript-eslint/prefer-includes': 'error',
       '@typescript-eslint/prefer-readonly': 'warn',
       '@typescript-eslint/prefer-reduce-type-parameter': 'error',
       '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
-      '@typescript-eslint/prefer-ts-expect-error': 'error',
       '@typescript-eslint/promise-function-async': 'error',
       '@typescript-eslint/require-array-sort-compare': 'warn',
       '@typescript-eslint/sort-type-constituents': 'error',
@@ -309,12 +313,34 @@ const generateConfig = () => {
       'no-proto': 'off', // TS2339
       'no-setter-return': 'off', // TS2408
       'no-shadow': 'off', // @typescript-eslint
-      'no-throw-literal': 'off', // @typescript-eslint
       'no-underscore-dangle': 'off',
-      'no-unused-expressions': 'off',
       'no-use-before-define': 'off',
       'no-useless-constructor': 'off', // @typescript-eslint
-      'strict': 'off' // via --alwaysStrict
+      'strict': 'off', // via --alwaysStrict
+
+      // todo: these are all managed by @typescript-eslint configs in v8+
+      //  and so can go away when we drop support for v7
+      ...{
+        // these are in the recommended-type-checked config
+        '@typescript-eslint/no-array-delete': 'error',
+        '@typescript-eslint/no-empty-object-type': 'error',
+        '@typescript-eslint/no-require-imports': 'error',
+        'no-throw-literal': 'off',
+        '@typescript-eslint/no-unsafe-function-type': 'error',
+        '@typescript-eslint/no-unsafe-unary-minus': 'error',
+        'no-unused-expressions': 'off',
+        '@typescript-eslint/no-unused-expressions': 'error',
+        '@typescript-eslint/no-wrapper-object-types': 'error',
+        '@typescript-eslint/only-throw-error': 'error',
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+        'prefer-promise-reject-errors': 'off',
+        '@typescript-eslint/prefer-promise-reject-errors': 'error',
+
+        // these are in the stylistic-type-checked config
+        '@typescript-eslint/prefer-find': 'error',
+        '@typescript-eslint/prefer-includes': 'error',
+        '@typescript-eslint/prefer-regexp-exec': 'error'
+      }
     }
   };
 

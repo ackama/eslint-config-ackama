@@ -81,7 +81,11 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: npm install eslint@${{ matrix.eslint }} @typescript-eslint/parser@${{ matrix.typescript-eslint }} @typescript-eslint/eslint-plugin@${{ matrix.typescript-eslint }} --no-fund
+      - run: npm install eslint@${{ matrix.eslint }} @types/eslint@${{ matrix.eslint }} @eslint/js@${{ matrix.eslint }} @typescript-eslint/parser@${{ matrix.typescript-eslint }} @typescript-eslint/eslint-plugin@${{ matrix.typescript-eslint }} --no-fund
+      - if: matrix.eslint == 8
+        run: npm i -D @types/eslint__js@${{ matrix.eslint }}
+      - if: matrix.eslint != 8 # v9+ provides its own types
+        run: npm un @types/eslint @types/eslint__js
       - run: npm run lint
   test:
     permissions:
@@ -106,10 +110,12 @@ jobs:
   typecheck:
     permissions:
       contents: read # to fetch code (actions/checkout)
-    name: Typecheck on ${{ matrix.os }} using Node.js LTS
+    # prettier-ignore
+    name: Typecheck on ${{ matrix.os }} using Node.js LTS and ESLint v${{ matrix.eslint }} types
     strategy:
       fail-fast: false
       matrix:
+        eslint: [8, 9]
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -122,6 +128,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+      # prettier-ignore
+      - run: npm i -D eslint@${{ matrix.eslint }} @types/eslint@${{ matrix.eslint }} @eslint/js@${{ matrix.eslint }}
+      - if: matrix.eslint == 8
+        run: npm i -D @types/eslint__js@${{ matrix.eslint }}
+      - if: matrix.eslint != 8 # v9+ provides its own types
+        run: npm un @types/eslint @types/eslint__js
       - run: npm run typecheck
 
   release:

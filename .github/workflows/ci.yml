@@ -81,42 +81,21 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: npm install eslint@${{ matrix.eslint }} @types/eslint@${{ matrix.eslint }} @eslint/js@${{ matrix.eslint }} @typescript-eslint/parser@${{ matrix.typescript-eslint }} @typescript-eslint/eslint-plugin@${{ matrix.typescript-eslint }} --no-fund
-      - if: matrix.eslint == 8
-        run: npm i -D @types/eslint__js@${{ matrix.eslint }}
-      - if: matrix.eslint != 8 # v9+ provides its own types
-        run: npm un @types/eslint @types/eslint__js
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
       - run: npm run lint
   test:
     permissions:
       contents: read # to fetch code (actions/checkout)
-    name: Test on ${{ matrix.os }} using Node.js LTS
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: npm
-
-      - run: npm ci
-      - run: npm run test
-  typecheck:
-    permissions:
-      contents: read # to fetch code (actions/checkout)
-    # prettier-ignore
-    name: Typecheck on ${{ matrix.os }} using Node.js LTS and ESLint v${{ matrix.eslint }} types
+    name: Test on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
     strategy:
       fail-fast: false
       matrix:
         eslint: [8, 9]
+        typescript-eslint: [7, 8]
         os: [ubuntu-latest, macOS-latest]
+        exclude:
+          - eslint: 9
+            typescript-eslint: 7
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -129,11 +108,35 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: npm i -D eslint@${{ matrix.eslint }} @types/eslint@${{ matrix.eslint }} @eslint/js@${{ matrix.eslint }}
-      - if: matrix.eslint == 8
-        run: npm i -D @types/eslint__js@${{ matrix.eslint }}
-      - if: matrix.eslint != 8 # v9+ provides its own types
-        run: npm un @types/eslint @types/eslint__js
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
+      - run: npm run test
+  typecheck:
+    permissions:
+      contents: read # to fetch code (actions/checkout)
+    # prettier-ignore
+    name: Typecheck on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
+    strategy:
+      fail-fast: false
+      matrix:
+        eslint: [8, 9]
+        typescript-eslint: [7, 8]
+        os: [ubuntu-latest, macOS-latest]
+        exclude:
+          - eslint: 9
+            typescript-eslint: 7
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - run: npm ci
+      # prettier-ignore
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
       - run: npm run typecheck
 
   release:

@@ -39,6 +39,9 @@ const generateConfig = () => {
           'n': pluginN,
           'prettier': pluginPrettier
         },
+        linterOptions: {
+          reportUnusedDisableDirectives: 'error'
+        },
         rules: {
           ...js.configs.recommended.rules,
           ...pluginEslintCommentsConfigs.recommended.rules,
@@ -48,7 +51,6 @@ const generateConfig = () => {
             'error',
             { allowWholeFile: true }
           ],
-          '@eslint-community/eslint-comments/no-unused-disable': 'error',
           'import/export': 'error',
           'import/no-absolute-path': 'error',
           'import/no-anonymous-default-export': 'error',
@@ -246,6 +248,7 @@ const generateConfig = () => {
       'plugin:@eslint-community/eslint-comments/recommended',
       'plugin:prettier/recommended'
     ],
+    reportUnusedDisableDirectives: true,
     ignorePatterns: [
       '!.eslintrc.js',
       'node_modules/*',

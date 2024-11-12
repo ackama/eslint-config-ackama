@@ -113,11 +113,20 @@ declare module '@typescript-eslint/eslint-plugin' {
   export = plugin;
 }
 
-// todo: doesn't get its own types until v8
+// todo: we need to specify our own types to ensure compatibility with both ESLint v8 and v9
 declare module '@typescript-eslint/parser' {
   import * as ESLint from 'eslint';
 
-  const parser: ESLint.Linter.ParserModule;
+  const parser: ESLint.ESLint.ObjectMetaProperties &
+    (
+      | {
+          parseForESLint(
+            text: string,
+            options?: unknown
+          ): ESLint.Linter.ESLintParseResult;
+        }
+      | { parse(text: string, options?: unknown): ESLint.AST.Program }
+    );
   export = parser;
 }
 

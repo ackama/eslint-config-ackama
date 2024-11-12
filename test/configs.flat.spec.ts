@@ -25,7 +25,7 @@ const requireConfig = (
     Required<Pick<ESLint.Linter.FlatConfig, 'plugins' | 'rules'>>
 > => {
   return (
-    // eslint-disable-next-line n/global-require,@typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
+    // eslint-disable-next-line n/global-require,@typescript-eslint/no-require-imports
     (require(config) as ESLint.Linter.FlatConfig[])
       // exclude config objects that are specifying global ignores
       .filter(c => Object.keys(c).length !== 1 || !('ignores' in c))

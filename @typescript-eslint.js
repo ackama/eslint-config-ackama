@@ -176,7 +176,10 @@ const generateConfig = () => {
             // these are in the stylistic-type-checked config
             '@typescript-eslint/prefer-find': 'error',
             '@typescript-eslint/prefer-includes': 'error',
-            '@typescript-eslint/prefer-regexp-exec': 'error'
+            '@typescript-eslint/prefer-regexp-exec': 'error',
+
+            // this can be covered by @typescript-eslint/no-require-imports in both v7 & v8
+            '@typescript-eslint/no-var-requires': 'off'
           }
         }
       }
@@ -339,7 +342,10 @@ const generateConfig = () => {
         // these are in the stylistic-type-checked config
         '@typescript-eslint/prefer-find': 'error',
         '@typescript-eslint/prefer-includes': 'error',
-        '@typescript-eslint/prefer-regexp-exec': 'error'
+        '@typescript-eslint/prefer-regexp-exec': 'error',
+
+        // this can be covered by @typescript-eslint/no-require-imports in both v7 & v8
+        '@typescript-eslint/no-var-requires': 'off'
       }
     }
   };

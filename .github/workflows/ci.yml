@@ -63,9 +63,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        eslint: [8]
+        eslint: [8, 9]
         typescript-eslint: [7, 8]
         os: [ubuntu-latest, macOS-latest]
+        exclude:
+          - eslint: 9
+            typescript-eslint: 7
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4

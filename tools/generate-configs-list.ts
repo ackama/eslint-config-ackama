@@ -1,5 +1,7 @@
 #!/usr/bin/env ts-node-transpile-only
 
+process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+
 import * as ESLint from 'eslint';
 import { promises as fs } from 'fs';
 import * as path from 'path';
@@ -10,8 +12,7 @@ import {
   peerDependenciesMeta,
   prettier as prettierConfigPackage
 } from '../package.json';
-
-process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+import { determinePluginPackageName } from '../test/helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports,n/global-require,@typescript-eslint/no-var-requires
 const prettierConfig = require(prettierConfigPackage) as Options;
@@ -40,37 +41,6 @@ const requireConfig = (
     rules: {},
     ...requiredConfig
   };
-};
-
-/**
- * Determines the canonical package name for the given eslint `plugin`,
- * that can be used to install the plugin using a package manager.
- *
- * Generally this is done by returning the plugin name with `eslint-plugin-`
- * appended to it (if the name does not already start with that string).
- *
- * @param {string} plugin
- *
- * @return {string}
- */
-const determinePluginPackageName = (plugin: string): string => {
-  if (plugin.startsWith('eslint-plugin-')) {
-    return plugin;
-  }
-
-  if (plugin.startsWith('@')) {
-    const [scope, name] = plugin.split('/');
-
-    let packageName = `${scope}/eslint-plugin`;
-
-    if (name) {
-      packageName += `-${name}`;
-    }
-
-    return packageName;
-  }
-
-  return `eslint-plugin-${plugin}`;
 };
 
 /**

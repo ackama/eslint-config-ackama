@@ -94,7 +94,6 @@ const generateConfig = () => {
     'no-promise-executor-return': 'error',
     'no-proto': 'error',
     'no-return-assign': 'error',
-    'no-return-await': 'error',
     'no-script-url': 'error',
     'no-self-compare': 'error',
     'no-sequences': 'error',

@@ -102,7 +102,6 @@ const generateConfig = () => {
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'warn',
-    '@typescript-eslint/sort-type-constituents': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/unified-signatures': 'warn', // can be a bit wrong
     'array-callback-return': 'off',

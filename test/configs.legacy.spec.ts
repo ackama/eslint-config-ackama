@@ -111,6 +111,7 @@ describe('for each config file', () => {
         linter.lintText('', { filePath: './test/empty.ts' })
       ).resolves.toStrictEqual([
         expect.objectContaining<Partial<ESLint.ESLint.LintResult>>({
+          usedDeprecatedRules: [],
           errorCount: 0,
           fatalErrorCount: 0,
           warningCount: 0

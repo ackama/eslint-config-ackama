@@ -198,8 +198,6 @@ const generateConfig = () => {
       {
         name: 'ackama/ignores',
         ignores: [
-          // todo: this shouldn't be needed anymore, but we've kept it for now as it doesn't hurt
-          '!.eslintrc.js',
           'node_modules/*',
           'coverage/*',
           'bundle/*',

@@ -72,6 +72,7 @@ const generateConfig = () => {
     /** @type {import('eslint').Linter.FlatConfig[]} */
     const config = [
       {
+        name: 'ackama/react',
         languageOptions: {
           parserOptions: {
             ecmaFeatures: {
@@ -99,6 +100,7 @@ const generateConfig = () => {
         }
       },
       {
+        name: 'ackama/react/tsx',
         files: ['**/*.tsx'],
         rules: {
           'react/no-unknown-property': 'off',

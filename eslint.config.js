@@ -5,12 +5,13 @@ const configAckamaJest = require('./jest');
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
-  { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
+  { name: 'custom: files', files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
   .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase),
   .../** @type {import('eslint').Linter.FlatConfig[]} */ (
     configAckamaTypeScript
   ),
   {
+    name: 'custom: options',
     languageOptions: {
       parserOptions: { project: true },
       globals: globals.node
@@ -20,6 +21,7 @@ const config = [
     c => ({ ...c, files: ['**/*.spec.*'] })
   ),
   {
+    name: 'custom: JavaScript scripts',
     files: ['**/*.js'],
     languageOptions: { sourceType: 'script' },
     rules: {
@@ -28,6 +30,7 @@ const config = [
     }
   },
   {
+    name: 'custom: declaration files',
     files: ['**/*.d.ts'],
     rules: {
       'max-classes-per-file': 'off'

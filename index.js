@@ -196,6 +196,7 @@ const generateConfig = () => {
     /** @type {import('eslint').Linter.FlatConfig[]} */
     const config = [
       {
+        name: 'ackama/ignores',
         ignores: [
           // todo: this shouldn't be needed anymore, but we've kept it for now as it doesn't hurt
           '!.eslintrc.js',
@@ -210,6 +211,7 @@ const generateConfig = () => {
         ]
       },
       {
+        name: 'ackama/javascript',
         plugins: {
           ...pluginEslintCommentsConfigs.recommended.plugins,
           '@stylistic/js': pluginStylisticJS,

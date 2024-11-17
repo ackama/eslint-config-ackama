@@ -167,6 +167,7 @@ const generateConfig = () => {
     /** @type {import('eslint').Linter.FlatConfig[]} */
     const config = [
       {
+        name: 'ackama/@typescript-eslint',
         languageOptions: { parser: parserTypeScriptESLint },
         plugins: {
           '@typescript-eslint': pluginTypeScriptESLint,

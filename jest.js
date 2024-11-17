@@ -78,6 +78,7 @@ const generateConfig = () => {
     /** @type {import('eslint').Linter.FlatConfig[]} */
     const config = [
       {
+        name: 'ackama/jest',
         ...pluginJest.configs['flat/recommended'],
         plugins: { jest: pluginJest },
         rules: {

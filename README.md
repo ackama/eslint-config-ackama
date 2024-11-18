@@ -22,31 +22,6 @@ const config = [
 module.exports = config;
 ```
 
-By default, the configurations use the
-["flat config"](https://eslint.org/blog/2022/08/new-config-system-part-2/)
-system introduced in ESLint v8.23.0, with each configuration exporting an array
-of one or more configuration objects. This allows for a more flexible and
-powerful configuration system, but it does require a bit more boilerplate to set
-up.
-
-You can set the `ESLINT_USE_FLAT_CONFIG` environment variable to `false` if you
-wish to have the configurations use the legacy format for use with
-`.eslintrc.js`:
-
-```js
-/** @type {import('eslint').Linter.LegacyConfig} */
-const config = {
-  extends: ['ackama']
-};
-
-module.exports = config;
-```
-
-> [!NOTE]
->
-> This environment variable is also what tells ESLint v9 to use the legacy
-> configuration format.
-
 To reduce potential errors, the configurations provided by this package
 deliberately avoid making assumptions about the environment you're working in,
 meaning you will need to configure what globals are available using the
@@ -74,27 +49,9 @@ const config = [
 module.exports = config;
 ```
 
-If you're using an `.eslintrc.js`, you want to use the
-[`env`](https://eslint.org/docs/user-guide/configuring#specifying-environments)
-toplevel property:
-
-```js
-/** @type {import('eslint').Linter.LegacyConfig} */
-const config = {
-  extends: ['ackama'],
-  env: {
-    node: true, // for NodeJS apps
-    browser: true, // for browser apps
-    commonjs: true // for browser apps that are bundled using a bundler such as webpack
-  }
-};
-
-module.exports = config;
-```
-
 > [!NOTE]
 >
-> The legacy configuration sets the `es2017` env by default, since the majority
+> The legacy configuration set the `es2017` env by default, since the majority
 > of projects should be using ES2017 or higher.
 >
 > The equivalent to this in the flat configuration format is the
@@ -108,17 +65,6 @@ You can also add a `lint` script to the `scripts` property in your apps
 {
   "scripts": {
     "lint": "eslint"
-  }
-}
-```
-
-If you're using the legacy configuration format, you will also need to specify a
-file or directory along with the file extensions you want to lint:
-
-```json
-{
-  "scripts": {
-    "lint": "eslint . --ext js,jsx,ts,tsx"
   }
 }
 ```
@@ -187,24 +133,6 @@ const config = [
 module.exports = config;
 ```
 
-> [!NOTE]
->
-> The flat configuration system does not support `.eslintignore`
-
-For legacy configurations, this can be done using the
-[`ignorePatterns`](https://eslint.org/docs/user-guide/configuring#ignorepatterns-in-config-files)
-toplevel property, which is an array that accepts `.gitignore` glob-like
-strings:
-
-```js
-/** @type {import('eslint').Linter.LegacyConfig} */
-const config = {
-  ignorePatterns: ['!public/', 'tmp/']
-};
-
-module.exports = config;
-```
-
 ### Typical complete example
 
 Here's what a typical `eslint.config.js` would look like for a TypeScript
@@ -251,39 +179,6 @@ const config = [
 module.exports = config;
 ```
 
-Here's what a typical `.eslintrc.js` would look like for a TypeScript project
-that uses `jest` & `react`:
-
-```js
-/** @type {import('eslint').Linter.LegacyConfig} */
-const config = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    projectService: true,
-    ecmaVersion: 2019,
-    sourceType: 'module'
-  },
-  env: { commonjs: true },
-  extends: ['ackama', 'ackama/@typescript-eslint', 'ackama/react'],
-  ignorePatterns: ['coverage', 'lib', 'infra'],
-  overrides: [
-    {
-      files: ['test/**'],
-      extends: ['ackama/jest'],
-      rules: { 'jest/prefer-expect-assertions': 'off' }
-    }
-  ],
-  rules: {}
-};
-
-module.exports = config;
-```
-
-Note the use of `overrides` to target specific files for the `ackama/jest`
-config. This is not a requirement, but can help reduce the changes of false
-positives.
-
 ### Notes & Considerations
 
 While the majority of rules enabled by these configurations are sound, a few
@@ -294,6 +189,31 @@ the future; the details of these rules are documented below.
 
 In general, we are more acceptance of rules that don't catch everything than
 rules that report too many false positives.
+
+#### Usage with legacy ESLint configurations
+
+Officially configurations are now exported as flat configuration objects which
+can only be used with the
+["flat config"](https://eslint.org/blog/2022/08/new-config-system-part-2/)
+system introduced in ESLint v8.23.0, since that is required to be able to move
+beyond ESLint v8 so codebases should be migrating to that system.
+
+Unofficially however, since the upgrade involves replacing a number of plugins
+unrelated to flat configuration, the configurations will export a legacy
+configuration if the `ESLINT_USE_FLAT_CONFIG` environment variable is set to
+`false`.
+
+> [!NOTE]
+>
+> This environment variable is also what tells ESLint v9 to use the legacy
+> configuration format.
+
+This allows complex codebases to handle the upgrade as a two-step process: first
+upgrading to the latest version of ESLint and the new plugins, and then
+upgrading to the flat configuration system.
+
+This legacy configuration will be removed in the next major if not sooner, so
+should not be relied on beyond the upgrade process.
 
 #### React: Lint custom hooks that accept a dependency array
 

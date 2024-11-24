@@ -7,6 +7,7 @@ import {
   configFiles,
   determinePluginPackageName,
   makeEnabledRulesWarn,
+  projectServicePropertyName,
   typeDeclarations
 } from './helpers';
 import packageJson from '../package.json';
@@ -88,9 +89,8 @@ describe('for each config file', () => {
           requireConfigFile: false,
 
           // @typescript-eslint/parser
-          project: 'tsconfig.json',
+          [projectServicePropertyName]: true,
           createDefaultProgram: false,
-          ecmaVersion: 2019,
           sourceType: 'module'
         },
         // make all enabled rules warn, since misconfigured rules will create errors

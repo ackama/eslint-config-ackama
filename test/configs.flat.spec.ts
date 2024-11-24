@@ -8,6 +8,7 @@ import {
   configFiles,
   determinePluginPackageName,
   makeEnabledRulesWarn,
+  projectServicePropertyName,
   typeDeclarations
 } from './helpers';
 import packageJson from '../package.json';
@@ -99,7 +100,7 @@ describe('for each config file', () => {
           parserOptions: {
             ...c.languageOptions?.parserOptions,
             // @typescript-eslint/parser
-            project: true,
+            [projectServicePropertyName]: true,
             createDefaultProgram: false,
             ecmaVersion: 2019
           }

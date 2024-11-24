@@ -6,22 +6,6 @@ declare module 'eslint-config-ackama' {
   export = config;
 }
 
-declare module 'eslint-config-ackama/@typescript-eslint' {
-  import type { Linter } from 'eslint';
-
-  const config: Linter.LegacyConfig | Linter.FlatConfig[];
-
-  export = config;
-}
-
-declare module 'eslint-config-ackama/@typescript-eslint.js' {
-  import type { Linter } from 'eslint';
-
-  const config: Linter.LegacyConfig | Linter.FlatConfig[];
-
-  export = config;
-}
-
 declare module 'eslint-config-ackama/jest' {
   import type { Linter } from 'eslint';
 
@@ -47,6 +31,22 @@ declare module 'eslint-config-ackama/react' {
 }
 
 declare module 'eslint-config-ackama/react.js' {
+  import type { Linter } from 'eslint';
+
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
+
+  export = config;
+}
+
+declare module 'eslint-config-ackama/typescript' {
+  import type { Linter } from 'eslint';
+
+  const config: Linter.LegacyConfig | Linter.FlatConfig[];
+
+  export = config;
+}
+
+declare module 'eslint-config-ackama/typescript.js' {
   import type { Linter } from 'eslint';
 
   const config: Linter.LegacyConfig | Linter.FlatConfig[];

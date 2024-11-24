@@ -93,11 +93,6 @@ Below is a complete list of the configs provided, and their dependencies:
   - `eslint-plugin-prettier`
   - `eslint-plugin-import`
   - `eslint-plugin-n`
-- `ackama/@typescript-eslint`
-  - `@typescript-eslint/parser`
-  - `@typescript-eslint/eslint-plugin`
-  - `@stylistic/eslint-plugin-ts`
-  - `eslint-plugin-prettier`
 - `ackama/jest`
   - `eslint-plugin-jest`
 - `ackama/react`
@@ -105,6 +100,11 @@ Below is a complete list of the configs provided, and their dependencies:
   - `eslint-plugin-react`
   - `eslint-plugin-react-hooks`
   - `eslint-plugin-jsx-a11y`
+- `ackama/typescript`
+  - `@typescript-eslint/parser`
+  - `@typescript-eslint/eslint-plugin`
+  - `@stylistic/eslint-plugin-ts`
+  - `eslint-plugin-prettier`
 
 <!-- end configs list -->
 
@@ -140,9 +140,9 @@ project that uses `jest` & `react`:
 
 ```js
 const configAckamaBase = require('eslint-config-ackama');
-const configAckamaTypeScript = require('eslint-config-ackama/@typescript-eslint');
 const configAckamaJest = require('eslint-config-ackama/jest');
 const configAckamaReact = require('eslint-config-ackama/react');
+const configAckamaTypeScript = require('eslint-config-ackama/typescript');
 const globals = require('globals');
 
 /** @type {import('eslint').Linter.FlatConfig[]} */

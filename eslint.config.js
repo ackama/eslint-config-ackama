@@ -1,7 +1,7 @@
 const globals = require('globals');
-const configAckamaTypeScript = require('./@typescript-eslint');
 const configAckamaBase = require('./index');
 const configAckamaJest = require('./jest');
+const configAckamaTypeScript = require('./typescript');
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [

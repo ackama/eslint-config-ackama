@@ -1,5 +1,12 @@
+import { version as typescriptESLintPluginVersion } from '@typescript-eslint/eslint-plugin/package.json';
 import ESLint from 'eslint';
 import fs from 'fs';
+import semver from 'semver/preload';
+
+export const projectServicePropertyName =
+  semver.major(typescriptESLintPluginVersion) === 7
+    ? 'project'
+    : 'projectService';
 
 // eslint-disable-next-line n/no-sync
 export const configFiles = fs

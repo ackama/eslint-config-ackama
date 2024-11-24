@@ -11,10 +11,10 @@
   "author": "Gareth Jones",
   "types": "configs.d.ts",
   "files": [
-    "@typescript-eslint.js",
     "index.js",
     "jest.js",
     "react.js",
+    "typescript.js",
     "configs.d.ts"
   ],
   "scripts": {

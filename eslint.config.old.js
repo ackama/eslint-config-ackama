@@ -8,7 +8,7 @@ const config = {
     ecmaVersion: 2019
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: ['./index.js', './@typescript-eslint.js'],
+  extends: ['./index.js', './typescript.js'],
   ignorePatterns: ['!.eslintplugin/'],
   overrides: [
     { files: ['*.spec.*'], extends: ['./jest.js'] },

@@ -56,11 +56,11 @@ const requireConfig = (
 });
 
 describe('package.json', () => {
-  it('includes every config file', () => {
+  it('includes every config file and their type declaration file', () => {
     expect.hasAssertions();
 
     expect(packageJson.files).toStrictEqual(
-      expect.arrayContaining(configFiles)
+      configFiles.flatMap(file => [file, file.replace('.js', '.d.ts')])
     );
   });
 
@@ -152,6 +152,12 @@ describe('for each config file', () => {
           fatalErrorCount: 0
         })
       ]);
+    });
+
+    it('has a type declaration file', () => {
+      expect.hasAssertions();
+
+      expect(fs.existsSync(configFile.replace('.js', '.d.ts'))).toBe(true);
     });
 
     it('lists any plugins as peer dependencies', () => {

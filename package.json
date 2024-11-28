@@ -11,10 +11,15 @@
   "author": "Gareth Jones",
   "files": [
     "@typescript-eslint.js",
+    "@typescript-eslint.d.ts",
     "flowtype.js",
+    "flowtype.d.ts",
     "index.js",
+    "index.d.ts",
     "jest.js",
-    "react.js"
+    "jest.d.ts",
+    "react.js",
+    "react.d.ts"
   ],
   "scripts": {
     "lint": "eslint . --ext js,ts",

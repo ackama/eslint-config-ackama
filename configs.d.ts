@@ -1,7 +1,7 @@
 declare module 'eslint-config-ackama' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig;
+  const config: Linter.Config;
 
   export = config;
 }
@@ -9,7 +9,7 @@ declare module 'eslint-config-ackama' {
 declare module 'eslint-config-ackama/@typescript-eslint' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig;
+  const config: Linter.Config;
 
   export = config;
 }
@@ -17,7 +17,7 @@ declare module 'eslint-config-ackama/@typescript-eslint' {
 declare module 'eslint-config-ackama/flowtype' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig;
+  const config: Linter.Config;
 
   export = config;
 }
@@ -25,7 +25,7 @@ declare module 'eslint-config-ackama/flowtype' {
 declare module 'eslint-config-ackama/jest' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig;
+  const config: Linter.Config;
 
   export = config;
 }
@@ -33,7 +33,7 @@ declare module 'eslint-config-ackama/jest' {
 declare module 'eslint-config-ackama/react' {
   import type { Linter } from 'eslint';
 
-  const config: Linter.LegacyConfig;
+  const config: Linter.Config;
 
   export = config;
 }

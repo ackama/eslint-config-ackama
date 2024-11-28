@@ -9,17 +9,14 @@
   },
   "license": "ISC",
   "author": "Gareth Jones",
+  "types": "configs.d.ts",
   "files": [
     "@typescript-eslint.js",
-    "@typescript-eslint.d.ts",
     "flowtype.js",
-    "flowtype.d.ts",
     "index.js",
-    "index.d.ts",
     "jest.js",
-    "jest.d.ts",
     "react.js",
-    "react.d.ts"
+    "configs.d.ts"
   ],
   "scripts": {
     "lint": "eslint . --ext js,ts",

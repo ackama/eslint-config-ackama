@@ -13,6 +13,8 @@ const configFiles = fs
   )
   .map(value => value.name);
 
+const typeDeclarations = fs.readFileSync('configs.d.ts', 'utf8');
+
 /**
  * Determines the canonical package name for the given eslint `plugin`,
  * that can be used to install the plugin using a package manager.
@@ -56,12 +58,19 @@ const requireConfig = (
 });
 
 describe('package.json', () => {
-  it('includes every config file and their type declaration file', () => {
+  it('includes every config file', () => {
     expect.hasAssertions();
 
     expect(packageJson.files).toStrictEqual(
-      configFiles.flatMap(file => [file, file.replace('.js', '.d.ts')])
+      expect.arrayContaining(configFiles)
     );
+  });
+
+  it('includes typescript types', () => {
+    expect.hasAssertions();
+
+    expect(packageJson.types).toBe('configs.d.ts');
+    expect(packageJson.files).toContain('configs.d.ts');
   });
 
   describe('peer dependencies', () => {
@@ -154,10 +163,16 @@ describe('for each config file', () => {
       ]);
     });
 
-    it('has a type declaration file', () => {
+    it('is defined as a module in the type declarations', () => {
       expect.hasAssertions();
 
-      expect(fs.existsSync(configFile.replace('.js', '.d.ts'))).toBe(true);
+      const moduleName =
+        // eslint-disable-next-line jest/no-conditional-in-test
+        configFile === 'index.js'
+          ? 'eslint-config-ackama'
+          : `eslint-config-ackama/${configFile.replace(/\.js$/u, '')}`;
+
+      expect(typeDeclarations).toContain(`declare module '${moduleName}' {`);
     });
 
     it('lists any plugins as peer dependencies', () => {

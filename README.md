@@ -16,7 +16,7 @@ const configAckamaBase = require('eslint-config-ackama');
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase)
+  ...configAckamaBase
 ];
 
 module.exports = config;
@@ -34,7 +34,7 @@ const globals = require('globals');
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase),
+  ...configAckamaBase,
   {
     languageOptions: {
       globals: {
@@ -127,7 +127,7 @@ const configAckamaBase = require('eslint-config-ackama');
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
   { ignores: ['infra'] },
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase)
+  ...configAckamaBase
 ];
 
 module.exports = config;
@@ -149,19 +149,17 @@ const globals = require('globals');
 const config = [
   { files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}'] },
   { ignores: ['infra'] },
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaBase),
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (
-    configAckamaTypeScript
-  ),
+  ...configAckamaBase,
+  ...configAckamaTypeScript,
   {
     languageOptions: {
       parserOptions: { projectService: true },
       globals: globals.commonjs
     }
   },
-  .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaReact),
+  ...configAckamaReact,
   ...[
-    .../** @type {import('eslint').Linter.FlatConfig[]} */ (configAckamaJest),
+    ...configAckamaJest,
     /** @type {import('eslint').Linter.FlatConfig} */ ({
       rules: { 'jest/prefer-expect-assertions': 'off' }
     })

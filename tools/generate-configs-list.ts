@@ -91,6 +91,7 @@ const determineConfigDependencies = (configName: string): string[] => {
 };
 
 const configs = files
+  .filter(config => config.endsWith('.js'))
   .sort((a, b) => (a === 'index.js' ? -1 : a.localeCompare(b)))
   .map(config => path.parse(config).name)
   .flatMap(name => [

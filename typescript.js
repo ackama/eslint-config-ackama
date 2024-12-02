@@ -175,6 +175,11 @@ const generateConfig = () => {
           'prettier': pluginPrettier
         },
         rules: {
+          // we have to manually include this in flat config due to @typescript-eslint
+          // expecting a special helper package to be used to translate their configs
+          // which we're choosing not to use, at least for now
+          ...pluginTypeScriptESLint.configs['eslint-recommended'].overrides[0]
+            .rules,
           ...pluginTypeScriptESLint.configs['recommended-type-checked'].rules,
           ...pluginTypeScriptESLint.configs['stylistic-type-checked'].rules,
           ...pluginPrettierRecommended.rules,

@@ -96,7 +96,8 @@ declare module '@typescript-eslint/eslint-plugin' {
       'all': ESLint.Linter.LegacyConfig;
       'base': ESLint.Linter.LegacyConfig;
       'disable-type-checked': ESLint.Linter.LegacyConfig;
-      'eslint-recommended': ESLint.Linter.LegacyConfig;
+      'eslint-recommended': ESLint.Linter.LegacyConfig &
+        Required<Pick<ESLint.Linter.LegacyConfig, 'overrides'>>;
       'recommended': ESLint.Linter.LegacyConfig;
       /** @deprecated - please use "recommended-type-checked" instead. */
       'recommended-requiring-type-checking': ESLint.Linter.LegacyConfig;

@@ -170,9 +170,14 @@ describe('for each config file', () => {
         // eslint-disable-next-line jest/no-conditional-in-test
         configFile === 'index.js'
           ? 'eslint-config-ackama'
-          : `eslint-config-ackama/${configFile.replace(/\.js$/u, '')}`;
+          : `eslint-config-ackama/${configFile}`;
 
+      // we expect the module declared with and without the `.js` extension
+      // to ensure support for importing in both CJS and ESM environments
       expect(typeDeclarations).toContain(`declare module '${moduleName}' {`);
+      expect(typeDeclarations).toContain(
+        `declare module '${moduleName.replace(/\.js$/u, '')}' {`
+      );
     });
 
     it('lists any plugins as peer dependencies', () => {

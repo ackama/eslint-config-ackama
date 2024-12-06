@@ -1,3 +1,51 @@
+# [4.0.0](https://github.com/ackama/eslint-config-ackama/compare/v3.4.0...v4.0.0) (2024-12-06)
+
+
+### Bug Fixes
+
+* **javascript:** remove deprecated `no-return-await` rule ([e5a5f35](https://github.com/ackama/eslint-config-ackama/commit/e5a5f359c86db1ad1bc7a1af86014458f783bf9a))
+* **javascript:** replace `no-new-object` with `no-object-constructor` ([d2005ce](https://github.com/ackama/eslint-config-ackama/commit/d2005ce8d39eb24c7ab923aac88de1e7b32c1b50))
+* omit negation from ignores in flat configuration to avoid breaking `@eslint/config-inspector` ([d6e497f](https://github.com/ackama/eslint-config-ackama/commit/d6e497f18842d04930948c5f873acbaea17fe0f9))
+* **typescript:** ensure that eslint recommended overrides are applied ([27c2961](https://github.com/ackama/eslint-config-ackama/commit/27c2961d9750d0e25e087ca55e8a7527901c30af))
+* **typescript:** explicitly disable `@typescript-eslint/no-require-imports` ([619df3d](https://github.com/ackama/eslint-config-ackama/commit/619df3d376bc1d8dc6a554fa78f73dc2844c4d53))
+* **typescript:** remove `@typescript-eslint/sort-type-constituents` ([e6180b7](https://github.com/ackama/eslint-config-ackama/commit/e6180b7857ebb2e492a7f45a5c9248d37c38fc34))
+
+
+### Features
+
+* add names to configs ([e408fdb](https://github.com/ackama/eslint-config-ackama/commit/e408fdb1649903432754fc841f666deac53d51be))
+* convert configs to flat style ([88ec9f6](https://github.com/ackama/eslint-config-ackama/commit/88ec9f66e1187cfcc0dba2cc3ff3fefffcec84a3))
+* **javascript:** drop support for ESLint v7 ([be9b002](https://github.com/ackama/eslint-config-ackama/commit/be9b0027f212777f8e13e15020487f9a667890a9))
+* **javascript:** enable built-in `reportUnusedDisableDirectives` check ([b9c8f21](https://github.com/ackama/eslint-config-ackama/commit/b9c8f210507a7110248664d51bc1543a830a70b4))
+* **javascript:** switch to `@eslint-community/eslint-plugin-eslint-comments` ([245dcee](https://github.com/ackama/eslint-config-ackama/commit/245dceec15be8fe16f20d79be8763df4f31d0a12))
+* **javascript:** switch to `@stylistic/eslint-plugin-js` ([e93ef65](https://github.com/ackama/eslint-config-ackama/commit/e93ef658040812b8977e19a2c46c2540163bdb89))
+* **javascript:** switch to `eslint-plugin-n` ([afac2bc](https://github.com/ackama/eslint-config-ackama/commit/afac2bcdebdfb84ba26a342ce268dc71a2ed794d))
+* **jest:** drop support for `eslint-plugin-jest` v27 ([e838458](https://github.com/ackama/eslint-config-ackama/commit/e8384587ef8e279f7e05bd5475f02653e1005f1c))
+* **jest:** source formatting rules from `eslint-plugin-jest` ([ea36362](https://github.com/ackama/eslint-config-ackama/commit/ea36362b29c1e35e9ef9004db7999db24610ba17))
+* make `@eslint/js` a required peer dependency ([873100f](https://github.com/ackama/eslint-config-ackama/commit/873100f85b498d637a903fd7f0f894d6569d574a))
+* only officially export flat configuration type configs ([b8cc031](https://github.com/ackama/eslint-config-ackama/commit/b8cc0311aa22396de786c495b2512c526bd65176))
+* **react:** remove `jsx-no-bind` rule ([9fa7ef5](https://github.com/ackama/eslint-config-ackama/commit/9fa7ef5f15d4f17cef78a8f9fc988e7474585a45))
+* remove `flowtype` config and related plugins ([a781613](https://github.com/ackama/eslint-config-ackama/commit/a7816136ba861809f7a88c9e19ab90e8e8c58802))
+* rename `[@typescript-eslint](https://github.com/typescript-eslint)` config to `typescript` ([64eaaec](https://github.com/ackama/eslint-config-ackama/commit/64eaaec8e1af8bf200fc24ef1f49f43ae276572c))
+* support `@typescript-eslint/*` v8 ([81d286b](https://github.com/ackama/eslint-config-ackama/commit/81d286bbfe7b7778bfb682bb13270812451680b6))
+* switch to exporting arrays to allow multiple configuration objects ([6d956e0](https://github.com/ackama/eslint-config-ackama/commit/6d956e04ed37fe38159e1f13941a7afc0813e5ae))
+* **typescript:** drop support for `@typescript-eslint/*` v6 ([87968fc](https://github.com/ackama/eslint-config-ackama/commit/87968fc055b97f2a163e6b622e34316c4fe48c6c))
+* **typescript:** switch to `@stylistic/eslint-plugin-ts` ([ec6f9de](https://github.com/ackama/eslint-config-ackama/commit/ec6f9de19fcef32705e023a7570012a670fee2d6))
+* upgrade `eslint-config-prettier` to v9 ([0b66abb](https://github.com/ackama/eslint-config-ackama/commit/0b66abbbeace33465e2391d1525e6d9a4574f130))
+
+
+### BREAKING CHANGES
+
+* you must now use `typescript` instead of `@typescript-eslint`
+* you must now ensure `@eslint/js` is installed
+* configs are now flat by default, unless `ESLINT_USE_FLAT_CONFIG` is `'false'`
+* `flowtype` config is no longer available
+* **typescript:** you must now install `@stylistic/eslint-plugin-ts`
+* **javascript:** you must now install `@stylistic/eslint-plugin-js`
+* **jest:** `eslint-plugin-jest` v27 is no longer supported
+* **typescript:** `@typescript-eslint/*` v6 is no longer supported
+* **javascript:** ESLint v7 is no longer supported
+
 # [3.4.0](https://github.com/ackama/eslint-config-ackama/compare/v3.3.0...v3.4.0) (2024-12-06)
 
 

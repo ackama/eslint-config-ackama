@@ -1,5 +1,9 @@
-name: Checks
-on: [pull_request]
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 concurrency:
   # Pushing new changes to a branch will cancel any in-progress CI runs of this workflow
@@ -14,6 +18,8 @@ env:
   # reduces noise from npm post-install scripts
   DISABLE_OPENCOLLECTIVE: true
   OPEN_SOURCE_CONTRIBUTOR: true
+  NPM_CONFIG_AUDIT: false
+  NPM_CONFIG_FUND: false
 
 jobs:
   commitlint:
@@ -119,3 +125,37 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
 
+  release:
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs:
+      - commitlint
+      - docs
+      - lint
+      - test
+      - typecheck
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: install
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: typecheck
+        run: npm run typecheck
+      - name: test
+        run: npm run test
+
+      - name: release
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

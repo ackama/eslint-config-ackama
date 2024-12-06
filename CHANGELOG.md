@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/ackama/eslint-config-ackama/compare/v3.3.0...v3.4.0) (2024-12-06)
+
+
+### Features
+
+* add type declarations for configs ([#347](https://github.com/ackama/eslint-config-ackama/issues/347)) ([7d1577d](https://github.com/ackama/eslint-config-ackama/commit/7d1577dfc1b240ef59656fb34bc1b5913d17ec12)), closes [/github.com/typescript-eslint/typescript-eslint/issues/955#issuecomment-529075082](https://github.com//github.com/typescript-eslint/typescript-eslint/issues/955/issues/issuecomment-529075082)
+
 # [3.3.0](https://github.com/ackama/eslint-config-ackama/compare/v3.2.3...v3.3.0) (2024-11-11)
 
 

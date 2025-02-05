@@ -222,7 +222,7 @@ passing it the name of your custom hook via its `additionalHooks` option:
 ```json
 {
   "rules": {
-    "react-hooks/exhaustive-deps": ["warn", { "additionalHooks": "useHook" }]
+    "react-hooks/exhaustive-deps": ["error", { "additionalHooks": "useHook" }]
   }
 }
 ```

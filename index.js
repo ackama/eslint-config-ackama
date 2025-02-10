@@ -27,17 +27,17 @@ const generateConfig = () => {
         'newlines-between': 'never'
       }
     ],
-    'n/callback-return': 'warn',
+    'n/callback-return': 'error',
     'n/global-require': 'error',
     'n/no-deprecated-api': 'error',
     'n/no-mixed-requires': 'error',
     'n/no-new-require': 'error',
     'n/no-path-concat': 'error',
     'n/no-process-exit': 'error',
-    'n/no-sync': 'warn',
+    'n/no-sync': 'error',
     'accessor-pairs': ['error', { enforceForClassMembers: true }],
     'array-callback-return': 'error',
-    'block-scoped-var': 'warn',
+    'block-scoped-var': 'error',
     'camelcase': ['error', { allow: ['child_process'] }],
     'consistent-return': 'error',
     'consistent-this': 'error',
@@ -57,7 +57,7 @@ const generateConfig = () => {
     ],
     'max-classes-per-file': ['error', 1],
     'new-cap': ['error', { capIsNewExceptions: ['ESLintUtils.RuleCreator'] }],
-    'no-alert': 'warn',
+    'no-alert': 'error',
     'no-array-constructor': 'error',
     'no-await-in-loop': 'error',
     'no-bitwise': 'error',
@@ -98,7 +98,7 @@ const generateConfig = () => {
     'no-self-compare': 'error',
     'no-sequences': 'error',
     'no-setter-return': 'error',
-    'no-shadow': 'warn',
+    'no-shadow': 'error',
     'no-template-curly-in-string': 'error',
     'no-throw-literal': 'error',
     'no-undef-init': 'error',
@@ -147,7 +147,7 @@ const generateConfig = () => {
         next: 'directive'
       }
     ],
-    'prefer-arrow-callback': 'warn',
+    'prefer-arrow-callback': 'error',
     'prefer-const': 'error',
     'prefer-destructuring': [
       'error',
@@ -163,14 +163,14 @@ const generateConfig = () => {
     'prefer-regex-literals': 'error',
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
-    'prefer-template': 'warn',
+    'prefer-template': 'error',
     'radix': ['error', 'as-needed'],
     'require-await': 'off', // never
     'require-unicode-regexp': 'error',
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
     'sort-vars': 'error',
     '@stylistic/js/spaced-comment': [
-      'warn',
+      'error',
       'always',
       {
         markers: ['=', '#region'],

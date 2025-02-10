@@ -36,7 +36,7 @@ const generateConfig = () => {
     'jest/no-conditional-expect': 'error',
     'jest/no-conditional-in-test': 'error',
     'jest/no-deprecated-functions': 'error',
-    'jest/no-large-snapshots': 'warn',
+    'jest/no-large-snapshots': 'error',
     'jest/no-restricted-matchers': [
       'error',
       banMatchers({
@@ -50,7 +50,7 @@ const generateConfig = () => {
     'jest/no-test-return-statement': 'error',
     'jest/prefer-called-with': 'error',
     // you can disable this if you use a `beforeEach` setup script,
-    'jest/prefer-expect-assertions': 'warn',
+    'jest/prefer-expect-assertions': 'error',
     'jest/prefer-expect-resolves': 'error',
     'jest/prefer-hooks-on-top': 'error',
     'jest/prefer-lowercase-title': ['error', { ignoreTopLevelDescribe: true }],

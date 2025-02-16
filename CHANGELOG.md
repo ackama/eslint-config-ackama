@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/ackama/eslint-config-ackama/compare/v4.0.0...v4.1.0) (2025-02-16)
+
+
+### Features
+
+* make all rules `error` instead of `warn` ([#356](https://github.com/ackama/eslint-config-ackama/issues/356)) ([150887c](https://github.com/ackama/eslint-config-ackama/commit/150887ce8fec98717b372f271c3fec174e0a70cc))
+
 # [4.0.0](https://github.com/ackama/eslint-config-ackama/compare/v3.4.0...v4.0.0) (2024-12-06)
 
 

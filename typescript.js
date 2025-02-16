@@ -85,7 +85,7 @@ const generateConfig = () => {
       }
     ],
     '@typescript-eslint/no-redeclare': 'error',
-    '@typescript-eslint/no-shadow': 'warn',
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
     '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
@@ -97,13 +97,13 @@ const generateConfig = () => {
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/parameter-properties': 'error',
-    '@typescript-eslint/prefer-readonly': 'warn',
+    '@typescript-eslint/prefer-readonly': 'error',
     '@typescript-eslint/prefer-reduce-type-parameter': 'error',
-    '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+    '@typescript-eslint/prefer-string-starts-ends-with': 'error',
     '@typescript-eslint/promise-function-async': 'error',
-    '@typescript-eslint/require-array-sort-compare': 'warn',
+    '@typescript-eslint/require-array-sort-compare': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
-    '@typescript-eslint/unified-signatures': 'warn', // can be a bit wrong
+    '@typescript-eslint/unified-signatures': 'error', // can be a bit wrong
     'array-callback-return': 'off',
     'block-scoped-var': 'off',
     'camelcase': 'off',

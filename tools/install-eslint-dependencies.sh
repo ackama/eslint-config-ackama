@@ -4,13 +4,16 @@ set -e
 
 esv=${1?'must be eslint major version'}
 tsv=${2?'must be typescript eslint major version'}
+ssv=${3?'must be stylistic eslint major version'}
 
 npm install -D \
   "eslint@$esv" \
   "@types/eslint@$esv" \
   "@eslint/js@$esv" \
   "@typescript-eslint/parser@$tsv" \
-  "@typescript-eslint/eslint-plugin@$tsv"
+  "@typescript-eslint/eslint-plugin@$tsv" \
+  "@stylistic/eslint-plugin-js@$ssv" \
+  "@stylistic/eslint-plugin-ts@$ssv"
 
 # ESLint v9+ ships with its own types
 if [ "$esv" -eq 8 ]; then

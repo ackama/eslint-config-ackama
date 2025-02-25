@@ -59,14 +59,17 @@ jobs:
     permissions:
       contents: read # to fetch code (actions/checkout)
     # prettier-ignore
-    name: Lint on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
+    name: Lint on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, eslint-stylistic v${{ matrix.eslint-stylistic }}, and using Node.js LTS
     strategy:
       fail-fast: false
       matrix:
         eslint: [8, 9]
         typescript-eslint: [7, 8]
+        eslint-stylistic: [2, 3, 4]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 8
+            eslint-stylistic: 4
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}
@@ -81,19 +84,22 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }} ${{ matrix.eslint-stylistic }}
       - run: npm run lint
   test:
     permissions:
       contents: read # to fetch code (actions/checkout)
-    name: Test on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
+    name: Test on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, eslint-stylistic v${{ matrix.eslint-stylistic }}, and using Node.js LTS
     strategy:
       fail-fast: false
       matrix:
         eslint: [8, 9]
         typescript-eslint: [7, 8]
+        eslint-stylistic: [2, 3, 4]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 8
+            eslint-stylistic: 4
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}
@@ -108,20 +114,23 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }} ${{ matrix.eslint-stylistic }}
       - run: npm run test
   typecheck:
     permissions:
       contents: read # to fetch code (actions/checkout)
     # prettier-ignore
-    name: Typecheck on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, and using Node.js LTS
+    name: Typecheck on ${{ matrix.os }} with eslint v${{ matrix.eslint }}, @typescript-eslint v${{ matrix.typescript-eslint }}, eslint-stylistic v${{ matrix.eslint-stylistic }}, and using Node.js LTS
     strategy:
       fail-fast: false
       matrix:
         eslint: [8, 9]
         typescript-eslint: [7, 8]
+        eslint-stylistic: [2, 3, 4]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 8
+            eslint-stylistic: 4
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}
@@ -136,7 +145,7 @@ jobs:
 
       - run: npm ci
       # prettier-ignore
-      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }}
+      - run: tools/install-eslint-dependencies.sh ${{ matrix.eslint }} ${{ matrix.typescript-eslint }} ${{ matrix.eslint-stylistic }}
       - run: npm run typecheck
 
   release:

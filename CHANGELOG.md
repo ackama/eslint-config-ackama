@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/ackama/eslint-config-ackama/compare/v4.1.0...v4.2.0) (2025-07-02)
+
+
+### Features
+
+* allow `eslint-plugin-jest` v29 ([#380](https://github.com/ackama/eslint-config-ackama/issues/380)) ([2868695](https://github.com/ackama/eslint-config-ackama/commit/28686951e41f8f932854842cab35120c7e85a572))
+
 # [4.1.0](https://github.com/ackama/eslint-config-ackama/compare/v4.0.0...v4.1.0) (2025-02-16)
 
 

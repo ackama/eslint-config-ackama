@@ -94,7 +94,7 @@
     "eslint-plugin-n": "^17.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-hooks": "^6.0.0",
     "globals": "^15.12.0",
     "husky": "^4.3.0",
     "jest": "^30.0.0",
@@ -121,7 +121,7 @@
     "eslint-plugin-n": ">= 14.0.0",
     "eslint-plugin-prettier": ">= 3.1",
     "eslint-plugin-react": "^7.0.0",
-    "eslint-plugin-react-hooks": "^4.0.0 || ^5.0.0",
+    "eslint-plugin-react-hooks": "^6.0.0",
     "prettier": ">= 2.0"
   },
   "peerDependenciesMeta": {

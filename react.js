@@ -10,7 +10,7 @@ const generateConfig = () => {
     // and its likely our standard JS config will be used alongside this one
     'curly': 'error',
 
-    // todo: react-hooks does not export a flat config (yet)
+    // todo: switch to react-hooks/recommended once we require v6+
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
 

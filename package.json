@@ -71,8 +71,8 @@
   "devDependencies": {
     "@babel/plugin-syntax-flow": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.0.0",
     "@eslint/js": "^8.57.1",
     "@semantic-release/changelog": "^6.0.0",

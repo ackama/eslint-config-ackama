@@ -1,4 +1,0 @@
-{
-  "**/*.{t,j}s": "eslint",
-  "**/.eslint{rc,ignore}": "npm run lint"
-}

@@ -160,6 +160,11 @@ jobs:
           node-version: 'lts/*'
           cache: npm
 
+        # todo: this can be removed once we are using a version of Node that
+        #  ships with npm v11.5.1 or higher, which is needed for using oidc
+      - name: install latest npm
+        run: npm i -g npm
+
       - name: install
         run: npm ci
 

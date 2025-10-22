@@ -131,7 +131,6 @@ const generateConfig = () => {
       'plugin:jsx-a11y/recommended',
       'plugin:jsx-a11y/strict',
       'plugin:react/recommended',
-      'plugin:react-hooks/recommended',
       'plugin:prettier/recommended'
     ],
     overrides: [

@@ -98,7 +98,10 @@ describe('for each config file', () => {
           parser: parserTypeScriptESLint,
           ...c.languageOptions,
           parserOptions: {
-            ...c.languageOptions?.parserOptions,
+            // we have to cast to ensure this is considered an object by typescript
+            // across all eslint and plugin version combinations
+            // todo: we shouldn't need this once we drop support for older versions
+            ...(c.languageOptions?.parserOptions as Record<string, unknown>),
             // @typescript-eslint/parser
             [projectServicePropertyName]: true,
             createDefaultProgram: false,

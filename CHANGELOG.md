@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/ackama/eslint-config-ackama/compare/v4.3.0...v4.4.0) (2025-10-22)
+
+
+### Features
+
+* allow `eslint-plugin-react-hooks` v7 ([#402](https://github.com/ackama/eslint-config-ackama/issues/402)) ([187523e](https://github.com/ackama/eslint-config-ackama/commit/187523e5c1e7d90b0d0ffb5890193c5d34fac783))
+
 # [4.3.0](https://github.com/ackama/eslint-config-ackama/compare/v4.2.0...v4.3.0) (2025-10-07)
 
 

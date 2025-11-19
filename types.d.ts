@@ -46,17 +46,6 @@ declare module 'eslint-plugin-react' {
   export = plugin;
 }
 
-declare module 'eslint-plugin-react-hooks' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      recommended: ESLint.Linter.LegacyConfig;
-    };
-  };
-  export = plugin;
-}
-
 // todo: has its own types, but requires `node16` module resolution which breaks other things
 declare module '@typescript-eslint/eslint-plugin' {
   import * as ESLint from 'eslint';

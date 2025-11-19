@@ -30,22 +30,6 @@ declare module '@stylistic/eslint-plugin-ts' {
   export = plugin;
 }
 
-// todo: while eslint-plugin-react provides its own types, they are very broken
-//   see https://github.com/jsx-eslint/eslint-plugin-react/issues/3838
-declare module 'eslint-plugin-react' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      flat: Record<
-        'all' | 'jsx-runtime' | 'recommended',
-        ESLint.Linter.FlatConfig
-      >;
-    };
-  };
-  export = plugin;
-}
-
 // todo: has its own types, but requires `node16` module resolution which breaks other things
 declare module '@typescript-eslint/eslint-plugin' {
   import * as ESLint from 'eslint';

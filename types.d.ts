@@ -12,36 +12,6 @@ declare module '@eslint-community/eslint-plugin-eslint-comments/configs' {
   export = configs;
 }
 
-// todo: see https://github.com/import-js/eslint-plugin-import/pull/3097
-declare module 'eslint-plugin-import' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      'recommended': ESLint.Linter.LegacyConfig;
-      'errors': ESLint.Linter.LegacyConfig;
-      'warnings': ESLint.Linter.LegacyConfig;
-      'stage-0': ESLint.Linter.LegacyConfig;
-      'react': ESLint.Linter.LegacyConfig;
-      'react-native': ESLint.Linter.LegacyConfig;
-      'electron': ESLint.Linter.LegacyConfig;
-      'typescript': ESLint.Linter.LegacyConfig;
-    };
-
-    flatConfigs: {
-      'recommended': ESLint.Linter.FlatConfig;
-      'errors': ESLint.Linter.FlatConfig;
-      'warnings': ESLint.Linter.FlatConfig;
-      'stage-0': ESLint.Linter.FlatConfig;
-      'react': ESLint.Linter.FlatConfig;
-      'react-native': ESLint.Linter.FlatConfig;
-      'electron': ESLint.Linter.FlatConfig;
-      'typescript': ESLint.Linter.FlatConfig;
-    };
-  };
-  export = plugin;
-}
-
 // todo: while @stylistic/eslint-plugin-js provides its own types, they error for some reason
 //   see https://github.com/eslint-stylistic/eslint-stylistic/issues/481
 declare module '@stylistic/eslint-plugin-js' {

@@ -57,6 +57,24 @@ declare module '@typescript-eslint/eslint-plugin' {
   export = plugin;
 }
 
+// todo: the latest version of the types use ESLint v9
+//   see https://github.com/DefinitelyTyped/DefinitelyTyped/pull/73831
+declare module 'eslint-plugin-jsx-a11y' {
+  import * as ESLint from 'eslint';
+
+  const plugin: ESLint.ESLint.Plugin & {
+    configs: {
+      recommended: ESLint.Linter.LegacyConfig;
+      strict: ESLint.Linter.LegacyConfig;
+    };
+    flatConfigs: {
+      recommended: ESLint.Linter.Config;
+      strict: ESLint.Linter.Config;
+    };
+  };
+  export = plugin;
+}
+
 // todo: we need to specify our own types to ensure compatibility with both ESLint v8 and v9
 declare module '@typescript-eslint/parser' {
   import * as ESLint from 'eslint';

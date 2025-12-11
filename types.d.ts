@@ -12,36 +12,6 @@ declare module '@eslint-community/eslint-plugin-eslint-comments/configs' {
   export = configs;
 }
 
-// todo: see https://github.com/import-js/eslint-plugin-import/pull/3097
-declare module 'eslint-plugin-import' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      'recommended': ESLint.Linter.LegacyConfig;
-      'errors': ESLint.Linter.LegacyConfig;
-      'warnings': ESLint.Linter.LegacyConfig;
-      'stage-0': ESLint.Linter.LegacyConfig;
-      'react': ESLint.Linter.LegacyConfig;
-      'react-native': ESLint.Linter.LegacyConfig;
-      'electron': ESLint.Linter.LegacyConfig;
-      'typescript': ESLint.Linter.LegacyConfig;
-    };
-
-    flatConfigs: {
-      'recommended': ESLint.Linter.FlatConfig;
-      'errors': ESLint.Linter.FlatConfig;
-      'warnings': ESLint.Linter.FlatConfig;
-      'stage-0': ESLint.Linter.FlatConfig;
-      'react': ESLint.Linter.FlatConfig;
-      'react-native': ESLint.Linter.FlatConfig;
-      'electron': ESLint.Linter.FlatConfig;
-      'typescript': ESLint.Linter.FlatConfig;
-    };
-  };
-  export = plugin;
-}
-
 // todo: while @stylistic/eslint-plugin-js provides its own types, they error for some reason
 //   see https://github.com/eslint-stylistic/eslint-stylistic/issues/481
 declare module '@stylistic/eslint-plugin-js' {
@@ -57,33 +27,6 @@ declare module '@stylistic/eslint-plugin-ts' {
   import * as ESLint from 'eslint';
 
   const plugin: ESLint.ESLint.Plugin;
-  export = plugin;
-}
-
-// todo: while eslint-plugin-react provides its own types, they are very broken
-//   see https://github.com/jsx-eslint/eslint-plugin-react/issues/3838
-declare module 'eslint-plugin-react' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      flat: Record<
-        'all' | 'jsx-runtime' | 'recommended',
-        ESLint.Linter.FlatConfig
-      >;
-    };
-  };
-  export = plugin;
-}
-
-declare module 'eslint-plugin-react-hooks' {
-  import * as ESLint from 'eslint';
-
-  const plugin: ESLint.ESLint.Plugin & {
-    configs: {
-      recommended: ESLint.Linter.LegacyConfig;
-    };
-  };
   export = plugin;
 }
 
@@ -109,6 +52,24 @@ declare module '@typescript-eslint/eslint-plugin' {
       'stylistic': ESLint.Linter.LegacyConfig;
       'stylistic-type-checked': ESLint.Linter.LegacyConfig;
       'stylistic-type-checked-only': ESLint.Linter.LegacyConfig;
+    };
+  };
+  export = plugin;
+}
+
+// todo: the latest version of the types use ESLint v9
+//   see https://github.com/DefinitelyTyped/DefinitelyTyped/pull/73831
+declare module 'eslint-plugin-jsx-a11y' {
+  import * as ESLint from 'eslint';
+
+  const plugin: ESLint.ESLint.Plugin & {
+    configs: {
+      recommended: ESLint.Linter.LegacyConfig;
+      strict: ESLint.Linter.LegacyConfig;
+    };
+    flatConfigs: {
+      recommended: ESLint.Linter.Config;
+      strict: ESLint.Linter.Config;
     };
   };
   export = plugin;

@@ -90,6 +90,8 @@ describe('for each config file', () => {
 
           // @typescript-eslint/parser
           [projectServicePropertyName]: true,
+          // todo: see if we can axe this once we're dropped support for older versions
+          disallowAutomaticSingleRunInference: true,
           createDefaultProgram: false,
           sourceType: 'module'
         },

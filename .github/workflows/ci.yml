@@ -63,10 +63,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        eslint: [8, 9]
+        eslint: [8, 9, 10]
         typescript-eslint: [7, 8]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 10
+            typescript-eslint: 7
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}
@@ -90,10 +92,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        eslint: [8, 9]
+        eslint: [8, 9, 10]
         typescript-eslint: [7, 8]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 10
+            typescript-eslint: 7
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}
@@ -118,10 +122,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        eslint: [8, 9]
+        eslint: [8, 9, 10]
         typescript-eslint: [7, 8]
         os: [ubuntu-latest, macOS-latest]
         exclude:
+          - eslint: 10
+            typescript-eslint: 7
           - eslint: 9
             typescript-eslint: 7
     runs-on: ${{ matrix.os }}

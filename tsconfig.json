@@ -6,19 +6,16 @@
     "lib": ["ES2019"],
     "allowJs": true,
     "checkJs": true,
-    "strict": true,
-    "pretty": true,
     "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noEmitOnError": true,
     "sourceMap": true,
     "removeComments": false,
-    "esModuleInterop": true,
-    "useUnknownInCatchVariables": true,
     "useDefineForClassFields": true,
-    "noImplicitOverride": true
+    "noImplicitOverride": true,
+
+    "types": ["node", "jest"]
   },
   "exclude": ["coverage", "node_modules"],
   "include": ["**/*.js", "**/*.ts"]
